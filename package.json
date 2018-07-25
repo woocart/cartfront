@@ -1,0 +1,30 @@
+{
+  "name": "cartfront",
+  "version": "1.0.0",
+  "description": "Child theme of storefront theme for WordPress.",
+  "author": "WooCart",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "browser-sync": "latest",
+    "gulp": "4.0.0",
+    "gulp-autoprefixer": "latest",
+    "gulp-cache": "latest",
+    "gulp-combine-media-queries": "latest",
+    "gulp-concat": "latest",
+    "gulp-filter": "latest",
+    "gulp-ignore": "latest",
+    "gulp-imagemin": "latest",
+    "gulp-load-plugins": "latest",
+    "gulp-newer": "latest",
+    "gulp-notify": "latest",
+    "gulp-plumber": "latest",
+    "gulp-rename": "latest",
+    "gulp-rimraf": "latest",
+    "gulp-run-sequence": "latest",
+    "gulp-sass": "latest",
+    "gulp-sourcemaps": "latest",
+    "gulp-uglify": "latest",
+    "gulp-uglifycss": "latest",
+    "gulp-zip": "latest"
+  }
+}
