@@ -11,22 +11,51 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-class CartFront {
+/**
+ * Parent theme name.
+ */
+$parent_theme    = 'storefront';
 
-    public $parent_theme    = 'storefront';
-    public $theme_name      = 'cartfront';
-    public $theme_version   = '1.0.0';
+/**
+ * Child theme name.
+ */
+$theme_name      = 'cartfront';
 
-    public $storefront_url  = '';
-    public $cartfront_url   = '';
+/**
+ * The version number.
+ */
+$theme_version   = '1.0.0';
 
-    public function __construct() {
-        // Set required values.
-        $this->storefront_url   = get_template_directory_uri();
-        $this->cartfront_url    = get_stylesheet_directory_uri();
+/**
+ * URL of the template directory.
+ */
+$storefront_url  = get_template_directory_uri();
+
+/**
+ * Path of the child theme.
+ */
+$cartfront_path  = get_stylesheet_directory();
+
+/**
+ * URL of the child theme.
+ */
+$cartfront_url   = get_stylesheet_directory_uri();
+
+/**
+ * Function for auto-loading classes.
+ */
+spl_autoload_register( function( $class_name ) {
+    global $cartfront_path;
+
+    if ( file_exists( $cartfront_path . '/framework/classes/class-' . strtolower( $class_name ) . '.php' ) ) {
+        require( $cartfront_path . '/framework/classes/class-' . strtolower( $class_name ) . '.php' );
+        return true;
     }
 
-}
+    return false;
+} );
 
-// Initialize main engine.
-$cart_front = new CartFront();
+/**
+ * Initialize theme.
+ */
+$cartfront       = new Cartfront();
