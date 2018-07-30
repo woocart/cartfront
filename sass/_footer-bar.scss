@@ -1,0 +1,13 @@
+.cartfront-footer-bar {
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+	background-position: center center;
+}
+.cartfront-footer-bar .widget::after {
+	display: table;
+	content: '';
+	clear: both;
+}
+.cartfront-footer-bar .widget:last-child {
+	margin-bottom: 0;
+}
