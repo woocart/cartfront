@@ -1,12 +1,18 @@
 /** Mixins */
 /** ------------------------------------------------- Table of Contents ------------------------------------------------- ..01 Footer Bar ..02 Hamburger Menu ..03 Blog Customiser ..04 Woo Slider ..05 Mega Menus ..06 Homepage Control ------------------------------------------------- */
 /** 01 Footer Bar */
+.cartfront-footer-bar { padding-top: 2rem; padding-bottom: 2rem; background-position: center center; }
+
+.cartfront-footer-bar .widget::after { display: table; content: ''; clear: both; }
+
+.cartfront-footer-bar .widget:last-child { margin-bottom: 0; }
+
 /** 02 Hamburger Menu */
 /** 03 Blog Customiser */
 /** 04 Woo Slider */
 /** 05 Mega Menus */
 /** 06 Homepage Control */
 
-/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLmNzcyIsInNvdXJjZXMiOlsicHVibGljLnNjc3MiLCJtaXNjL19taXhpbnMuc2NzcyIsIl9mb290ZXItYmFyLnNjc3MiLCJfaGFtYnVyZ2VyLW1lbnUuc2NzcyIsIl9ibG9nLWN1c3RvbWlzZXIuc2NzcyIsIl93b28tc2xpZGVyLnNjc3MiLCJfbWVnYS1tZW51cy5zY3NzIiwiX2hvbWVwYWdlLWNvbnRyb2wuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQSxhQUVHO0FBR0gsNlJBV0c7QUFFSCxvQkFFRztBQUdILHdCQUVHO0FBR0gseUJBRUc7QUFHSCxvQkFFRztBQUdILG9CQUVHO0FBR0gsMEJBRUcifQ== */
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLmNzcyIsInNvdXJjZXMiOlsicHVibGljLnNjc3MiLCJtaXNjL19taXhpbnMuc2NzcyIsIl9mb290ZXItYmFyLnNjc3MiLCJfaGFtYnVyZ2VyLW1lbnUuc2NzcyIsIl9ibG9nLWN1c3RvbWlzZXIuc2NzcyIsIl93b28tc2xpZGVyLnNjc3MiLCJfbWVnYS1tZW51cy5zY3NzIiwiX2hvbWVwYWdlLWNvbnRyb2wuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQSxhQUVHO0FBR0gsNlJBV0c7QUFFSCxvQkFFRztBRXZCSCxBQUFBLHFCQUFxQixDQUFDLEVBQ3JCLFdBQVcsRUFBRSxJQUFJLEVBQ2pCLGNBQWMsRUFBRSxJQUFJLEVBQ3BCLG1CQUFtQixFQUFFLGFBQWEsR0FDbEM7O0FBQ0QsQUFBQSxxQkFBcUIsQ0FBQyxPQUFPLEFBQUEsT0FBTyxDQUFDLEVBQ3BDLE9BQU8sRUFBRSxLQUFLLEVBQ2QsT0FBTyxFQUFFLEVBQUUsRUFDWCxLQUFLLEVBQUUsSUFBSSxHQUNYOztBQUNELEFBQUEscUJBQXFCLENBQUMsT0FBTyxBQUFBLFdBQVcsQ0FBQyxFQUN4QyxhQUFhLEVBQUUsQ0FBQyxHQUNoQjs7QUZjRCx3QkFFRztBQUdILHlCQUVHO0FBR0gsb0JBRUc7QUFHSCxvQkFFRztBQUdILDBCQUVHIn0= */
 
 /*# sourceMappingURL=public.css.map */
