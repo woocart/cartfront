@@ -22,6 +22,9 @@ class Cartfront {
         add_action( 'wp_enqueue_scripts', array( &$this, 'scripts' ), PHP_INT_MAX );
         add_action( 'customize_preview_init', array( &$this, 'customize_preview_js' ) );
 
+        // Hide the 'More' section in the customizer.
+        add_filter( 'storefront_customizer_more', '__return_false' );
+
         /**
          * Initialize classes.
          */
