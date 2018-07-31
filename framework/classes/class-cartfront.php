@@ -25,16 +25,27 @@ class Cartfront {
         /**
          * Initialize classes.
          */
-        $footer_bar = new Cartfront_Footer_Bar();
+        $footer_bar     = new Cartfront_Footer_Bar();
+        $hamburger_menu = new Cartfront_Hamburger_Menu();
     }
 
     /**
      * Add styles & scripts for the theme.
      */
     public function scripts() {
-        global $theme_name, $cartfront_url;
+        global $theme_name, $theme_version, $cartfront_url;
 
         wp_enqueue_style( $theme_name . '-public', $cartfront_url . '/framework/css/public.css' );
+        wp_enqueue_script( $theme_name . '-public', $cartfront_url . '/framework/js/public.js', array( 'jquery' ), $theme_version, true );
+
+        /**
+         * Localization
+         */
+        $localization = array(
+            'close' => esc_html__( 'Close', 'cartfront' )
+        );
+
+        wp_localize_script( $theme_name . '-public', 'cartfront_localize', $localization );
     }
 
     /**

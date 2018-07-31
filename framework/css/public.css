@@ -8,11 +8,25 @@
 .cartfront-footer-bar .widget:last-child { margin-bottom: 0; }
 
 /** 02 Hamburger Menu */
+.cartfront-hamburger-menu-active .cfhm-close { display: none; }
+
+@media screen and (max-width: 767px) { .cartfront-hamburger-menu-active .main-navigation ul li a { padding: 1rem 1.250rem; }
+  .cartfront-hamburger-menu-active .main-navigation .handheld-navigation, .cartfront-hamburger-menu-active .main-navigation div.menu { position: fixed; top: 0; left: -80%; width: 80%; height: 100%; transition: left 0.2s; overflow-y: scroll; -webkit-overflow-scrolling: touch; -webkit-transition: left 0.2s; transition: left 0.2s; z-index: 9999; display: block !important; border-right: 1px solid rgba(255, 255, 255, 0.2); }
+  .cartfront-hamburger-menu-active .main-navigation .handheld-navigation > ul, .cartfront-hamburger-menu-active .main-navigation div.menu > ul { margin-top: .53em; }
+  .cartfront-hamburger-menu-active .main-navigation.toggled button.menu-toggle:before { -webkit-transform: translateY(-4px); -ms-transform: translateY(-4px); transform: translateY(-4px); }
+  .cartfront-hamburger-menu-active .main-navigation.toggled button.menu-toggle:after { -webkit-transform: translateY(4px); -ms-transform: translateY(4px); transform: translateY(4px); }
+  .cartfront-hamburger-menu-active .main-navigation.toggled button.menu-toggle span:before { opacity: 1; }
+  .cartfront-hamburger-menu-active .main-navigation.toggled .handheld-navigation, .cartfront-hamburger-menu-active .main-navigation.toggled div.menu { left: 0; box-shadow: 0 0 2em rgba(0, 0, 0, 0.7); }
+  .cartfront-hamburger-menu-active .cfhm-close { display: block; background-color: rgba(0, 0, 0, 0.5); cursor: pointer; overflow: hidden; font-weight: bold; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+  .cartfront-hamburger-menu-active .cfhm-close:before { font-family: "FontAwesome"; font-weight: 400; content: '\f00d'; margin-right: 1em; display: inline-block; padding: .857em 0 .857em 1.387em; }
+  .cartfront-hamburger-menu-active .site-header-cart .cart-contents { right: 2.618em; }
+  .cartfront-hamburger-menu-active.admin-bar .main-navigation .handheld-navigation, .cartfront-hamburger-menu-active.admin-bar .main-navigation div.menu { padding-top: 32px; } }
+
+.cartfront-hamburger-menu-active .main-navigation .cfhm-close:before { font-family: "Font Awesome 5 Free"; font-weight: 900; content: '\f00d'; }
+
+@media screen and (max-width: 782px) { .cartfront-hamburger-menu-active.admin-bar .main-navigation .handheld-navigation, .cartfront-hamburger-menu-active.admin-bar .main-navigation div.menu { padding-top: 46px; } }
+
 /** 03 Blog Customiser */
 /** 04 Woo Slider */
 /** 05 Mega Menus */
 /** 06 Homepage Control */
-
-/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljLmNzcyIsInNvdXJjZXMiOlsicHVibGljLnNjc3MiLCJtaXNjL19taXhpbnMuc2NzcyIsIl9mb290ZXItYmFyLnNjc3MiLCJfaGFtYnVyZ2VyLW1lbnUuc2NzcyIsIl9ibG9nLWN1c3RvbWlzZXIuc2NzcyIsIl93b28tc2xpZGVyLnNjc3MiLCJfbWVnYS1tZW51cy5zY3NzIiwiX2hvbWVwYWdlLWNvbnRyb2wuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQSxhQUVHO0FBR0gsNlJBV0c7QUFFSCxvQkFFRztBRXZCSCxBQUFBLHFCQUFxQixDQUFDLEVBQ3JCLFdBQVcsRUFBRSxJQUFJLEVBQ2pCLGNBQWMsRUFBRSxJQUFJLEVBQ3BCLG1CQUFtQixFQUFFLGFBQWEsR0FDbEM7O0FBQ0QsQUFBQSxxQkFBcUIsQ0FBQyxPQUFPLEFBQUEsT0FBTyxDQUFDLEVBQ3BDLE9BQU8sRUFBRSxLQUFLLEVBQ2QsT0FBTyxFQUFFLEVBQUUsRUFDWCxLQUFLLEVBQUUsSUFBSSxHQUNYOztBQUNELEFBQUEscUJBQXFCLENBQUMsT0FBTyxBQUFBLFdBQVcsQ0FBQyxFQUN4QyxhQUFhLEVBQUUsQ0FBQyxHQUNoQjs7QUZjRCx3QkFFRztBQUdILHlCQUVHO0FBR0gsb0JBRUc7QUFHSCxvQkFFRztBQUdILDBCQUVHIn0= */
-
-/*# sourceMappingURL=public.css.map */
