@@ -28,8 +28,9 @@ class Cartfront {
         /**
          * Initialize classes.
          */
-        $footer_bar     = new Cartfront_Footer_Bar();
-        $hamburger_menu = new Cartfront_Hamburger_Menu();
+        $footer_bar         = new Cartfront_Footer_Bar();
+        $hamburger_menu     = new Cartfront_Hamburger_Menu();
+        $blog_customiser    = new Cartfront_Blog_Customiser();
     }
 
     /**
