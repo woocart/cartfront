@@ -2,6 +2,9 @@
  * Customizer handlers to reload changes asynchronously.
  */
 ( function( $ ) {
+	/**
+	 * Hamburger Menu.
+	 */
 	wp.customize( 'storefront_header_link_color', function( value ) {
 		value.bind( function( to ) {
 			$( '.menu-toggle' ).css( 'color', to );

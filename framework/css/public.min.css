@@ -1,15 +1,13 @@
 .cartfront-hamburger-menu-active .cfhm-close{display:none}
-.cartfront-hamburger-menu-active .main-navigation .cfhm-close:before{font-family:"Font Awesome 5 Free";font-weight:900;content:'\f00d'}
 @media screen and (max-width:782px){.cartfront-hamburger-menu-active.admin-bar .main-navigation .handheld-navigation,.cartfront-hamburger-menu-active.admin-bar .main-navigation div.menu{padding-top:46px}
 }@media screen and (max-width:767px){.cartfront-hamburger-menu-active .main-navigation ul li a{padding:1rem 1.250rem}
-.cartfront-hamburger-menu-active .main-navigation .handheld-navigation,.cartfront-hamburger-menu-active .main-navigation div.menu{position:fixed;top:0;left:-80%;width:80%;height:100%;transition:left .2s;overflow-y:scroll;-webkit-overflow-scrolling:touch;-webkit-transition:left .2s;transition:left .2s;z-index:9999;display:block !important;border-right:1px solid rgba(255,255,255,0.2)}
+.cartfront-hamburger-menu-active .main-navigation .handheld-navigation,.cartfront-hamburger-menu-active .main-navigation div.menu{position:fixed;top:0;left:-75%;width:75%;height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;-webkit-transition:all,ease,0.2s;transition:all,ease,0.2s;z-index:9999;display:block !important}
 .cartfront-hamburger-menu-active .main-navigation .handheld-navigation>ul,.cartfront-hamburger-menu-active .main-navigation div.menu>ul{margin-top:.53em}
 .cartfront-hamburger-menu-active .main-navigation.toggled button.menu-toggle:before{-webkit-transform:translateY(-4px);-ms-transform:translateY(-4px);transform:translateY(-4px)}
 .cartfront-hamburger-menu-active .main-navigation.toggled button.menu-toggle:after{-webkit-transform:translateY(4px);-ms-transform:translateY(4px);transform:translateY(4px)}
 .cartfront-hamburger-menu-active .main-navigation.toggled button.menu-toggle span:before{opacity:1}
-.cartfront-hamburger-menu-active .main-navigation.toggled .handheld-navigation,.cartfront-hamburger-menu-active .main-navigation.toggled div.menu{left:0;box-shadow:0 0 2em rgba(0,0,0,0.7)}
-.cartfront-hamburger-menu-active .cfhm-close{display:block;background-color:rgba(0,0,0,0.5);cursor:pointer;overflow:hidden;font-weight:bold;border-bottom:1px solid rgba(255,255,255,0.2)}
-.cartfront-hamburger-menu-active .cfhm-close:before{font-family:"FontAwesome";font-weight:400;content:'\f00d';margin-right:1em;display:inline-block;padding:.857em 0 .857em 1.387em}
-.cartfront-hamburger-menu-active .site-header-cart .cart-contents{right:2.618em}
+.cartfront-hamburger-menu-active .main-navigation.toggled .handheld-navigation,.cartfront-hamburger-menu-active .main-navigation.toggled div.menu{left:0;box-shadow:0 0 2rem rgba(0,0,0,0.4)}
+.cartfront-hamburger-menu-active .cfhm-close{display:block;background-color:rgba(0,0,0,0.5);cursor:pointer;overflow:hidden;font-weight:700;padding:1rem 1.250rem}
+.cartfront-hamburger-menu-active .cfhm-close:before{font-family:"Font Awesome 5 Free";content:'\f00d';margin-right:.50rem;display:inline-block}
 .cartfront-hamburger-menu-active.admin-bar .main-navigation .handheld-navigation,.cartfront-hamburger-menu-active.admin-bar .main-navigation div.menu{padding-top:32px}
 }
