@@ -8,7 +8,7 @@
 .cartfront-footer-bar .widget:last-child { margin-bottom: 0; }
 
 /** 02 Hamburger Menu */
-.cartfront-hamburger-menu-active .cfhm-close { display: none; }
+.cfhm-close { display: none; }
 
 @media screen and (max-width: 767px) { .cartfront-hamburger-menu-active .main-navigation ul li a { padding: 1rem 1.250rem; }
   .cartfront-hamburger-menu-active .main-navigation .handheld-navigation, .cartfront-hamburger-menu-active .main-navigation div.menu { position: fixed; top: 0; left: -75%; width: 75%; height: 100%; overflow-y: scroll; -webkit-overflow-scrolling: touch; -webkit-transition: all, ease, 0.2s; transition: all, ease, 0.2s; z-index: 9999; display: block !important; }
