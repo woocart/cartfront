@@ -24,7 +24,7 @@ class Cartfront_Footer_Bar {
         add_action( 'storefront_before_footer', array( &$this, 'footer_bar' ) );
         add_action( 'init', array( $this, 'default_settings' ) );
         add_action( 'customize_register', array( &$this, 'edit_default_settings' ) );
-        add_action( 'widgets_init', array( &$this, 'register_widget_area' ), 99 );
+        add_action( 'widgets_init', array( &$this, 'register_widget_area' ), 200 );
     }
 
     /**
@@ -35,9 +35,9 @@ class Cartfront_Footer_Bar {
     public function get_default_settings() {
         return apply_filters( 'cartfront_fb_default_settings', $args = array(
             'cf_fb_background_image' => '',
-            'cf_fb_background_color' => '#2c2d33',
+            'cf_fb_background_color' => '#222222',
             'cf_fb_heading_color'    => '#ffffff',
-            'cf_fb_text_color'       => '#9aa0a7',
+            'cf_fb_text_color'       => '#dddddd',
             'cf_fb_link_color'       => '#ffffff',
         ) );
     }
@@ -149,7 +149,7 @@ class Cartfront_Footer_Bar {
          * Background color.
          */
         $wp_customize->add_setting( 'cf_fb_background_color', array(
-            'default'           => '#2c2d33',
+            'default'           => '#222222',
             'sanitize_callback' => 'sanitize_hex_color',
             'transport'         => 'postMessage'
         ) );
@@ -181,7 +181,7 @@ class Cartfront_Footer_Bar {
          * Text color.
          */
         $wp_customize->add_setting( 'cf_fb_text_color', array(
-            'default'           => '#9aa0a7',
+            'default'           => '#dddddd',
             'sanitize_callback' => 'sanitize_hex_color',
             'transport'         => 'postMessage'
         ) );

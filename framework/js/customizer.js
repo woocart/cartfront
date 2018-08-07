@@ -2,6 +2,9 @@
  * Customizer handlers to reload changes asynchronously.
  */
 ( function( $ ) {
+	/**
+	 * Footer bar.
+	 */
 	wp.customize( 'cf_fb_background_color', function( value ) {
 		value.bind( function( to ) {
 			$( '.cartfront-footer-bar' ).css( 'background-color', to );
