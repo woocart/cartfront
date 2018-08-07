@@ -46,7 +46,6 @@ class Cartfront_Homepage_Control {
      * Work through the stored data and display the components in the desired order, without the disabled components.
      *
      * @access  public
-     * @since   1.0.0
      */
     public function restructure_components () {
         $data       = get_theme_mod( 'cf_hc_data' );
@@ -86,7 +85,6 @@ class Cartfront_Homepage_Control {
      * Maybe remove disabled items from the main ordered array.
      *
      * @access  private
-     * @since   1.0.0
      * @param   array $components   Array with components order.
      * @return  array               Re-ordered components with disabled components removed.
      */

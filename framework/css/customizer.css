@@ -1,10 +1,13 @@
+/**
+ * Homepage control.
+ */
 ul.cf-hc-components {
 	margin-top: 15px;
 }
 ul.cf-hc-components li {
-	padding: 13px 15px;
+	padding: 12px 15px;
 	background: #fafafa;
-	color: #222;
+	color: #222222;
 	font-size: 13px;
 	font-weight: 600;
 	border: 1px solid #e5e5e5;
@@ -14,7 +17,7 @@ ul.cf-hc-components li {
 
 ul.cf-hc-components li:hover {
 	border-color: #999;
-	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.1);
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,0.10);
 	box-shadow: 0 1px 2px rgba(0,0,0,.1);
 }
 ul.cf-hc-components li .visibility {
@@ -24,8 +27,8 @@ ul.cf-hc-components li .visibility {
 	position: relative;
 	font-size: 0;
 	cursor: pointer;
-	border: 1px solid #ddd;
-	background-color: #fff;
+	border: 1px solid #dddddd;
+	background-color: #ffffff;
 	float: left;
 	margin-right: 12px;
 	border-radius: 2px;
