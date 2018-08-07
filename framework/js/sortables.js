@@ -1,43 +1,48 @@
-jQuery(document).ready(function($) {
-
+/**
+ * Sorting the homepage control components :)
+ */
+( function( $ ) {
 	'use strict';
 
-	$('.cf-hc-components').sortable();
-	$('.cf-hc-components').disableSelection();
+	$( document ).ready( function() {
 
-	$('.cf-hc-components').bind('sortstop', function(e, ui) {
-		var components = new Array();
-		var disabled = '[disabled]';
+		$( '.cf-hc-components' ).sortable();
+		$( '.cf-hc-components' ).disableSelection();
 
-		$(e.target).find('li').each( function ( i, e ) {
-			if($(this).hasClass( 'disabled' ) ) {
-				components.push( disabled + $( this ).attr( 'id' ) );
-			} else {
-				components.push( $( this ).attr( 'id' ) );
-			}
-		});
+		$( '.cf-hc-components' ).bind( 'sortstop', function( e, ui ) {
+			var components 	= new Array();
+			var disabled 	= '[disabled]';
 
-		components = components.join( ',' );
+			$( e.target ).find( 'li' ).each( function( i, e ) {
+				if( $( this ).hasClass( 'disabled' ) ) {
+					components.push( disabled + $( this ).attr( 'id' ) );
+				} else {
+					components.push( $( this ).attr( 'id' ) );
+				}
+			} );
 
-		$( 'input[data-customize-setting-link="cf_hc_data"]' ).attr( 'value', components ).trigger( 'change' );
-	});
+			components = components.join( ',' );
 
-	$( '.cf-hc-components .visibility' ).bind( 'click', function ( e ) {
-		var components = new Array();
-		var disabled = '[disabled]';
+			$( 'input[data-customize-setting-link="cf_hc_data"]' ).attr( 'value', components ).trigger( 'change' );
+		} );
 
-		$( this ).parent( 'li' ).toggleClass( 'disabled' );
+		$( '.cf-hc-components .visibility' ).bind( 'click', function( e ) {
+			var components 	= new Array();
+			var disabled 	= '[disabled]';
 
-		$( this ).parents( '.cf-hc-components' ).find( 'li' ).each( function ( i, e ) {
-			if ( $( this ).hasClass( 'disabled' ) ) {
-				components.push( disabled + $( this ).attr( 'id' ) );
-			} else {
-				components.push( $( this ).attr( 'id' ) );
-			}
-		});
+			$( this ).parent( 'li' ).toggleClass( 'disabled' );
 
-		components = components.join( ',' );
+			$( this ).parents( '.cf-hc-components' ).find( 'li' ).each( function ( i, e ) {
+				if ( $( this ).hasClass( 'disabled' ) ) {
+					components.push( disabled + $( this ).attr( 'id' ) );
+				} else {
+					components.push( $( this ).attr( 'id' ) );
+				}
+			} );
 
-		$( 'input[data-customize-setting-link="cf_hc_data"]' ).attr( 'value', components ).trigger( 'change' );
-	});
-});
+			components = components.join( ',' );
+
+			$( 'input[data-customize-setting-link="cf_hc_data"]' ).attr( 'value', components ).trigger( 'change' );
+		} );
+	} );
+} )( jQuery );
