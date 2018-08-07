@@ -16,4 +16,14 @@
 			$( '.main-navigation div.menu, .main-navigation .handheld-navigation' ).css( 'background-color', to );
 		} );
 	} );
+
+	wp.customize( 'cf_hm_enable', function( value ) {
+		value.bind( function( to ) {
+			if( true === to ) {
+				$( 'body' ).addClass( 'cartfront-hamburger-menu-active' );
+			} else {
+				$( 'body' ).removeClass( 'cartfront-hamburger-menu-active' );
+			}
+		} );
+	} );
 } )( jQuery );

@@ -20,7 +20,11 @@ class Cartfront_Hamburger_Menu {
      */
     public function __construct() {
         add_action( 'wp_enqueue_scripts', array( &$this, 'add_styles' ), PHP_INT_MAX );
-        add_filter( 'body_class', array( $this, 'body_class' ) );
+        add_action( 'customize_register', array( &$this, 'customize_register' ) );
+
+        if ( get_theme_mod( 'cf_hm_enable' ) ) {
+            add_filter( 'body_class', array( $this, 'body_class' ) );
+        }
     }
 
     /**
@@ -56,6 +60,39 @@ class Cartfront_Hamburger_Menu {
         ';
 
         wp_add_inline_style( $theme_name . '-public', $style );
+    }
+
+    /**
+     * Customizer controls and settings.
+     *
+     * @param WP_Customize_Manager $wp_customize Theme Customizer object.
+     */
+    public function customize_register( $wp_customize ) {
+        /**
+         * Add a new section.
+         */
+        $wp_customize->add_section( 'cf_hm_section' , array(
+            'title'    => esc_html__( 'Hamburger Menu', 'cartfront' ),
+            'priority' => 60
+        ) );
+
+        /**
+         * Blog archive layout.
+         */
+        $wp_customize->add_setting( 'cf_hm_enable', array(
+            'default'           => false,
+            'sanitize_callback' => 'storefront_sanitize_checkbox',
+            'transport'         => 'postMessage'
+        ) );
+
+        $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'cf_hm_enable', array(
+            'label'         => esc_attr__( 'Enable Hamburger Menu', 'cartfront' ),
+            'description'   => esc_html__( 'Check this box to enable the Hamburger Menu for smaller size devices.', 'cartfront' ),
+            'section'       => 'cf_hm_section',
+            'settings'      => 'cf_hm_enable',
+            'type'          => 'checkbox',
+            'priority'      => 10
+        ) ) );
     }
 
     /**
