@@ -29,8 +29,8 @@ class Cartfront_Hamburger_Menu {
     public function add_styles() {
         global $theme_name;
 
-        $background_color    = sanitize_text_field( get_theme_mod( 'storefront_header_background_color', apply_filters( 'storefront_default_header_background_color', '#2c2d33' ) ) );
-        $link_color          = sanitize_text_field( get_theme_mod( 'storefront_header_link_color', apply_filters( 'storefront_default_header_link_color', '#cccccc' ) ) );
+        $background_color    = sanitize_text_field( get_theme_mod( 'storefront_header_background_color', apply_filters( 'storefront_default_header_background_color', '#222222' ) ) );
+        $link_color          = sanitize_text_field( get_theme_mod( 'storefront_header_link_color', apply_filters( 'storefront_default_header_link_color', '#dddddd' ) ) );
 
         $style = '
             @media screen and (max-width: 768px) {
