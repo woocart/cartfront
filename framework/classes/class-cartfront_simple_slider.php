@@ -1,6 +1,6 @@
 <?php
 /**
- * Woo slider class for the theme.
+ * Simple slider class for the theme.
  *
  * @package cartfront
  */
@@ -9,8 +9,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-if ( ! class_exists( 'Cartfront_Woo_Slider' ) ) :
-class Cartfront_Woo_Slider {
+if ( ! class_exists( 'Cartfront_Simple_Slider' ) ) :
+class Cartfront_Simple_Slider {
 
     /**
      * Constructor function.

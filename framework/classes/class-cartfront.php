@@ -32,6 +32,7 @@ class Cartfront {
         $hamburger_menu     = new Cartfront_Hamburger_Menu();
         $blog_customiser    = new Cartfront_Blog_Customiser();
         $homepage_control   = new Cartfront_Homepage_Control();
+        $simple_slider      = new Cartfront_Simple_Slider();
     }
 
     /**
@@ -57,7 +58,6 @@ class Cartfront {
      * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
      *
      * @access  public
-     * @since   1.0.0
      */
     public function customize_preview_js() {
         global $theme_name, $theme_version, $cartfront_url;
