@@ -1,0 +1,113 @@
+.cf-cr-container .cf-cr-content-hidden {
+	display: none;
+}
+.cf-cr-container .cf-cr-content-hidden:after {
+	content: '';
+	display: table;
+	clear: both;
+}
+.cf-cr-title {
+	display: block;
+	font-size: 14px;
+	line-height: 1;
+	font-weight: 600;
+	padding: 15px;
+	margin: 0;
+	color: #23282d;
+	border: 1px solid #ecf0f1;
+	cursor: move;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+.cf-cr-title:hover {
+	border: 1px solid #909090;
+}
+.cf-cr-title:after {
+	float: right;
+	position: relative;
+	content: "\f140";
+	font-family: dashicons;
+	font-size: 20px;
+	height: 13px;
+	bottom: 3px;
+}
+.cf-cr-content-hidden {
+	border: 1px solid #ecf0f1;
+	border-top: none;
+	padding: 1px 10px 10px;
+}
+.cf-cr-content-hidden > div {
+	margin: 14px 0 0;
+}
+.cf-cr-content-hidden .cf-cr-control-title {
+	display: block;
+	font-size: 13px;
+	line-height: 24px;
+	font-weight: 600;
+	margin-bottom: 4px;
+}
+.cf-cr-container {
+	border: 1px solid #ecf0f1;
+	border-top: none;
+	margin-bottom: 12px;
+	width: 100%;
+	float: left;
+	background: #ffffff;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+}
+.cf-cr-content-hidden input:not(.cf-cr-media-url),
+.cf-cr-content-hidden textarea {
+	margin-bottom: 14px !important;
+}
+.cf-cr-remove-field {
+	background: none;
+	cursor: pointer;
+	color: #a00a00;
+	border: none;
+	margin-top: 10px;
+	padding: 0;
+}
+.cf-cr-remove-field:hover {
+	color: #990000;
+}
+button.cf-cr-new-field {
+	float: right;
+}
+button.cf-cr-new-field:before {
+	position: relative;
+	content: "\f132";
+	display: inline-block;
+	left: -2px;
+	top: -1px;
+	font: 400 20px/1 dashicons;
+	vertical-align: middle;
+	-webkit-transition: all .2s;
+	transition: all .2s;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+#cf-cr-new-field {
+	width: 100%;
+}
+.cf-cr-content-hidden {
+	background-color: #ffffff;
+}
+.cf-cr-image-control .cf-cr-media-box span {
+	display: block;
+	padding: 15px;
+	text-align: center;
+	border: 1px dashed #ecf0f1;
+}
+.cf-cr-image-control .cf-cr-media-button {
+	margin-top: 5px;
+}
+.cf-cr-image-control .cf-cr-media-remove {
+	float: right;
+	margin-top: 5px;
+}
+.cf-cr-content-hidden textarea {
+	width: 100%;
+}
