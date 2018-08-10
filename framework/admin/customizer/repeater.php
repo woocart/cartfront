@@ -24,13 +24,15 @@ class WP_Customize_Repeater_Control extends WP_Customize_Control {
 
 	/**
 	 * Constructor function.
+	 *
+	 * @access public
+	 * @since  1.0.0
 	 */
 	public function __construct( $manager, $id, $args = array() ) {
-
-		// Parent Constructor.
+		// Parent constructor.
 		parent::__construct( $manager, $id, $args );
 
-		// Default Values.
+		// Default values.
 		$this->add_field_label 	= esc_html__( 'Add Item', 'cartfront' );
 		$this->boxtitle 		= esc_html__( 'Item', 'cartfront' );
 
@@ -53,7 +55,9 @@ class WP_Customize_Repeater_Control extends WP_Customize_Control {
 	}
 
 	/**
-	 * Enqueue styles & scripts.
+	 * Enqueue control dependencies.
+	 *
+	 * @access  public
 	 */
 	public function enqueue() {
 		global $theme_name, $theme_version, $cartfront_url;
@@ -64,7 +68,9 @@ class WP_Customize_Repeater_Control extends WP_Customize_Control {
 	}
 
 	/**
-	 * Render content.
+	 * Let's render the content.
+	 *
+	 * @access  public
 	 */
 	public function render_content() {
 		// Default options.
@@ -88,7 +94,7 @@ class WP_Customize_Repeater_Control extends WP_Customize_Control {
 		<div class="cf-cr-repeater cf-cr-droppable">
 			<?php
 
-				if ( ( count( $json ) == 1 && '' === $json[0] ) || empty( $json ) ) {
+				if ( ( 1 === count( $json ) && '' === $json[0] ) || empty( $json ) ) {
 					if ( ! empty( $this_default ) ) {
 						$this->iterate_array( $this_default );
 
@@ -126,14 +132,15 @@ class WP_Customize_Repeater_Control extends WP_Customize_Control {
 	}
 
 	/**
+	 * Iterate over all the controls in the array.
 	 *
+	 * @access  private
 	 */
 	private function iterate_array( $array = array() ) {
-		// Counter.
 		$it = 0;
 
 		if ( ! empty( $array ) ) {
-			foreach ( $array as $icon ) {
+			foreach ( $array as $single ) {
 			?>
 				<div class="cf-cr-container cf-cr-draggable">
 					<div class="cf-cr-title">
@@ -149,24 +156,24 @@ class WP_Customize_Repeater_Control extends WP_Customize_Control {
 						$subtitle 	= '';
 						$link 		= '';
 
-						if ( ! empty( $icon->id ) ) {
-							$id = $icon->id;
+						if ( ! empty( $single->id ) ) {
+							$id = $single->id;
 						}
 
-						if ( ! empty( $icon->image_url ) ) {
-							$image_url = $icon->image_url;
+						if ( ! empty( $single->image_url ) ) {
+							$image_url = $single->image_url;
 						}
 
-						if ( ! empty( $icon->title ) ) {
-							$title = $icon->title;
+						if ( ! empty( $single->title ) ) {
+							$title = $single->title;
 						}
 
-						if ( ! empty( $icon->subtitle ) ) {
-							$subtitle = $icon->subtitle;
+						if ( ! empty( $single->subtitle ) ) {
+							$subtitle = $single->subtitle;
 						}
 
-						if ( ! empty( $icon->link ) ) {
-							$link = $icon->link;
+						if ( ! empty( $single->link ) ) {
+							$link = $single->link;
 						}
 
 						/**
@@ -215,7 +222,6 @@ class WP_Customize_Repeater_Control extends WP_Customize_Control {
 						</button><!-- .cf-cr-remove-field -->
 					</div><!-- .cf-cr-content-hidden -->
 				</div><!-- .cf-cr-container -->
-
 		<?php
 
 				$it++;
@@ -278,6 +284,8 @@ class WP_Customize_Repeater_Control extends WP_Customize_Control {
 
 	/**
 	 * Input control function.
+	 *
+	 * @access  private
 	 */
 	private function input_control( $options, $value = '' ) {
 		if ( ! empty( $options['type'] ) ) {
@@ -307,6 +315,8 @@ class WP_Customize_Repeater_Control extends WP_Customize_Control {
 
 	/**
 	 * Image control function.
+	 *
+	 * @access  private
 	 */
 	private function image_control( $value = '' ) {
 	?>
