@@ -20,6 +20,9 @@ class WP_Customize_Posts_Control extends WP_Customize_Control {
 
 	/**
 	 * Constructor function.
+	 *
+	 * @access public
+	 * @since  1.0.0
 	 */
 	public function __construct( $manager, $id, $args = array(), $options = array() ) {
 
@@ -28,7 +31,9 @@ class WP_Customize_Posts_Control extends WP_Customize_Control {
 	}
 
 	/**
-	 * Enqueue styles & scripts.
+	 * Enqueue control dependencies.
+	 *
+	 * @access public
 	 */
 	public function enqueue() {
 		global $theme_name, $theme_version, $cartfront_url;
@@ -41,7 +46,9 @@ class WP_Customize_Posts_Control extends WP_Customize_Control {
 	}
 
 	/**
-	 * Render content.
+	 * Let's render the content.
+	 *
+	 * @access  public
 	 */
 	public function render_content() {
 
