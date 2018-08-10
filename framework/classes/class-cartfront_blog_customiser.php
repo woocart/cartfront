@@ -47,7 +47,7 @@ class Cartfront_Blog_Customiser {
          * Blog archives section.
          */
         $wp_customize->add_section( 'cf_bc_blog_archive' , array(
-            'title'         => esc_html__( 'Archives', 'storefront' ),
+            'title'         => esc_html__( 'Archives', 'cartfront' ),
             'priority'      => 10,
             'description'   => esc_html__( 'Customise the look & feel of the blog archives', 'cartfront' ),
             'panel'         => 'cf_bc_panel'
@@ -57,7 +57,7 @@ class Cartfront_Blog_Customiser {
          * Single blog post section.
          */
         $wp_customize->add_section( 'cf_bc_blog_single' , array(
-            'title'         => esc_html__( 'Single posts', 'storefront' ),
+            'title'         => esc_html__( 'Single posts', 'cartfront' ),
             'priority'      => 20,
             'description'   => esc_html__( 'Customise the look & feel of the blog post pages', 'cartfront' ),
             'panel'         => 'cf_bc_panel'
@@ -67,7 +67,7 @@ class Cartfront_Blog_Customiser {
          * Homepage blog section.
          */
         $wp_customize->add_section( 'cf_bc_blog_homepage' , array(
-            'title'         => esc_html__( 'Homepage', 'storefront' ),
+            'title'         => esc_html__( 'Homepage', 'cartfront' ),
             'priority'      => 30,
             'description'   => esc_html__( 'Configure the display of blog posts on the homepage template', 'cartfront' ),
             'panel'         => 'cf_bc_panel'
@@ -279,13 +279,11 @@ class Cartfront_Blog_Customiser {
     }
 
     /**
-     * Storefront Blog Customiser Body Class
+     * Body Class.
      *
      * @param array $classes the classes applied to the body tag.
      */
     public function body_class( $classes ) {
-        global $storefront_version;
-
         $post_layout_archive     = get_theme_mod( 'cf_bc_post_layout_archive', 'default' );
         $post_layout_single      = get_theme_mod( 'cf_bc_post_layout_single', 'default' );
         $post_layout_homepage    = get_theme_mod( 'cf_bc_post_layout_homepage', 'default' );
