@@ -33,8 +33,8 @@ class WP_Customize_Repeater_Control extends WP_Customize_Control {
 		parent::__construct( $manager, $id, $args );
 
 		// Default values.
-		$this->add_field_label 	= esc_html__( 'Add Item', 'cartfront' );
-		$this->boxtitle 		= esc_html__( 'Item', 'cartfront' );
+		$this->add_field_label 	= esc_html__( 'Add Slide', 'cartfront' );
+		$this->boxtitle 		= esc_html__( 'Slide', 'cartfront' );
 
 		// Set id.
 		if ( ! empty( $id ) ) {
