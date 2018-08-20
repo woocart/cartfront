@@ -11,10 +11,19 @@ class TestTheme extends \PHPUnit\Framework\TestCase {
 		$this->addToAssertionCount(
 			\Mockery::getContainer()->mockery_getExpectationCount()
 		);
+
 		\WP_Mock::tearDown();
 	}
 
 	public function test_theme_base() {
+		\WP_Mock::wpFunction(
+			'get_theme_mod', array(
+				'called' => 1,
+				'args' 	 => array( 'cf_hm_enable' ),
+				'return' => 1
+			)
+		);
+
 		$theme = new Cartfront();
 
 		\WP_Mock::expectActionAdded( 'wp_enqueue_scripts', array( $theme, 'scripts' ), PHP_INT_MAX );
@@ -36,6 +45,25 @@ class TestTheme extends \PHPUnit\Framework\TestCase {
 
 		$footer_bar->__construct();
 		\WP_Mock::assertHooksAdded();
+	}
+
+	public function test_hamburger_menu() {
+		\WP_Mock::wpFunction(
+			'get_theme_mod', array(
+				'called' => 1,
+				'args' 	 => array( 'cf_hm_enable' ),
+				'return' => 1
+			)
+		);
+
+		$hamburger_menu = new Cartfront_Hamburger_Menu();
+
+		\WP_Mock::expectActionAdded( 'wp_enqueue_scripts', array( $hamburger_menu, 'add_styles' ), PHP_INT_MAX );
+		\WP_Mock::expectActionAdded( 'customize_register', array( $hamburger_menu, 'customize_register' ) );
+		\WP_Mock::expectFilterAdded( 'body_class', array( $hamburger_menu, 'body_class' ) );
+
+		$hamburger_menu->__construct();
+		\WP_Mock::assertHooksAdded();	
 	}
 
 }
