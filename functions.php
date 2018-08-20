@@ -58,4 +58,4 @@ spl_autoload_register( function( $class_name ) {
 /**
  * Initialize theme.
  */
-$cartfront       = new Cartfront();
+$cartfront = new Cartfront();
