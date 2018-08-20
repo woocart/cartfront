@@ -7,13 +7,18 @@ $font-size 	: 16px;
 @import 'misc/mixins';
 
 /**
+ * Plugins
+ */
+@import 'misc/plugins';
+
+/**
  * -------------------------------------------------
  * Table of Contents
  * -------------------------------------------------
  * ..01 Footer Bar
  * ..02 Hamburger Menu
  * ..03 Blog Customiser
- * ..04 Woo Slider
+ * ..04 Simple Slider
  * ..05 Mega Menus
  * ..06 Homepage Control
  * -------------------------------------------------
@@ -35,9 +40,9 @@ $font-size 	: 16px;
 @import 'blog-customiser';
 
 /**
- * 04 Woo Slider
+ * 04 Simple Slider
  */
-@import 'woo-slider';
+@import 'simple-slider';
 
 /**
  * 05 Mega Menus
