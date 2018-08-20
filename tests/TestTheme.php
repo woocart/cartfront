@@ -63,7 +63,20 @@ class TestTheme extends \PHPUnit\Framework\TestCase {
 		\WP_Mock::expectFilterAdded( 'body_class', array( $hamburger_menu, 'body_class' ) );
 
 		$hamburger_menu->__construct();
-		\WP_Mock::assertHooksAdded();	
+		\WP_Mock::assertHooksAdded();
+	}
+
+	public function test_blog_customiser() {
+		$blog_customiser = new Cartfront_Blog_Customiser();
+
+		\WP_Mock::expectActionAdded( 'customize_register', array( $blog_customiser, 'customize_register' ) );
+		\WP_Mock::expectActionAdded( 'homepage', array( $blog_customiser, 'homepage_blog' ), 80 );
+		\WP_Mock::expectActionAdded( 'wp', array( $blog_customiser, 'layout' ), PHP_INT_MAX );
+		\WP_Mock::expectFilterAdded( 'body_class', array( $blog_customiser, 'body_class' ) );
+		\WP_Mock::expectFilterAdded( 'post_class', array( $blog_customiser, 'post_class' ) );
+
+		$blog_customiser->__construct();
+		\WP_Mock::assertHooksAdded();
 	}
 
 }
