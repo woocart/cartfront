@@ -282,7 +282,6 @@ class Cartfront_Blog_Customiser {
      * Storefront Blog Customiser Body Class
      *
      * @param array $classes the classes applied to the body tag.
-     * @see get_theme_mod()
      */
     public function body_class( $classes ) {
         global $storefront_version;
@@ -294,15 +293,9 @@ class Cartfront_Blog_Customiser {
         $blog_single_full_width  = get_theme_mod( 'cf_bc_blog_single_layout', false );
         $magazine                = get_theme_mod( 'cf_bc_magazine_layout', false );
 
-        if ( version_compare( $storefront_version, '2.0.0', '>=' ) ) {
-            $version = '-2';
-        } else {
-            $version = '';
-        }
-
         // Archives.
         if ( $this->is_blog_archive() ) {
-            $classes[] = 'cf-bc-' . $post_layout_archive . $version;
+            $classes[] = 'cf-bc-' . $post_layout_archive;
         }
 
         if ( $this->is_blog_archive() && true === (bool) $blog_archive_full_width ) {
@@ -315,7 +308,7 @@ class Cartfront_Blog_Customiser {
 
         // Single.
         if ( is_singular( 'post' ) ) {
-            $classes[] = 'cf-bc-' . $post_layout_single . $version;
+            $classes[] = 'cf-bc-' . $post_layout_single;
         }
 
         if ( is_singular( 'post' ) && true === (bool) $blog_single_full_width ) {
@@ -324,7 +317,7 @@ class Cartfront_Blog_Customiser {
 
         // Homepage.
         if ( is_page_template( 'template-homepage.php' ) ) {
-            $classes[] = 'cf-bc-' . $post_layout_homepage . $version;
+            $classes[] = 'cf-bc-' . $post_layout_homepage;
         }
 
         return $classes;
