@@ -14,4 +14,3 @@
 .cartfront-hamburger-menu-active .cfhm-close{display:block;background-color:rgba(0,0,0,0.5);cursor:pointer;overflow:hidden;font-weight:700;padding:1rem 1.250rem}
 .cartfront-hamburger-menu-active .cfhm-close:before{font-family:"Font Awesome 5 Free";content:'\f00d';margin-right:.50rem;display:inline-block}
 .cartfront-hamburger-menu-active.admin-bar .main-navigation .handheld-navigation,.cartfront-hamburger-menu-active.admin-bar .main-navigation div.menu{padding-top:32px}
-}

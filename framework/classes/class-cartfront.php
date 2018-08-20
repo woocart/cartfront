@@ -28,7 +28,10 @@ class Cartfront {
         /**
          * Initialize classes.
          */
+<<<<<<< HEAD
         $footer_bar     = new Cartfront_Footer_Bar();
+=======
+>>>>>>> c2d6bf10aefc018eeb38536e3f40c4e7c1f0030c
         $hamburger_menu = new Cartfront_Hamburger_Menu();
     }
 
