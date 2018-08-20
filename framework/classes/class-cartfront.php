@@ -31,6 +31,7 @@ class Cartfront {
         $footer_bar         = new Cartfront_Footer_Bar();
         $hamburger_menu     = new Cartfront_Hamburger_Menu();
         $blog_customiser    = new Cartfront_Blog_Customiser();
+        $homepage_control   = new Cartfront_Homepage_Control();
     }
 
     /**
