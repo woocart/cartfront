@@ -1,0 +1,214 @@
+@media screen and (min-width: 768px) {
+	.cf-bc-meta-right {
+		.hentry.type-post .entry-content {
+			float: left;
+			width: 75%;
+			text-align: left;
+		}
+
+		.hentry.type-post .entry-meta {
+			float: right;
+			width: 20%;
+			margin-left: 5%;
+			margin-right: 0;
+		}
+	}
+
+	.cf-bc-meta-hidden {
+		.hentry.type-post .entry-content {
+			float: none;
+			width: 100%;
+			max-width: 100%;
+			text-align: left;
+			margin: 0 auto;
+		}
+	}
+
+	.cf-bc-meta-inline-top,
+	.cf-bc-meta-inline-bottom {
+		.entry-meta {
+			.author,
+			.cat-links,
+			.tags-links,
+			div.comments-link {
+				display: inline-block;
+				margin-right: 2rem;
+				text-align: left;
+			}
+
+			.author {
+				padding-left: 46px;
+				position: relative;
+
+				img {
+					position: absolute;
+					width: 32px;
+					top: 4px;
+					left: 0;
+				}
+			}
+
+			span.comments-link {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.cf-bc-meta-inline-bottom {
+		.entry-meta {
+			padding-top: 2rem;
+			border-top: 1px solid rgba(#000,0.10);
+		}
+	}
+
+	.cf-bc-meta-inline-top,
+	.cf-bc-meta-inline-bottom {
+		.hentry.type-post .entry-meta {
+			.cat-links,
+			.tags-links,
+			div.comments-link,
+			.edit-link {
+				display: inline-block;
+				margin-right: 2rem;
+				text-align: left;
+			}
+
+			span.comments-link {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	.cf-bc-meta-inline-top {
+		.hentry.type-post .entry-content {
+			float: none;
+			width: 100%;
+			max-width: 100%;
+			text-align: left;
+			margin-left: 0;
+			margin-right: 0;
+		}
+
+		.hentry.type-post .entry-meta {
+			float: none;
+			width: 100%;
+			max-width: 100%;
+			text-align: center;
+			margin-left: 0;
+			margin-right: 0;
+			margin-bottom: 1rem;
+		}
+	}
+
+	.cf-bc-meta-inline-bottom {
+		.hentry.type-post .entry-content {
+			float: none;
+			width: 100%;
+			max-width: 100%;
+			text-align: left;
+			margin-left: 0;
+			margin-right: 0;
+			margin-bottom: 2rem;
+		}
+
+		.hentry.type-post .entry-meta {
+			float: none;
+			width: 100%;
+			max-width: 100%;
+			text-align: center;
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+
+	.page-template-template-homepage-php {
+		.columns-2 {
+			.type-post {
+				float: left;
+				width: 48%;
+				margin-left: 4%;
+				clear: both;
+
+				h1.entry-title {
+					font-size: 1.500rem;
+				}
+
+				&:nth-child(odd) {
+					clear: none;
+				}
+
+				&:nth-child(even) {
+					margin-left: 0;
+				}
+
+				.entry-content {
+					text-align: left;
+				}
+
+				.entry-meta {
+					text-align: left;
+				}
+			}
+		}
+
+		.columns-3 {
+			.type-post {
+				float: left;
+				width: 31%;
+				margin-left: 3.5%;
+				font-size: 0.875rem;				
+
+				&:nth-of-type(3n+1) {
+					margin-left: 0;
+					clear: both;
+				}
+
+				.entry-content {
+					text-align: left;
+				}
+
+				.entry-meta {
+					text-align: left;
+				}
+			}
+		}
+	}
+
+	.cf-bc-meta-inline-top,
+	.cf-bc-meta-inline-bottom {
+		&.single {
+			.hentry.type-post .entry-meta {
+				text-align: left;
+			}
+		}
+
+		&.archive {
+			.hentry.type-post .entry-meta {
+				text-align: left;
+			}
+		}
+	}
+
+	.cartfront-full-width-content .content-area {
+		float: none;
+		width: 100%;
+		margin: 0;
+	}
+
+	.cf-bc-magazine.archive,
+	.cf-bc-magazine.home,
+	.cf-bc-magazine.blog {
+		.hentry.type-post {
+			float: left;
+			width: 48%;
+			margin-right: 4%;
+			clear: both;
+			font-size: 0.875rem;
+
+			&.cf-bc-odd {
+				margin-right: 0;
+				clear: none;
+			}
+		}
+	}
+}

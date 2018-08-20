@@ -24,6 +24,36 @@
 @media screen and (max-width: 782px) { .cartfront-hamburger-menu-active.admin-bar .main-navigation .handheld-navigation, .cartfront-hamburger-menu-active.admin-bar .main-navigation div.menu { padding-top: 46px; } }
 
 /** 03 Blog Customiser */
+@media screen and (min-width: 768px) { .cf-bc-meta-right .hentry.type-post .entry-content { float: left; width: 75%; text-align: left; }
+  .cf-bc-meta-right .hentry.type-post .entry-meta { float: right; width: 20%; margin-left: 5%; margin-right: 0; }
+  .cf-bc-meta-hidden .hentry.type-post .entry-content { float: none; width: 100%; max-width: 100%; text-align: left; margin: 0 auto; }
+  .cf-bc-meta-inline-top .entry-meta .author, .cf-bc-meta-inline-top .entry-meta .cat-links, .cf-bc-meta-inline-top .entry-meta .tags-links, .cf-bc-meta-inline-top .entry-meta div.comments-link, .cf-bc-meta-inline-bottom .entry-meta .author, .cf-bc-meta-inline-bottom .entry-meta .cat-links, .cf-bc-meta-inline-bottom .entry-meta .tags-links, .cf-bc-meta-inline-bottom .entry-meta div.comments-link { display: inline-block; margin-right: 2rem; text-align: left; }
+  .cf-bc-meta-inline-top .entry-meta .author, .cf-bc-meta-inline-bottom .entry-meta .author { padding-left: 46px; position: relative; }
+  .cf-bc-meta-inline-top .entry-meta .author img, .cf-bc-meta-inline-bottom .entry-meta .author img { position: absolute; width: 32px; top: 4px; left: 0; }
+  .cf-bc-meta-inline-top .entry-meta span.comments-link, .cf-bc-meta-inline-bottom .entry-meta span.comments-link { margin-bottom: 0; }
+  .cf-bc-meta-inline-bottom .entry-meta { padding-top: 2rem; border-top: 1px solid rgba(0, 0, 0, 0.1); }
+  .cf-bc-meta-inline-top .hentry.type-post .entry-meta .cat-links, .cf-bc-meta-inline-top .hentry.type-post .entry-meta .tags-links, .cf-bc-meta-inline-top .hentry.type-post .entry-meta div.comments-link, .cf-bc-meta-inline-top .hentry.type-post .entry-meta .edit-link, .cf-bc-meta-inline-bottom .hentry.type-post .entry-meta .cat-links, .cf-bc-meta-inline-bottom .hentry.type-post .entry-meta .tags-links, .cf-bc-meta-inline-bottom .hentry.type-post .entry-meta div.comments-link, .cf-bc-meta-inline-bottom .hentry.type-post .entry-meta .edit-link { display: inline-block; margin-right: 2rem; text-align: left; }
+  .cf-bc-meta-inline-top .hentry.type-post .entry-meta span.comments-link, .cf-bc-meta-inline-bottom .hentry.type-post .entry-meta span.comments-link { margin-bottom: 0; }
+  .cf-bc-meta-inline-top .hentry.type-post .entry-content { float: none; width: 100%; max-width: 100%; text-align: left; margin-left: 0; margin-right: 0; }
+  .cf-bc-meta-inline-top .hentry.type-post .entry-meta { float: none; width: 100%; max-width: 100%; text-align: center; margin-left: 0; margin-right: 0; margin-bottom: 1rem; }
+  .cf-bc-meta-inline-bottom .hentry.type-post .entry-content { float: none; width: 100%; max-width: 100%; text-align: left; margin-left: 0; margin-right: 0; margin-bottom: 2rem; }
+  .cf-bc-meta-inline-bottom .hentry.type-post .entry-meta { float: none; width: 100%; max-width: 100%; text-align: center; margin-left: 0; margin-right: 0; }
+  .page-template-template-homepage-php .columns-2 .type-post { float: left; width: 48%; margin-left: 4%; clear: both; }
+  .page-template-template-homepage-php .columns-2 .type-post h1.entry-title { font-size: 1.500rem; }
+  .page-template-template-homepage-php .columns-2 .type-post:nth-child(odd) { clear: none; }
+  .page-template-template-homepage-php .columns-2 .type-post:nth-child(even) { margin-left: 0; }
+  .page-template-template-homepage-php .columns-2 .type-post .entry-content { text-align: left; }
+  .page-template-template-homepage-php .columns-2 .type-post .entry-meta { text-align: left; }
+  .page-template-template-homepage-php .columns-3 .type-post { float: left; width: 31%; margin-left: 3.5%; font-size: 0.875rem; }
+  .page-template-template-homepage-php .columns-3 .type-post:nth-of-type(3n+1) { margin-left: 0; clear: both; }
+  .page-template-template-homepage-php .columns-3 .type-post .entry-content { text-align: left; }
+  .page-template-template-homepage-php .columns-3 .type-post .entry-meta { text-align: left; }
+  .cf-bc-meta-inline-top.single .hentry.type-post .entry-meta, .cf-bc-meta-inline-bottom.single .hentry.type-post .entry-meta { text-align: left; }
+  .cf-bc-meta-inline-top.archive .hentry.type-post .entry-meta, .cf-bc-meta-inline-bottom.archive .hentry.type-post .entry-meta { text-align: left; }
+  .cartfront-full-width-content .content-area { float: none; width: 100%; margin: 0; }
+  .cf-bc-magazine.archive .hentry.type-post, .cf-bc-magazine.home .hentry.type-post, .cf-bc-magazine.blog .hentry.type-post { float: left; width: 48%; margin-right: 4%; clear: both; font-size: 0.875rem; }
+  .cf-bc-magazine.archive .hentry.type-post.cf-bc-odd, .cf-bc-magazine.home .hentry.type-post.cf-bc-odd, .cf-bc-magazine.blog .hentry.type-post.cf-bc-odd { margin-right: 0; clear: none; } }
+
 /** 04 Woo Slider */
 /** 05 Mega Menus */
 /** 06 Homepage Control */
