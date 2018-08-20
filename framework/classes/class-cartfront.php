@@ -42,6 +42,8 @@ class Cartfront {
         global $theme_name, $theme_version, $cartfront_url;
 
         wp_enqueue_style( $theme_name . '-public', $cartfront_url . '/framework/css/public.css' );
+
+        wp_enqueue_script( $theme_name . '-vendors', $cartfront_url . '/framework/js/vendors.js', array( 'jquery' ), $theme_version, true );
         wp_enqueue_script( $theme_name . '-public', $cartfront_url . '/framework/js/public.js', array( 'jquery' ), $theme_version, true );
 
         /**

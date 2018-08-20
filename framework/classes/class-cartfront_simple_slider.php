@@ -143,25 +143,6 @@ class Cartfront_Simple_Slider {
             )
         ) ) );
 
-        /**
-         * Slider type.
-         */
-        $wp_customize->add_setting( 'cf_ss_type', array(
-            'default'           => 'horizontal',
-            'sanitize_callback' => 'storefront_sanitize_choices'
-        ) );
-
-        $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'cf_ss_type', array(
-            'label'    => esc_html__( 'Slider Type', 'cartfront' ),
-            'section'  => 'cf_ss_general',
-            'settings' => 'cf_ss_type',
-            'type'     => 'select',
-            'priority' => 20,
-            'choices'  => array(
-                'horizontal'    => esc_html__( 'Horizontal Slider', 'cartfront' ),
-                'vertical'      => esc_html__( 'Vertical Slider', 'cartfront' )
-            )
-        ) ) );
 
         /**
          * Slider direction.
@@ -178,10 +159,8 @@ class Cartfront_Simple_Slider {
             'type'     => 'select',
             'priority' => 25,
             'choices'  => array(
-                'left'  => esc_html__( 'Left-to-Right (Horizontal)', 'cartfront' ),
-                'right' => esc_html__( 'Right-to-Left (Horizontal)', 'cartfront' ),
-                'up'    => esc_html__( 'Up-to-Down (Vertical)', 'cartfront' ),
-                'down'  => esc_html__( 'Down-to-Up (Vertical)', 'cartfront' )
+                'left'  => esc_html__( 'Left-to-Right', 'cartfront' ),
+                'right' => esc_html__( 'Right-to-Left', 'cartfront' )
             )
         ) ) );
 
