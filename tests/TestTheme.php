@@ -24,6 +24,12 @@ class TestTheme extends \PHPUnit\Framework\TestCase {
 			)
 		);
 
+		\WP_Mock::wpFunction(
+			'is_admin', array(
+				'return' => false,
+			)
+		);
+
 		$theme = new Cartfront();
 
 		\WP_Mock::expectActionAdded( 'wp_enqueue_scripts', array( $theme, 'scripts' ), PHP_INT_MAX );
@@ -76,6 +82,21 @@ class TestTheme extends \PHPUnit\Framework\TestCase {
 		\WP_Mock::expectFilterAdded( 'post_class', array( $blog_customiser, 'post_class' ) );
 
 		$blog_customiser->__construct();
+		\WP_Mock::assertHooksAdded();
+	}
+
+	public function test_homepage_control() {
+		\WP_Mock::wpFunction(
+			'is_admin', array(
+				'return' => false,
+			)
+		);
+
+		$homepage_control = new Cartfront_Homepage_Control();
+
+		\WP_Mock::expectActionAdded( 'get_header', array( $homepage_control, 'restructure_components' ) );
+
+		$homepage_control->__construct();
 		\WP_Mock::assertHooksAdded();
 	}
 
