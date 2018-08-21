@@ -21,6 +21,7 @@ $font-size 	: 16px;
  * ..04 Simple Slider
  * ..05 Mega Menus
  * ..06 Homepage Control
+ * ..07 Link Boxes
  * -------------------------------------------------
  */
 
@@ -53,3 +54,8 @@ $font-size 	: 16px;
  * 06 Homepage Control
  */
 @import 'homepage-control';
+
+/**
+ * 07 Link Boxes
+ */
+@import 'link-boxes';
