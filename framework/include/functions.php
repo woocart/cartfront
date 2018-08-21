@@ -11,6 +11,7 @@
 if ( ! function_exists( 'cartfront_frontend_slider' ) ) :
 function cartfront_frontend_slider() {
 	$slider_type = get_theme_mod( 'cf_ss_choice', 'posts' );
+	$posts_count = get_theme_mod( 'cf_ss_count', 5 );
 
 	// Posts.
 	if ( 'posts' === $slider_type ) {
@@ -29,7 +30,13 @@ function cartfront_frontend_slider() {
 		    <div class="cartfront-featured-container">
 		        <?php
 
+		        	$cf_i = 0;
+
 		            foreach ( $cf_ss_posts as $cf_ss_post ) {
+		            	if ( $cf_i >= 5 ) {
+		            		continue;
+		            	}
+
 		                $cf_ss_ft_post 	= absint( $cf_ss_post );
 		                $cf_ss_ft_data 	= get_post( $cf_ss_post );
 		                $cf_ss_ft_tid 	= get_post_thumbnail_id( $cf_ss_post );
@@ -48,6 +55,8 @@ function cartfront_frontend_slider() {
 	                    </div><!-- .cartfront-featured-wrapper -->
 		        <?php
 
+		        			// Increment
+		        			++$cf_i;
 		                }
 		            }
 
