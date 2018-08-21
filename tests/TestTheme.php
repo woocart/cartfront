@@ -100,4 +100,13 @@ class TestTheme extends \PHPUnit\Framework\TestCase {
 		\WP_Mock::assertHooksAdded();
 	}
 
+	public function test_simple_slider() {
+		$simple_slider = new Cartfront_Simple_Slider();
+
+		\WP_Mock::expectActionAdded( 'customize_register', array( $simple_slider, 'customize_register' ) );
+
+		$simple_slider->__construct();
+		\WP_Mock::assertHooksAdded();
+	}
+
 }
