@@ -6,7 +6,7 @@
  */
 
 /**
- * 
+ * Frontend slider with three different slider options.
  */
 if ( ! function_exists( 'cartfront_frontend_slider' ) ) :
 function cartfront_frontend_slider() {
@@ -18,6 +18,18 @@ function cartfront_frontend_slider() {
 		$cf_ss_posts = get_theme_mod( 'cf_ss_posts' );
 
 		if ( ! empty( $cf_ss_posts ) && is_array( $cf_ss_posts ) ) {
+			// Posts order.
+			$posts_order = esc_html( get_theme_mod( 'cf_ss_posts_order', 'asc' ) );
+
+
+			// Sorting posts.
+			if ( 'asc' === $posts_order ) {
+				sort( $cf_ss_posts );
+			} elseif ( 'desc' === $posts_order ) {
+				rsort( $cf_ss_posts );
+			} else {
+				shuffle( $cf_ss_posts );
+			}
 
 	?>
 		<section class="storefront-product-section cartfront-featured-section">
@@ -34,7 +46,7 @@ function cartfront_frontend_slider() {
 
 		            foreach ( $cf_ss_posts as $cf_ss_post ) {
 		            	if ( $cf_i >= $posts_count ) {
-		            		continue;
+		            		break;
 		            	}
 
 		                $cf_ss_ft_post 	= absint( $cf_ss_post );
@@ -72,7 +84,7 @@ function cartfront_frontend_slider() {
 			$products_type 	= esc_html( get_theme_mod( 'cf_ss_products_type' ) );
 
 			if ( 'top_rated' === $products_type ) {
-				add_filter( 'posts_clauses', array( WC()->query, 'order_by_rating_post_clauses' ) );
+				add_filter( 'posts_clauses', array( 'WC_Shortcodes', 'order_by_rating_post_clauses' ) );
 
 				$args = array(
 					'post_type' 		=> 'product',
@@ -189,7 +201,7 @@ function cartfront_frontend_slider() {
         if ( ! empty( $cf_ss_custom_posts ) && is_array( $cf_ss_custom_posts ) ) {
 
         ?>
-    		<section class="storefront-product-section cartfront-featured-section">
+    		<section class="storefront-product-section cartfront-featured-section cartfront-custom-section">
 	        <?php
 
 	        	// Section title.
@@ -203,7 +215,7 @@ function cartfront_frontend_slider() {
 
 	            	foreach ( $cf_ss_custom_posts as $cf_ss_custom_post ) {
 	            		if ( $cf_i >= $posts_count ) {
-		            		continue;
+		            		break;
 		            	}
 
                         if ( ! empty( $cf_ss_custom_post['link'] ) && ! empty( $cf_ss_custom_post['title'] && ! empty( $cf_ss_custom_post['image_url'] ) ) ) {

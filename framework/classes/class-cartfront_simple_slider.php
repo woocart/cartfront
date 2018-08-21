@@ -143,48 +143,6 @@ class Cartfront_Simple_Slider {
             )
         ) ) );
 
-
-        /**
-         * Slider direction.
-         */
-        $wp_customize->add_setting( 'cf_ss_direction', array(
-            'default'           => 'left',
-            'sanitize_callback' => 'storefront_sanitize_choices'
-        ) );
-
-        $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'cf_ss_direction', array(
-            'label'    => esc_html__( 'Slider Direction', 'cartfront' ),
-            'section'  => 'cf_ss_general',
-            'settings' => 'cf_ss_direction',
-            'type'     => 'select',
-            'priority' => 25,
-            'choices'  => array(
-                'left'  => esc_html__( 'Left-to-Right', 'cartfront' ),
-                'right' => esc_html__( 'Right-to-Left', 'cartfront' )
-            )
-        ) ) );
-
-        /**
-         * Slider animation.
-         */
-        $wp_customize->add_setting( 'cf_ss_animation', array(
-            'default'           => 'slide',
-            'sanitize_callback' => 'storefront_sanitize_choices'
-        ) );
-
-        $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'cf_ss_animation', array(
-            'label'         => esc_html__( 'Slider Animation', 'cartfront' ),
-            'description'   => esc_html__( 'Select the animation when slide transition occurs.', 'cartfront' ),
-            'section'       => 'cf_ss_general',
-            'settings'      => 'cf_ss_animation',
-            'type'          => 'select',
-            'priority'      => 30,
-            'choices'       => array(
-                'slide' => esc_html__( 'Slide In', 'cartfront' ),
-                'fade'  => esc_html__( 'Fade In', 'cartfront' )
-            )
-        ) ) );
-
         /**
          * Posts.
          */
@@ -217,9 +175,9 @@ class Cartfront_Simple_Slider {
             'type'          => 'select',
             'priority'      => 15,
             'choices'       => array(
-                'DESC' => esc_html__( 'Descending', 'cartfront' ),
-                'ASC'  => esc_html__( 'Ascending', 'cartfront' ),
-                'rand' => esc_html__( 'Random', 'cartfront' )
+                'asc'   => esc_html__( 'Descending', 'cartfront' ),
+                'desc'  => esc_html__( 'Ascending', 'cartfront' ),
+                'rand'  => esc_html__( 'Random', 'cartfront' )
             )
         ) ) );
 

@@ -43,10 +43,11 @@
 .cartfront-footer-bar .widget::after{display:table;content:'';clear:both}
 .cartfront-footer-bar .widget:last-child{margin-bottom:0}
 .cfhm-close{display:none}
-.cartfront-featured-container{text-align:center;margin:0 -0.1739130435%}
-.cartfront-featured-wrapper{float:left;text-align:center;margin:0 .1739130435% 4.235801032em .1739130435%}
+.cartfront-featured-container{text-align:center;margin:0 -1.1739130435%}
+.cartfront-featured-wrapper{float:left;text-align:center;margin:0 1.1739130435% 4.235801032em 1.1739130435%}
 .cartfront-featured-wrapper img{display:block;margin:0 auto 1.618em}
 .cartfront-featured-wrapper h2{font-size:1em;font-weight:400;margin-bottom:.5407911001em}
+.cartfront-custom-section .cartfront-featured-wrapper img{width:100%;max-width:324px}
 @media screen and (min-width:768px){.cf-bc-meta-right .hentry.type-post .entry-content{float:left;width:75%;text-align:left}
 .cf-bc-meta-right .hentry.type-post .entry-meta{float:right;width:20%;margin-left:5%;margin-right:0}
 .cf-bc-meta-hidden .hentry.type-post .entry-content{float:none;width:100%;max-width:100%;text-align:left;margin:0 auto}

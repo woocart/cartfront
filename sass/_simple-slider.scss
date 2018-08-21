@@ -1,12 +1,12 @@
 /* Posts */
 .cartfront-featured-container {
 	text-align: center;
-	margin: 0 -0.1739130435%;
+	margin: 0 -1.1739130435%;
 }
 .cartfront-featured-wrapper {
 	float: left;
     text-align: center;
-    margin: 0 0.1739130435% 4.235801032em 0.1739130435%;
+    margin: 0 1.1739130435% 4.235801032em 1.1739130435%;
 }
 .cartfront-featured-wrapper img {
 	display: block;
@@ -16,4 +16,8 @@
 	font-size: 1em;
 	font-weight: 400;
 	margin-bottom: .5407911001em;
+}
+.cartfront-custom-section .cartfront-featured-wrapper img {
+	width: 100%;
+	max-width: 324px;
 }
