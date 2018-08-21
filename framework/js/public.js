@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * Hamburger menu js for the front-end.
  */
