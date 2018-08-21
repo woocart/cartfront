@@ -153,7 +153,6 @@ class WP_Customize_Repeater_Control extends WP_Customize_Control {
 						// Empty values.
 						$image_url 	= '';
 						$title 		= '';
-						$subtitle 	= '';
 						$link 		= '';
 
 						if ( ! empty( $single->id ) ) {
@@ -166,10 +165,6 @@ class WP_Customize_Repeater_Control extends WP_Customize_Control {
 
 						if ( ! empty( $single->title ) ) {
 							$title = $single->title;
-						}
-
-						if ( ! empty( $single->subtitle ) ) {
-							$subtitle = $single->subtitle;
 						}
 
 						if ( ! empty( $single->link ) ) {
@@ -190,17 +185,6 @@ class WP_Customize_Repeater_Control extends WP_Customize_Control {
 								'class' => 'cf-cr--title',
 								'type'  => apply_filters( 'customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_title_control' )
 							), $title
-						);
-
-						/**
-						 * Subtitle control.
-						 */
-						$this->input_control(
-							array(
-								'label' => apply_filters( 'repeater_input_labels_filter', esc_html__( 'Subtitle', 'cartfront' ), $this->id, 'customizer_repeater_subtitle_control' ),
-								'class' => 'cf-cr-subtitle',
-								'type'  => apply_filters( 'customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_subtitle_control' )
-							), $subtitle
 						);
 
 						/**
@@ -249,15 +233,6 @@ class WP_Customize_Repeater_Control extends WP_Customize_Control {
 							'label' => apply_filters( 'customizer_repeater_input_labels_filter', esc_html__( 'Title', 'cartfront' ), $this->id, 'customizer_repeater_title_control' ),
 							'class' => 'cf-cr--title',
 							'type'  => apply_filters( 'customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_title_control' )
-						) );
-
-						/**
-						 * Subtitle control.
-						 */
-						$this->input_control( array(
-							'label' => apply_filters( 'customizer_repeater_input_labels_filter', esc_html__( 'Subtitle', 'cartfront' ), $this->id, 'customizer_repeater_subtitle_control' ),
-							'class' => 'cf-cr-subtitle',
-							'type'  => apply_filters( 'customizer_repeater_input_types_filter', '', $this->id, 'customizer_repeater_subtitle_control' )
 						) );
 
 						/**

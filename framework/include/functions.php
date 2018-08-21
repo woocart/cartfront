@@ -10,15 +10,15 @@
  */
 if ( ! function_exists( 'cartfront_frontend_slider' ) ) :
 function cartfront_frontend_slider() {
-	$slider_type = get_theme_mod( 'cf_ss_choice', 'posts' );
-	$posts_count = get_theme_mod( 'cf_ss_count', 5 );
+	$slider_type = esc_html( get_theme_mod( 'cf_ss_choice', 'posts' ) );
+	$posts_count = absint( get_theme_mod( 'cf_ss_count', 5 ) );
 
 	// Posts.
 	if ( 'posts' === $slider_type ) {
 		$cf_ss_posts = get_theme_mod( 'cf_ss_posts' );
 
 		if ( ! empty( $cf_ss_posts ) && is_array( $cf_ss_posts ) ) {
-			$cf_ss_items = count( $cf_ss_posts );
+
 	?>
 		<section class="storefront-product-section cartfront-featured-section">
 	        <?php
@@ -33,7 +33,7 @@ function cartfront_frontend_slider() {
 		        	$cf_i = 0;
 
 		            foreach ( $cf_ss_posts as $cf_ss_post ) {
-		            	if ( $cf_i >= 5 ) {
+		            	if ( $cf_i >= $posts_count ) {
 		            		continue;
 		            	}
 
@@ -69,15 +69,14 @@ function cartfront_frontend_slider() {
 	} elseif ( 'products' === $slider_type ) {
 		// Verify that WooCommerce is active.
 		if ( class_exists( 'WooCommerce' ) ) {
-			$products_type 	= get_theme_mod( 'cf_ss_products_type' );
-			$products_count = get_theme_mod( 'cf_ss_count', 5 );
+			$products_type 	= esc_html( get_theme_mod( 'cf_ss_products_type' ) );
 
 			if ( 'top_rated' === $products_type ) {
 				add_filter( 'posts_clauses', array( WC()->query, 'order_by_rating_post_clauses' ) );
 
 				$args = array(
 					'post_type' 		=> 'product',
-					'posts_per_page' 	=> $products_count,
+					'posts_per_page' 	=> $posts_count,
 					'no_found_rows' 	=> 1,
 					'post_status' 		=> 'publish'
 				);
@@ -86,14 +85,14 @@ function cartfront_frontend_slider() {
 			} elseif ( 'featured' === $products_type ) {
 				$args = array(
 					'post_type' 		=> 'product',
-					'posts_per_page' 	=> $products_count,
+					'posts_per_page' 	=> $posts_count,
 					'meta_key' 			=> '_featured',
 					'meta_value' 		=> 'yes'
 				);
 			} elseif ( 'sale' === $products_type ) {
 				$args = array(
 					'post_type' 		=> 'product',
-					'posts_per_page' 	=> $products_count,
+					'posts_per_page' 	=> $posts_count,
 					'meta_query' 		=> array(
 						'relation' => 'OR',
 						array(
@@ -113,14 +112,14 @@ function cartfront_frontend_slider() {
 			} elseif ( 'total_sales' === $products_type ) {
 				$args = array(
 					'post_type' 		=> 'product',
-					'posts_per_page' 	=> $products_count,
+					'posts_per_page' 	=> $posts_count,
 					'meta_key' 			=> 'total_sales',
 					'orderby' 			=> 'meta_value_num'
 				);
 			} elseif ( 'recent' === $products_type ) {
 				$args = array(
 					'post_type' 		=> 'product',
-					'posts_per_page' 	=> $products_count,
+					'posts_per_page' 	=> $posts_count,
 					'stock' 			=> 1,
 					'orderby' 			=>'date',
 					'order' 			=> 'DESC'
@@ -128,7 +127,7 @@ function cartfront_frontend_slider() {
 			} else {
 				$args = array(
 					'post_type' 		=> 'product',
-					'posts_per_page' 	=> $products_count,
+					'posts_per_page' 	=> $posts_count,
 					'stock' 			=> 1,
 					'orderby' 			=>'date',
 					'order' 			=> 'DESC'
@@ -184,7 +183,52 @@ function cartfront_frontend_slider() {
 			echo '<p>' . esc_html__( 'WooCommerce needs to be enabled in order to showcase products in the slider.', 'cartfront' ) . '</p>';
 		}
 	} else {
+		$cf_ss_custom_posts = get_theme_mod( 'cf_ss_custom_items' );
+		$cf_ss_custom_posts = json_decode( $cf_ss_custom_posts, true );
 
+        if ( ! empty( $cf_ss_custom_posts ) && is_array( $cf_ss_custom_posts ) ) {
+
+        ?>
+    		<section class="storefront-product-section cartfront-featured-section">
+	        <?php
+
+	        	// Section title.
+                echo '<h2 class="section-title">' . esc_html( get_theme_mod( 'cf_ss_section_title', __( 'Featured Posts', 'cartfront' ) ) ) . '</h2>';
+
+            ?>
+		    <div class="cartfront-featured-container">
+		    	<?php
+
+		    		$cf_i = 0;
+
+	            	foreach ( $cf_ss_custom_posts as $cf_ss_custom_post ) {
+	            		if ( $cf_i >= $posts_count ) {
+		            		continue;
+		            	}
+
+                        if ( ! empty( $cf_ss_custom_post['link'] ) && ! empty( $cf_ss_custom_post['title'] && ! empty( $cf_ss_custom_post['image_url'] ) ) ) {
+
+                ?>
+		        			<div class="cartfront-featured-wrapper">
+	                        	<a href="<?php echo esc_url( $cf_ss_custom_post['link'] ); ?>">
+			            			<img src="<?php echo esc_url( $cf_ss_custom_post['image_url'] ); ?>" alt="<?php echo esc_attr( $cf_ss_custom_post['title'] ); ?>">
+			            			<h2><?php echo esc_html( $cf_ss_custom_post['title'] ); ?></h2>
+		                        </a>
+				    		</div><!-- .cartfront-featured-wrapper -->
+	            <?php
+
+                        }
+
+	        			// Increment
+	        			++$cf_i;
+		            }
+
+	        	?>
+	    	</div><!-- .cartfront-featured-container -->
+		</section><!-- .cartfront-featured-section -->
+	<?php
+
+		}
 	}
 }
 add_action( 'homepage', 'cartfront_frontend_slider', 20 );

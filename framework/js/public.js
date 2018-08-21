@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
  * Hamburger menu js for the front-end.
  */
@@ -22,6 +21,9 @@
 			}
 		} );
 	} );
+} )( jQuery );
+(function( $ ) {
+	'use strict';
 
 	$( document ).ready( function() {
 		/* Posts */
