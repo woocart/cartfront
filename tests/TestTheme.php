@@ -109,4 +109,14 @@ class TestTheme extends \PHPUnit\Framework\TestCase {
 		\WP_Mock::assertHooksAdded();
 	}
 
+	public function test_link_boxes() {
+		$link_boxes = new Cartfront_Link_Boxes();
+
+		\WP_Mock::expectActionAdded( 'customize_register', array( $link_boxes, 'customize_register' ) );
+		\WP_Mock::expectActionAdded( 'homepage', array( $link_boxes, 'cartfront_link_boxes' ), 25 );
+
+		$link_boxes->__construct();
+		\WP_Mock::assertHooksAdded();
+	}
+
 }

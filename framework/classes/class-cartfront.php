@@ -33,6 +33,7 @@ class Cartfront {
         $blog_customiser    = new Cartfront_Blog_Customiser();
         $homepage_control   = new Cartfront_Homepage_Control();
         $simple_slider      = new Cartfront_Simple_Slider();
+        $link_boxes         = new Cartfront_Link_Boxes();
     }
 
     /**
