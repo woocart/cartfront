@@ -5,3 +5,10 @@
 @function lh($size, $base: 16) {
 	@return $size / $base;
 }
+
+@mixin background-cover($attachment: fixed) {
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: $attachment;
+	background-size: cover;
+}
