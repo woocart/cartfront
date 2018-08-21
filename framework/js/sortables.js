@@ -8,7 +8,6 @@
 
 		$( '.cf-hc-components' ).sortable();
 		$( '.cf-hc-components' ).disableSelection();
-
 		$( '.cf-hc-components' ).bind( 'sortstop', function( e, ui ) {
 			var components 	= new Array();
 			var disabled 	= '[disabled]';
@@ -31,7 +30,6 @@
 			var disabled 	= '[disabled]';
 
 			$( this ).parent( 'li' ).toggleClass( 'disabled' );
-
 			$( this ).parents( '.cf-hc-components' ).find( 'li' ).each( function ( i, e ) {
 				if ( $( this ).hasClass( 'disabled' ) ) {
 					components.push( disabled + $( this ).attr( 'id' ) );

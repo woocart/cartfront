@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /**
  * Hamburger menu js for the front-end.
  */
@@ -22,6 +21,9 @@
 			}
 		} );
 	} );
+} )( jQuery );
+(function( $ ) {
+	'use strict';
 
 	$( document ).ready( function() {
 		/* Posts */
@@ -29,13 +31,14 @@
 			infinite: true,
 			dots: false,
 			arrows: false,
-			speed: 2500,
+			speed: 1500,
 			slidesToShow: 3,
+			swipeToSlide: true,
 			autoplay: true,
 			autoplaySpeed: 4000,
 			adaptiveHeight: true,
 			responsive: [{
-				breakpoint: 640,
+				breakpoint: 768,
 				settings: {
 					slidesToShow: 2
 				}
