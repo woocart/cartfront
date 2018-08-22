@@ -264,8 +264,9 @@ class Cartfront_Simple_Slider {
     }
 
     public static function cartfront_slider() {
-        $slider_type = esc_html( get_theme_mod( 'cf_ss_choice', 'posts' ) );
-        $posts_count = absint( get_theme_mod( 'cf_ss_count', 5 ) );
+        $slider_type    = esc_html( get_theme_mod( 'cf_ss_choice', 'posts' ) );
+        $posts_count    = absint( get_theme_mod( 'cf_ss_count', 5 ) );
+        $posts_row      = absint( get_theme_mod( 'cf_ss_items_row' ), 3 );
 
         // Posts.
         if ( 'posts' === $slider_type ) {
@@ -286,7 +287,7 @@ class Cartfront_Simple_Slider {
                 }
 
         ?>
-            <section class="storefront-product-section cartfront-featured-section">
+            <section class="storefront-product-section cartfront-featured-section cartfront-columns-<?php echo $posts_row; ?>">
                 <?php
 
                     // Section title.
@@ -308,7 +309,11 @@ class Cartfront_Simple_Slider {
                             $cf_ss_ft_post  = absint( $cf_ss_post );
                             $cf_ss_ft_data  = get_post( $cf_ss_post );
                             $cf_ss_ft_tid   = get_post_thumbnail_id( $cf_ss_post );
-                            $cf_ss_ft_img   = wp_get_attachment_image_src( $cf_ss_ft_tid, 'medium' );
+                            if ( 1 === $posts_row ) {
+                                $cf_ss_ft_img = wp_get_attachment_image_src( $cf_ss_ft_tid, 'full' );
+                            } else {
+                                $cf_ss_ft_img = wp_get_attachment_image_src( $cf_ss_ft_tid, 'medium' );
+                            }
 
                             // URL Exists?
                             if ( isset( $cf_ss_ft_img[0] ) ) {
@@ -405,7 +410,7 @@ class Cartfront_Simple_Slider {
                 $cf_ss_products = new WP_Query( $args );
 
             ?>
-                <section class="storefront-product-section cartfront-featured-section">
+                <section class="storefront-product-section cartfront-featured-section cartfront-columns-<?php echo $posts_row; ?>">
                     <?php
 
                         // Section title.
@@ -424,21 +429,54 @@ class Cartfront_Simple_Slider {
 
                     ?>
                         <div class="cartfront-featured-wrapper">
-                            <a href="<?php echo esc_url( get_permalink( $cf_ss_products->post->ID ) ); ?>">
-                                <?php
+                            <?php
 
-                                    if ( has_post_thumbnail( $cf_ss_products->post->ID ) ) {
-                                        echo get_the_post_thumbnail( $cf_ss_products->post->ID, 'shop_catalog' );
-                                    } else {
-                                        echo wc_placeholder_img( 'woocommerce_thumbnail' );
-                                    }
+                                if ( 1 === $posts_row ) {
+                            
+                            ?>
+                                    <div class="cartfront-fw-thumbnail">
+                                        <?php
 
-                                ?>
-                                <h2><?php echo get_the_title(); ?></h2>
-                                <p class="price"><?php echo $product->get_price_html(); ?></p>
-                            </a>
+                                            if ( has_post_thumbnail( $cf_ss_products->post->ID ) ) {
+                                                echo get_the_post_thumbnail( $cf_ss_products->post->ID, 'full' );
+                                            } else {
+                                                echo wc_placeholder_img( 'full' );
+                                            }
 
-                            <a href="<?php echo esc_url( get_permalink( $cf_ss_products->post->ID ) ); ?>" class="button" title="<?php echo esc_attr( $cf_ss_products->post->post_title ? $cf_ss_products->post->post_title : $cf_ss_products->post->ID ); ?>"><?php esc_html_e( 'View Product', 'cartfront' ); ?></a>
+                                        ?>
+                                    </div><!-- .cartfront-fw-thumbnail -->
+                                    <div class="cartfront-fw-content">
+                                        <h2><?php echo get_the_title(); ?></h2>
+                                        <p class="excerpt"><?php echo get_the_excerpt(); ?></p>
+                                        <p class="price"><?php echo $product->get_price_html(); ?></p>
+
+                                        <a href="<?php echo esc_url( get_permalink( $cf_ss_products->post->ID ) ); ?>" class="button" title="<?php echo esc_attr( $cf_ss_products->post->post_title ? $cf_ss_products->post->post_title : $cf_ss_products->post->ID ); ?>"><?php esc_html_e( 'View Product', 'cartfront' ); ?></a>
+                                    </div><!-- .cartfront-fw-content -->
+                            <?php
+
+                                } else {
+
+                            ?>
+                                    <a href="<?php echo esc_url( get_permalink( $cf_ss_products->post->ID ) ); ?>">
+                                        <?php
+
+                                            if ( has_post_thumbnail( $cf_ss_products->post->ID ) ) {
+                                                echo get_the_post_thumbnail( $cf_ss_products->post->ID, 'woocommerce_thumbnail' );
+                                            } else {
+                                                echo wc_placeholder_img( 'woocommerce_thumbnail' );
+                                            }
+
+                                        ?>
+                                        <h2><?php echo get_the_title(); ?></h2>
+                                        <p class="price"><?php echo $product->get_price_html(); ?></p>
+                                    </a>
+
+                                    <a href="<?php echo esc_url( get_permalink( $cf_ss_products->post->ID ) ); ?>" class="button" title="<?php echo esc_attr( $cf_ss_products->post->post_title ? $cf_ss_products->post->post_title : $cf_ss_products->post->ID ); ?>"><?php esc_html_e( 'View Product', 'cartfront' ); ?></a>
+                            <?php
+
+                                }
+
+                            ?>
                         </div><!-- .cartfront-featured-wrapper -->
                     <?php
 
@@ -459,7 +497,7 @@ class Cartfront_Simple_Slider {
             if ( ! empty( $cf_ss_custom_posts ) && is_array( $cf_ss_custom_posts ) ) {
 
             ?>
-                <section class="storefront-product-section cartfront-featured-section cartfront-custom-section">
+                <section class="storefront-product-section cartfront-featured-section cartfront-custom-section cartfront-columns-<?php echo $posts_row; ?>">
                 <?php
 
                     // Section title.
