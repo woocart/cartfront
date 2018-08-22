@@ -51,7 +51,8 @@ class Cartfront {
          * Localization
          */
         $localization = array(
-            'close' => esc_html__( 'Close', 'cartfront' )
+            'close'         => esc_html__( 'Close', 'cartfront' ),
+            'ss_items_row'  => esc_html( get_theme_mod( 'cf_ss_items_row' ) )
         );
 
         wp_localize_script( $theme_name . '-public', 'cartfront_localize', $localization );
