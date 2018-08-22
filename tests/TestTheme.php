@@ -104,6 +104,7 @@ class TestTheme extends \PHPUnit\Framework\TestCase {
 		$simple_slider = new Cartfront_Simple_Slider();
 
 		\WP_Mock::expectActionAdded( 'customize_register', array( $simple_slider, 'customize_register' ) );
+		\WP_Mock::expectActionAdded( 'homepage', array( $simple_slider, 'cartfront_slider' ), 20 );
 
 		$simple_slider->__construct();
 		\WP_Mock::assertHooksAdded();

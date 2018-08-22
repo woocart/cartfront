@@ -32,7 +32,7 @@
 			dots: false,
 			arrows: false,
 			speed: 1500,
-			slidesToShow: 3,
+			slidesToShow: cartfront_localize.ss_items_row,
 			swipeToSlide: true,
 			autoplay: true,
 			autoplaySpeed: 4000,

@@ -58,7 +58,6 @@ spl_autoload_register( function( $class_name ) {
 /**
  * Include required files.
  */
-require_once $cartfront_path . '/framework/include/functions.php';
 require_once $cartfront_path . '/framework/include/sanitize.php';
 
 /**
