@@ -44,10 +44,12 @@
 .cartfront-footer-bar .widget:last-child{margin-bottom:0}
 .cfhm-close{display:none}
 .cartfront-featured-container{text-align:center;margin:0 -1.1739130435%}
+.cartfront-columns-1 .cartfront-featured-container{margin:0}
 .cartfront-featured-wrapper{float:left;text-align:center;margin:0 1.1739130435% 4.235801032em 1.1739130435%}
+.cartfront-columns-1 .cartfront-featured-wrapper{margin:0 0 4.235801032em 0}
 .cartfront-featured-wrapper img{display:block;margin:0 auto 1.618em}
 .cartfront-featured-wrapper h2{font-size:1em;font-weight:400;margin-bottom:.5407911001em}
-.cartfront-custom-section .cartfront-featured-wrapper img{width:100%;max-width:324px}
+.cartfront-columns-1 .cartfront-fw-content .excerpt,.cartfront-columns-1 .cartfront-fw-content .button{display:none}
 .cartfront-boxes-container{text-align:center}
 .cartfront-boxes-wrapper{float:left;text-align:center;margin-right:4.347826087%;margin-bottom:4.235801032em}
 .cartfront-columns-2 .cartfront-boxes-wrapper{width:47.8260869565%}
@@ -85,6 +87,13 @@
 .cartfront-full-width-content .content-area{float:none;width:100%;margin:0}
 .cf-bc-magazine.archive .hentry.type-post,.cf-bc-magazine.home .hentry.type-post,.cf-bc-magazine.blog .hentry.type-post{float:left;width:48%;margin-right:4%;clear:both;font-size:.875rem}
 .cf-bc-magazine.archive .hentry.type-post.cf-bc-odd,.cf-bc-magazine.home .hentry.type-post.cf-bc-odd,.cf-bc-magazine.blog .hentry.type-post.cf-bc-odd{margin-right:0;clear:none}
+}@media(min-width:769px){.cartfront-columns-1 .cartfront-featured-wrapper{margin:0 0 4.235801032em 0}
+.cartfront-columns-1 .cartfront-fw-thumbnail,.cartfront-columns-1 .cartfront-fw-content{float:left}
+.cartfront-columns-1 .cartfront-fw-thumbnail{width:60%;margin-right:5%}
+.cartfront-columns-1 .cartfront-fw-content{width:30%;margin-right:5%;text-align:left}
+.cartfront-columns-1 .cartfront-fw-content h2{font-size:1.6em}
+.cartfront-columns-1 .cartfront-fw-content .excerpt{display:block}
+.cartfront-columns-1 .cartfront-fw-content .button{display:inline-block}
 }@media screen and (max-width:782px){.cartfront-hamburger-menu-active.admin-bar .main-navigation .handheld-navigation,.cartfront-hamburger-menu-active.admin-bar .main-navigation div.menu{padding-top:46px}
 }@media(max-width:768px){.cartfront-boxes-wrapper{float:none;width:100% !important;margin-right:0}
 .cartfront-boxes-wrapper img{width:100%;max-width:324px}
