@@ -26,6 +26,7 @@
 	'use strict';
 
 	$( document ).ready( function() {
+		/* Posts */
 		if( cartfront_localize.ss_items_row !== '1' ) {
 			var cf_ss_responsive = [{
 				breakpoint: 768,
@@ -43,7 +44,6 @@
 			var cf_ss_responsive = [];
 		}
 
-		/* Posts */
 		$( '.cartfront-featured-container' ).slick( {
 			infinite: true,
 			dots: false,

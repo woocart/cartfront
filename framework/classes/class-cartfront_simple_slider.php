@@ -317,20 +317,42 @@ class Cartfront_Simple_Slider {
 
                             // URL Exists?
                             if ( isset( $cf_ss_ft_img[0] ) ) {
+                                // print_r($cf_ss_ft_data);
 
                     ?>
-                            <div class="cartfront-featured-wrapper">
-                                <a href="<?php echo esc_url( get_permalink( $cf_ss_post ) ); ?>">
-                                    <img src="<?php echo $cf_ss_ft_img[0]; ?>" alt="<?php echo $cf_ss_ft_data->post_title; ?>">
+                                <div class="cartfront-featured-wrapper">
+                                <?php if ( 1 === $posts_row ) { ?>
+                                        <div class="cartfront-fw-thumbnail">
+                                            <a href="<?php echo esc_url( get_permalink( $cf_ss_post ) ); ?>">
+                                                <img src="<?php echo $cf_ss_ft_img[0]; ?>" alt="<?php echo $cf_ss_ft_data->post_title; ?>">
+                                            </a>
+                                        </div><!-- .cartfront-fw-thumbnail -->
+                                        <div class="cartfront-fw-content">
+                                            <a href="<?php echo esc_url( get_permalink( $cf_ss_post ) ); ?>">
+                                                <h2><?php echo esc_html( $cf_ss_ft_data->post_title ); ?></h2>
+                                            </a>
+                                            <p class="excerpt"><?php echo strip_tags( strip_shortcodes( substr( $cf_ss_ft_data->post_content, 0, 400 ) ) ) . '...'; ?>
+                                            </p>
+                                            <a href="<?php echo esc_url( get_permalink( $cf_ss_post ) ); ?>" class="button" title="<?php echo esc_attr( $cf_ss_ft_data->post_title ); ?>"><?php esc_html_e( 'View Post', 'cartfront' ); ?></a>
+                                        </div><!-- .cartfront-fw-content -->
+                                <?php } else { ?>
+                                    <a href="<?php echo esc_url( get_permalink( $cf_ss_post ) ); ?>">
+                                        <img src="<?php echo $cf_ss_ft_img[0]; ?>" alt="<?php echo $cf_ss_ft_data->post_title; ?>">
 
-                                    <h2><?php echo $cf_ss_ft_data->post_title; ?></h2>
-                                 </a>
-                            </div><!-- .cartfront-featured-wrapper -->
+                                        <h2><?php echo $cf_ss_ft_data->post_title; ?></h2>
+                                    </a>
+                                <?php
+
+                                    }
+
+                                ?>
+                                </div><!-- .cartfront-featured-wrapper -->
                     <?php
 
-                                // Increment
-                                ++$cf_i;
                             }
+
+                            // Increment
+                            ++$cf_i;
                         }
 
                     ?>

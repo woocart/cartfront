@@ -23,7 +23,8 @@
 	font-weight: 400;
 	margin-bottom: .5407911001em;
 }
-.cartfront-columns-1 .cartfront-fw-content .excerpt {
+.cartfront-columns-1 .cartfront-fw-content .excerpt,
+.cartfront-columns-1 .cartfront-fw-content .button {
 	display: none;
 }
 @media (min-width: 769px) {
@@ -48,5 +49,8 @@
 	}
 	.cartfront-columns-1 .cartfront-fw-content .excerpt {
 		display: block;
+	}
+	.cartfront-columns-1 .cartfront-fw-content .button {
+		display: inline-block;
 	}
 }
