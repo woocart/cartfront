@@ -9,6 +9,13 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+/**
+ * Homepage control customizer.
+ */
+global $cartfront_path;
+
+require_once $cartfront_path . '/framework/classes/class-cartfront_homepage_control_customizer.php';
+
 if ( ! class_exists( 'Cartfront_Homepage_Control' ) ) :
 class Cartfront_Homepage_Control {
 
@@ -27,8 +34,6 @@ class Cartfront_Homepage_Control {
      * @since   1.0.0
      */
     public function __construct() {
-        global $cartfront_path;
-
         $this->hook = (string) apply_filters( 'cf_hc_hook', 'homepage' );
 
         /**
@@ -41,8 +46,6 @@ class Cartfront_Homepage_Control {
         /**
          * Initialize customizer.
          */
-        require_once $cartfront_path . '/framework/classes/class-cartfront_homepage_control_customizer.php';
-
         $homepage_control_customizer = new Cartfront_Homepage_Control_Customizer();
     }
 
