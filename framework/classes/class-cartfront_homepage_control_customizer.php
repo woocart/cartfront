@@ -43,7 +43,7 @@ class Cartfront_Homepage_Control_Customizer {
 		/**
 		 * Custom control for the customizer.
 		 */
-		require_once( $cartfront_path . '/framework/classes/class-cartfront_homepage_control_customizer_control.php' );
+		require_once $cartfront_path . '/framework/classes/class-cartfront_homepage_control_customizer_control.php';
 
 		$wp_customize->add_control( new Cartfront_Homepage_Control_Customizer_Control( $wp_customize, 'cf_hc_data', array(
 			'description'       => esc_html__( 'Re-order the homepage components.', 'cartfront' ),

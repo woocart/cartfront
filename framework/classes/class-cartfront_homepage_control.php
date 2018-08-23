@@ -9,6 +9,13 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+/**
+ * Homepage control customizer.
+ */
+global $cartfront_path;
+
+require_once $cartfront_path . '/framework/classes/class-cartfront_homepage_control_customizer.php';
+
 if ( ! class_exists( 'Cartfront_Homepage_Control' ) ) :
 class Cartfront_Homepage_Control {
 
