@@ -12,3 +12,4 @@ require_once __DIR__ . '/../framework/classes/class-cartfront_homepage_control.p
 require_once __DIR__ . '/../framework/classes/class-cartfront_homepage_control_customizer.php';
 require_once __DIR__ . '/../framework/classes/class-cartfront_simple_slider.php';
 require_once __DIR__ . '/../framework/classes/class-cartfront_link_boxes.php';
+require_once __DIR__ . '/../framework/classes/class-cartfront_layouts_presets.php';

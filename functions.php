@@ -55,6 +55,7 @@ require_once $cartfront_path . '/framework/classes/class-cartfront_blog_customis
 require_once $cartfront_path . '/framework/classes/class-cartfront_homepage_control.php';
 require_once $cartfront_path . '/framework/classes/class-cartfront_simple_slider.php';
 require_once $cartfront_path . '/framework/classes/class-cartfront_link_boxes.php';
+require_once $cartfront_path . '/framework/classes/class-cartfront_layouts_presets.php';
 
 /**
  * Other required files.
