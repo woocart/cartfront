@@ -58,6 +58,11 @@
 .cartfront-columns-2 .cartfront-boxes-wrapper:nth-child(2n),.cartfront-columns-3 .cartfront-boxes-wrapper:nth-child(3n),.cartfront-columns-4 .cartfront-boxes-wrapper:nth-child(4n){margin-right:0}
 .cartfront-boxes-wrapper img{display:block;margin:0 auto 1.618em}
 .cartfront-boxes-wrapper h2{font-size:1em;font-weight:400;margin-bottom:.5407911001em}
+.woocommerce-active .site-header .site-branding{float:left;width:21.7391304348%;margin-right:4.347826087%;margin-bottom:0}
+.woocommerce-active .site-header .site-search{width:47.8260869565%;float:left;margin-top:4px;margin-right:4.347826087%;margin-bottom:0}
+.woocommerce-active .site-header .site-search input[type=search]{background:#fff;border:1px solid #333;border-radius:50px}
+.site-header-cart .cart-contents{padding:0;margin-top:14.5px}
+.storefront-primary-navigation{margin-top:15px}
 @media screen and (min-width:768px){.cf-bc-meta-right .hentry.type-post .entry-content{float:left;width:75%;text-align:left}
 .cf-bc-meta-right .hentry.type-post .entry-meta{float:right;width:20%;margin-left:5%;margin-right:0}
 .cf-bc-meta-hidden .hentry.type-post .entry-content{float:none;width:100%;max-width:100%;text-align:left;margin:0 auto}
