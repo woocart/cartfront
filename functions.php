@@ -66,7 +66,7 @@ require_once $cartfront_path . '/framework/admin/customizer/re-arrange.php';
 /**
  * Setup.
  */
-require_once $cartfront_path . '/framework/include/setup.php';
+require_once $cartfront_path . '/framework/classes/class-cartfront_setup.php';
 
 /**
  * Initialize theme.
