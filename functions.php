@@ -64,6 +64,11 @@ require_once $cartfront_path . '/framework/include/sanitize.php';
 require_once $cartfront_path . '/framework/admin/customizer/re-arrange.php';
 
 /**
+ * Setup.
+ */
+require_once $cartfront_path . '/framework/include/setup.php';
+
+/**
  * Initialize theme.
  */
 $cartfront = new Cartfront();
