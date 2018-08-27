@@ -120,4 +120,16 @@ class TestTheme extends \PHPUnit\Framework\TestCase {
 		\WP_Mock::assertHooksAdded();
 	}
 
+	public function test_theme_setup() {
+		$setup = new Cartfront_Setup();
+
+		\WP_Mock::expectActionAdded( 'after_setup_theme', array( $setup, 'setup' ) );
+		\WP_Mock::expectActionAdded( 'init', array( $setup, 'change_branding' ), PHP_INT_MAX );
+		\WP_Mock::expectActionAdded( 'admin_menu', array( $setup, 'change_menu' ), 20 );
+		\WP_Mock::expectActionAdded( 'admin_enqueue_scripts', array( $setup, 'add_scripts' ) );
+
+		$setup->__construct();
+		\WP_Mock::assertHooksAdded();
+	}
+
 }
