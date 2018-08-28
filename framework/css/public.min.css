@@ -58,11 +58,6 @@
 .cartfront-columns-2 .cartfront-boxes-wrapper:nth-child(2n),.cartfront-columns-3 .cartfront-boxes-wrapper:nth-child(3n),.cartfront-columns-4 .cartfront-boxes-wrapper:nth-child(4n){margin-right:0}
 .cartfront-boxes-wrapper img{display:block;margin:0 auto 1.618em}
 .cartfront-boxes-wrapper h2{font-size:1em;font-weight:400;margin-bottom:.5407911001em}
-.woocommerce-active .site-header .site-branding{float:left;width:21.7391304348%;margin-right:4.347826087%;margin-bottom:0}
-.woocommerce-active .site-header .site-search{width:47.8260869565%;float:left;margin-top:4px;margin-right:4.347826087%;margin-bottom:0}
-.woocommerce-active .site-header .site-search input[type=search]{background:#fff;border:1px solid #333;border-radius:50px}
-.site-header-cart .cart-contents{padding:0;margin-top:14.5px}
-.storefront-primary-navigation{margin-top:15px}
 @media screen and (min-width:768px){.cf-bc-meta-right .hentry.type-post .entry-content{float:left;width:75%;text-align:left}
 .cf-bc-meta-right .hentry.type-post .entry-meta{float:right;width:20%;margin-left:5%;margin-right:0}
 .cf-bc-meta-hidden .hentry.type-post .entry-content{float:none;width:100%;max-width:100%;text-align:left;margin:0 auto}
@@ -92,6 +87,20 @@
 .cartfront-full-width-content .content-area{float:none;width:100%;margin:0}
 .cf-bc-magazine.archive .hentry.type-post,.cf-bc-magazine.home .hentry.type-post,.cf-bc-magazine.blog .hentry.type-post{float:left;width:48%;margin-right:4%;clear:both;font-size:.875rem}
 .cf-bc-magazine.archive .hentry.type-post.cf-bc-odd,.cf-bc-magazine.home .hentry.type-post.cf-bc-odd,.cf-bc-magazine.blog .hentry.type-post.cf-bc-odd{margin-right:0;clear:none}
+}@media(min-width:768px){.toys-store .site-header .col-full{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center}
+.toys-store .site-header .site-branding{float:left;width:21.7391304348%;margin-right:4.347826087%;margin-bottom:0}
+.toys-store .site-header .site-search{width:47.8260869565%;float:left;margin-right:4.347826087%;margin-bottom:0}
+.toys-store .site-header .site-search input[type=search]{background:#fff;border:1px solid #333;border-radius:50px}
+.toys-store .site-header-cart .cart-contents{padding:1em 0}
+.toys-store .storefront-primary-navigation{margin-top:1em}
+.books-store .site-header{padding-top:0}
+.books-store .site-header>.col-full{padding-top:1.500em;padding-bottom:1.500em}
+.books-store .site-header .site-branding{float:left;width:21.7391304348%;margin-right:4.347826087%;margin-bottom:0}
+.books-store .storefront-primary-navigation .col-full{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center}
+.books-store .site-search{margin-bottom:0}
+.books-store .site-search .widget_product_search form::before{top:.750em}
+.books-store .site-search input[type=search]{background:#fff;border:1px solid #333;padding-top:.5em;padding-bottom:.5em}
+.books-store .site-header-cart .cart-contents{padding:.938em 0}
 }@media(min-width:769px){.cartfront-columns-1 .cartfront-featured-wrapper{margin:0 0 4.235801032em 0}
 .cartfront-columns-1 .cartfront-fw-thumbnail,.cartfront-columns-1 .cartfront-fw-content{float:left}
 .cartfront-columns-1 .cartfront-fw-thumbnail{width:60%;margin-right:5%}
@@ -102,6 +111,8 @@
 }@media screen and (max-width:782px){.cartfront-hamburger-menu-active.admin-bar .main-navigation .handheld-navigation,.cartfront-hamburger-menu-active.admin-bar .main-navigation div.menu{padding-top:46px}
 }@media(max-width:768px){.cartfront-boxes-wrapper{float:none;width:100% !important;margin-right:0}
 .cartfront-boxes-wrapper img{width:100%;max-width:324px}
+.toys-store .storefront-primary-navigation{margin-top:.250em}
+.books-store .storefront-primary-navigation{margin-top:.250em}
 }@media screen and (max-width:767px){.cartfront-hamburger-menu-active .main-navigation ul li a{padding:1rem 1.250rem}
 .cartfront-hamburger-menu-active .main-navigation .handheld-navigation,.cartfront-hamburger-menu-active .main-navigation div.menu{position:fixed;top:0;left:-75%;width:75%;height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;-webkit-transition:all,ease,0.2s;transition:all,ease,0.2s;z-index:9999;display:block !important}
 .cartfront-hamburger-menu-active .main-navigation .handheld-navigation>ul,.cartfront-hamburger-menu-active .main-navigation div.menu>ul{margin-top:.53em}
