@@ -264,9 +264,15 @@ class Cartfront_Layouts_Presets {
                 add_action( 'storefront_header', 'storefront_product_search', 60 );
                 break;
             case 'jewellery' :
+                remove_action( 'storefront_header', 'storefront_header_container', 0 );
                 remove_action( 'storefront_header', 'storefront_secondary_navigation', 30 );
                 remove_action( 'storefront_header', 'storefront_product_search', 40 );
                 remove_action( 'storefront_header', 'storefront_header_cart', 60 );
+
+                add_action( 'storefront_header', array( &$this, 'header_top_container' ), 0 );
+                add_action( 'storefront_header', 'storefront_header_cart', 2 );
+                add_action( 'storefront_header', array( &$this, 'header_top_container_close' ), 3 );
+                add_action( 'storefront_header', 'storefront_header_container', 4 );
                 break;
         }
     }
@@ -280,6 +286,26 @@ class Cartfront_Layouts_Presets {
         $classes[] = $this->store . '-store';
 
         return $classes;
+    }
+
+    /**
+     * Top bar container.
+     *
+     * @access public
+     */
+    public function header_top_container() {
+        echo '<div class="cartfront-header-top">';
+        echo '<div class="col-full">';
+    }
+
+    /**
+     * Top bar container close.
+     *
+     * @access public
+     */
+    public function header_top_container_close() {
+        echo '</div>';
+        echo '</div><!-- .cartfront-header-top -->';
     }
 
 }

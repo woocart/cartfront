@@ -101,6 +101,10 @@
 .books-store .site-search .widget_product_search form::before{top:.750em}
 .books-store .site-search input[type=search]{background:#fff;border:1px solid #333;padding-top:.5em;padding-bottom:.5em}
 .books-store .site-header-cart .cart-contents{padding:.938em 0}
+.jewellery-store .site-header{padding-top:0}
+.jewellery-store .site-header .site-branding{width:100%;float:none;margin:1em auto}
+.jewellery-store .site-header .main-navigation{float:none;width:100%;text-align:center;margin:0}
+.jewellery-store .site-header .site-branding img{max-width:320px;margin:0 auto}
 }@media(min-width:769px){.cartfront-columns-1 .cartfront-featured-wrapper{margin:0 0 4.235801032em 0}
 .cartfront-columns-1 .cartfront-fw-thumbnail,.cartfront-columns-1 .cartfront-fw-content{float:left}
 .cartfront-columns-1 .cartfront-fw-thumbnail{width:60%;margin-right:5%}
@@ -113,6 +117,7 @@
 .cartfront-boxes-wrapper img{width:100%;max-width:324px}
 .toys-store .storefront-primary-navigation{margin-top:.250em}
 .books-store .storefront-primary-navigation{margin-top:.250em}
+.jewellery-store .storefront-primary-navigation{margin-top:.250em}
 }@media screen and (max-width:767px){.cartfront-hamburger-menu-active .main-navigation ul li a{padding:1rem 1.250rem}
 .cartfront-hamburger-menu-active .main-navigation .handheld-navigation,.cartfront-hamburger-menu-active .main-navigation div.menu{position:fixed;top:0;left:-75%;width:75%;height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;-webkit-transition:all,ease,0.2s;transition:all,ease,0.2s;z-index:9999;display:block !important}
 .cartfront-hamburger-menu-active .main-navigation .handheld-navigation>ul,.cartfront-hamburger-menu-active .main-navigation div.menu>ul{margin-top:.53em}

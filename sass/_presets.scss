@@ -82,4 +82,28 @@
 /**
  * Jewellery store.
  */
-
+@media (min-width: 768px) {
+	.jewellery-store .site-header {
+		padding-top: 0;
+	}
+	.jewellery-store .site-header .site-branding {
+		width: 100%;
+		float: none;
+		margin: 1em auto;
+	}
+	.jewellery-store .site-header .main-navigation {
+		float: none;
+		width: 100%;
+		text-align: center;
+		margin: 0;
+	}
+	.jewellery-store .site-header .site-branding img {
+		max-width: 320px;
+		margin: 0 auto;
+	}
+}
+@media (max-width: 768px) {
+	.jewellery-store .storefront-primary-navigation {
+		margin-top: 0.250em;
+	}
+}
