@@ -44,6 +44,8 @@ class Cartfront {
 
     /**
      * Add styles & scripts for the theme.
+     *
+     * @access public
      */
     public function scripts() {
         global $theme_name, $theme_version, $cartfront_url;

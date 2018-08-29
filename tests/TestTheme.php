@@ -25,6 +25,14 @@ class TestTheme extends \PHPUnit\Framework\TestCase {
 		);
 
 		\WP_Mock::wpFunction(
+			'get_theme_mod', array(
+				'called' => 1,
+				'args' 	 => array( 'cf_lp_layout', 'default' ),
+				'return' => 1
+			)
+		);
+
+		\WP_Mock::wpFunction(
 			'is_admin', array(
 				'return' => false,
 			)

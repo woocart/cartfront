@@ -1,0 +1,109 @@
+/**
+ * Toys store.
+ */
+@media (min-width: 768px) {
+	.toys-store .site-header .col-full {
+	    display: flex;
+	    align-items: center;
+	}
+	.toys-store .site-header .site-branding {
+	    float: left;
+		width: 21.7391304348%;
+	    margin-right: 4.347826087%;
+	    margin-bottom: 0;
+	}
+	.toys-store .site-header .site-search {
+		width: 47.8260869565%;
+	    float: left;
+	    margin-right: 4.347826087%;
+	    margin-bottom: 0;
+	}
+	.toys-store .site-header .site-search input[type=search] {
+		background: #ffffff;
+		border: 1px solid #333333;
+		border-radius: 50px;
+	}
+	.toys-store .site-header-cart .cart-contents {
+		padding: 1em 0;
+	}
+	.toys-store .storefront-primary-navigation {
+		margin-top: 1em;
+	}
+}
+@media (max-width: 768px) {
+	.toys-store .storefront-primary-navigation {
+		margin-top: 0.250em;
+	}
+}
+
+/**
+ * Books store.
+ */
+@media (min-width: 768px) {
+	.books-store .site-header {
+		padding-top: 0;
+	}
+	.books-store .site-header > .col-full {
+		padding-top: 1.500em;
+		padding-bottom: 1.500em;
+	}
+	.books-store .site-header .site-branding {
+	    float: left;
+		width: 21.7391304348%;
+	    margin-right: 4.347826087%;
+	    margin-bottom: 0;
+	}
+	.books-store .storefront-primary-navigation .col-full {
+	    display: flex;
+	    align-items: center;
+	}
+	.books-store .site-search {
+		margin-bottom: 0;
+	}
+	.books-store .site-search .widget_product_search form::before {
+		top: 0.750em;
+	}
+	.books-store .site-search input[type=search] {
+		background: #ffffff;
+		border: 1px solid #333333;
+		padding-top: 0.5em;
+		padding-bottom: 0.5em; 
+	}
+	.books-store .site-header-cart .cart-contents {
+		padding: 0.938em 0;
+	}
+}
+@media (max-width: 768px) {
+	.books-store .storefront-primary-navigation {
+		margin-top: 0.250em;
+	}
+}
+
+/**
+ * Jewellery store.
+ */
+@media (min-width: 768px) {
+	.jewellery-store .site-header {
+		padding-top: 0;
+	}
+	.jewellery-store .site-header .site-branding {
+		width: 100%;
+		float: none;
+		margin: 1em auto;
+	}
+	.jewellery-store .site-header .main-navigation {
+		float: none;
+		width: 100%;
+		text-align: center;
+		margin: 0;
+	}
+	.jewellery-store .site-header .site-branding img {
+		max-width: 320px;
+		margin: 0 auto;
+	}
+}
+@media (max-width: 768px) {
+	.jewellery-store .storefront-primary-navigation {
+		margin-top: 0.250em;
+	}
+}
