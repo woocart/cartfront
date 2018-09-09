@@ -268,7 +268,6 @@ class Cartfront_Layouts_Presets {
                 remove_action( 'storefront_header', 'storefront_secondary_navigation', 30 );
                 remove_action( 'storefront_header', 'storefront_product_search', 40 );
                 remove_action( 'storefront_header', 'storefront_header_cart', 60 );
-
                 add_action( 'storefront_header', array( &$this, 'header_top_container' ), 0 );
                 add_action( 'storefront_header', 'storefront_header_cart', 2 );
                 add_action( 'storefront_header', array( &$this, 'header_top_container_close' ), 3 );
