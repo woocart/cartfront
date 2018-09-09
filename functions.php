@@ -11,6 +11,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+global $cartfront_path;
+
 /**
  * Parent theme name.
  */
@@ -42,31 +44,27 @@ $cartfront_path  = get_stylesheet_directory();
 $cartfront_url   = get_stylesheet_directory_uri();
 
 /**
- * Main class.
+ * Function for auto-loading classes.
  */
-require_once $cartfront_path . '/framework/classes/class-cartfront.php';
+function cartfront_autoloader( $class_name ) {
+	global $cartfront_path;
 
-/**
- * Include theme addons.
- */
-require_once $cartfront_path . '/framework/classes/class-cartfront_footer_bar.php';
-require_once $cartfront_path . '/framework/classes/class-cartfront_hamburger_menu.php';
-require_once $cartfront_path . '/framework/classes/class-cartfront_blog_customiser.php';
-require_once $cartfront_path . '/framework/classes/class-cartfront_homepage_control.php';
-require_once $cartfront_path . '/framework/classes/class-cartfront_simple_slider.php';
-require_once $cartfront_path . '/framework/classes/class-cartfront_link_boxes.php';
-require_once $cartfront_path . '/framework/classes/class-cartfront_layouts_presets.php';
+    if ( file_exists( $cartfront_path . '/framework/classes/class-' . strtolower( $class_name ) . '.php' ) ) {
+        require( $cartfront_path . '/framework/classes/class-' . strtolower( $class_name ) . '.php' );
+
+        return true;
+    }
+
+    return false;
+}
+
+spl_autoload_register( 'cartfront_autoloader' );
 
 /**
  * Other required files.
  */
 require_once $cartfront_path . '/framework/include/sanitize.php';
 require_once $cartfront_path . '/framework/admin/customizer/re-arrange.php';
-
-/**
- * Setup.
- */
-require_once $cartfront_path . '/framework/classes/class-cartfront_setup.php';
 
 /**
  * Initialize theme.
