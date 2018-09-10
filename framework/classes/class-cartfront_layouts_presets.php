@@ -291,16 +291,6 @@ class Cartfront_Layouts_Presets {
     }
 
     /**
-     * Top bar container.
-     *
-     * @access public
-     */
-    public function header_top_container() {
-        echo '<div class="cartfront-header-top">';
-        echo '<div class="col-full">';
-    }
-
-    /**
      * Change modules.
      *
      * @access public
@@ -370,6 +360,16 @@ class Cartfront_Layouts_Presets {
                 }
             }
         }
+    }
+
+    /**
+     * Top bar container.
+     *
+     * @access public
+     */
+    public function header_top_container() {
+        echo '<div class="cartfront-header-top">';
+        echo '<div class="col-full">';
     }
 
     /**
