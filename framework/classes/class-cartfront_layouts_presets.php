@@ -29,6 +29,7 @@ class Cartfront_Layouts_Presets {
         add_action( 'get_header', array( &$this, 'presets_header' ) );
 
         add_filter( 'body_class', array( &$this, 'body_class' ) );
+        add_action( 'init', array( &$this, 'change_modules' ) );
     }
 
     /**
@@ -72,10 +73,9 @@ class Cartfront_Layouts_Presets {
             'priority'      => 10,
             'choices'       => array(
                 'default'       => esc_html__( 'Default Layout', 'cartfront' ),
-                'toys'          => esc_html__( 'Toys Store', 'cartfront' ),
-                'books'         => esc_html__( 'Books Store', 'cartfront' ),
-                'jewellery'     => esc_html__( 'Jewellery Store', 'cartfront' ),
-                'electronics'   => esc_html__( 'Electronics Store', 'cartfront' )
+                'toys'          => esc_html__( 'Toy Store', 'cartfront' ),
+                'books'         => esc_html__( 'Book Store', 'cartfront' ),
+                'jewellery'     => esc_html__( 'Jewellery Store', 'cartfront' )
             )
         ) ) );
 
@@ -96,7 +96,10 @@ class Cartfront_Layouts_Presets {
             'priority'      => 15,
             'choices'       => array(
                 'default'   => esc_html__( 'Default Color Scheme', 'cartfront' ),
-                'toys'      => esc_html__( 'Toys Store Color Scheme', 'cartfront' )
+                'toys'          => esc_html__( 'Toy Store Color Scheme', 'cartfront' ),
+                'books'         => esc_html__( 'Book Store Color Scheme', 'cartfront' ),
+                'jewellery'     => esc_html__( 'Jewellery Store Color Scheme', 'cartfront' ),
+                'electronics'   => esc_html__( 'Electronics Color Scheme', 'cartfront' )
             )
         ) ) );
 
@@ -294,6 +297,43 @@ class Cartfront_Layouts_Presets {
     public function header_top_container() {
         echo '<div class="cartfront-header-top">';
         echo '<div class="col-full">';
+    }
+
+    /**
+     * Change modules.
+     *
+     * @access public
+     */
+    public function change_modules() {
+        global $cartfront_path;
+
+        // Refresh values.
+        $this->get_values();
+
+        if ( 'default' !== $this->store ) {
+            $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $this->store . '.json' );
+            $data_array = json_decode( $json_data, true );
+
+            // Switch the homepage modules.
+            $components = $data_array['cf_hc_data'];
+
+            // Change theme mod value.
+            set_theme_mod( 'cf_hc_data', $components );
+        }
+    }
+
+    /**
+     * Color scheme.
+     *
+     * @access public
+     */
+    public function color_scheme() {
+        $this->get_values();
+
+        /**
+         * Store-specific color schemes.
+         */
+
     }
 
     /**
