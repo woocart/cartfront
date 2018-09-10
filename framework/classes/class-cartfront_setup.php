@@ -23,6 +23,7 @@ class Cartfront_Setup {
 		add_action( 'init', array( &$this, 'change_branding' ), PHP_INT_MAX );
 		add_action( 'admin_menu', array( &$this, 'change_menu' ), 20 );
 		add_action( 'admin_enqueue_scripts', array( &$this, 'add_scripts' ) );
+		add_action( 'admin_init', array( &$this, 'theme_activation_redirect' ) );
 	}
 
 	/**
@@ -151,6 +152,17 @@ class Cartfront_Setup {
 			</div>
 		</div>
 		<?php
+	} 
+ 
+	/**
+	 * Redirect to welcome page on activation.
+	 */
+	public function theme_activation_redirect() {
+	    global $pagenow;
+
+	    if ( 'themes.php' == $pagenow && is_admin() && isset( $_GET['activated'] ) ) {
+	        wp_redirect( esc_url_raw( add_query_arg( 'page', 'cartfront-welcome', admin_url( 'themes.php' ) ) ) );
+	    }
 	}
 
 }
