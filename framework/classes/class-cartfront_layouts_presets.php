@@ -24,8 +24,6 @@ class Cartfront_Layouts_Presets {
      * @since   1.0.0
      */
     public function __construct() {
-        $this->get_values();
-
         add_action( 'wp_enqueue_scripts', array( &$this, 'add_styles' ), PHP_INT_MAX );
         add_action( 'customize_register', array( &$this, 'customize_register' ) );
         add_action( 'get_header', array( &$this, 'presets_header' ) );
@@ -282,6 +280,7 @@ class Cartfront_Layouts_Presets {
      * @access public
      */
     public function body_class( $classes ) {
+        $this->get_values();
         $classes[] = $this->store . '-store';
 
         return $classes;
