@@ -2,7 +2,7 @@
 
 <img src="" alt="Slider">
 
-Slider makes it easy to add a fully customizable Slider (posts, products, or custom) to the homepage. The panel for `Slider` is in the front of the Theme Customizer and is further divided into four sub-panels which are **General Settings**, **Posts Slider**, **Products Slider**, and **Custom Slider**. Like other components, this component can be re-arranged on the homepage and it's visibility can also be toggled via the `Homepage Control` section. Here is the list of all the available options.
+Slider makes it easy to add a fully customizable Slider (posts, products, or custom) to the homepage. The panel for `Slider` is in the front of the Theme Customizer and is further divided into four sub-panels which are **General Settings**, **Posts Slider**, **Products Slider**, and **Custom Slider**. Like other components, this component can also be re-arranged on the homepage and it's visibility can be toggled via the `Homepage Control` section. Here is the list of all the available options.
 
 ### General Settings
 
