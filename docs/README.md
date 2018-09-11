@@ -10,12 +10,12 @@
 
 Below is the list of add-ons added to the **Cartfront** theme.
 
-* [Footer Bar](/docs/features/footer-bar.md)
-* [Hamburger Menu](/docs/features/hamburger-menu.md)
-* [Slider](/docs/features/slider.md)
-* [Homepage Control](/docs/features/homepage-control.md)
-* [Link Boxes](/docs/features/link-boxes.md)
-* [Blog Customizer](/docs/features/blog-customizer.md)
-* [Menu Colors](/docs/features/menu-colors.md)
+* [Footer Bar](/docs/footer-bar.md)
+* [Hamburger Menu](/docs/hamburger-menu.md)
+* [Slider](/docs/slider.md)
+* [Homepage Control](/docs/homepage-control.md)
+* [Link Boxes](/docs/link-boxes.md)
+* [Blog Customizer](/docs/blog-customizer.md)
+* [Menu Colors](/docs/menu-colors.md)
 
-In addition to the above add-ons, **Cartfront** also comes power packed with [**Cartfront Presets**](/docs/features/cartfront-presets.md) which provides a quick switch between various **Layouts** and **Color Schemes**.
+In addition to the above add-ons, **Cartfront** also comes power packed with [**Cartfront Presets**](/docs/cartfront-presets.md) which provides a quick switch between various **Layouts** and **Color Schemes**.
