@@ -122,7 +122,7 @@ class Cartfront_Setup {
 			</section>
 
 			<div class="cartfront-logo">
-				<img src="<?php echo esc_url( $cartfront_url ); ?>/framework/img/woocart.svg" alt="Cartfront" />
+				<img src="<?php echo esc_url( $cartfront_url ); ?>/framework/img/cartfront.svg" alt="Cartfront" />
 			</div>
 
 			<div class="cartfront-intro">
@@ -136,7 +136,7 @@ class Cartfront_Setup {
 						<img src="<?php echo esc_url( $cartfront_url ); ?>/framework/img/admin/documentation.png" alt="<?php esc_attr_e( 'Cartfront Documentation', 'cartfront' ); ?>" />
 					</span>
 
-					<p><?php esc_attr_e( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt euismod consequat. Praesent nisi leo, posuere ac augue eu, ultrices viverra leo. Donec sapien erat, cursus sit amet velit vel, porttitor pretium magna. Suspendisse quis tellus non tellus mollis rutrum. Curabitur tempor sodales eros in fermentum. Quisque vel felis iaculis, ullamcorper justo eget, malesuada turpis. Fusce tincidunt ipsum nec mauris maximus, id porta erat tristique.', 'cartfront' ); ?></p>
+					<p><?php esc_attr_e( 'Cartfront is the improved alternative to the official WooCommerce Storefront theme. We added a lot of the missing features in order to just "plug and sale" with your new store. To facilitate that even more, Cartfront offers different templates for popular eCommerce niches like Electronics, Books, Jewellery, Toys and so on. Cartfront cuts the unnecessary plugins that slow down your store, design work and code edits. Cartfront is free and can be used on any store, but its functionality extends even more with WooCart.', 'cartfront' ); ?></p>
 
 					<p><a href="#" class="cartfront-button" target="_blank"><?php esc_attr_e( 'Browse Documentation', 'cartfront' ); ?></a></p>
 				</div>
@@ -145,7 +145,7 @@ class Cartfront_Setup {
 					<h3><?php esc_attr_e( 'WooCart Support', 'cartfront' ); ?></h3>
 					<img src="<?php echo esc_url( $cartfront_url ); ?>/framework/img/admin/help.png" alt="cartfront Powerpack" />
 
-					<p><?php esc_attr_e( 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis tincidunt euismod consequat. Praesent nisi leo, posuere ac augue eu, ultrices viverra leo. Donec sapien erat, cursus sit amet velit vel, porttitor pretium magna. Suspendisse quis tellus non tellus mollis rutrum. Curabitur tempor sodales eros in fermentum. Quisque vel felis iaculis, ullamcorper justo eget, malesuada turpis. Fusce tincidunt ipsum nec mauris maximus, id porta erat tristique.', 'cartfront' ); ?></p>
+					<p><?php esc_attr_e( 'Cartfront blends perfectly with WooCart where you get demo products and content for your niche selection. But that\'s not even close to everything. WooCart is a 360° WooCommerce Solution that has you covered with everything from hosting to maintenance. Running your WooCommerce store is now as easy as on Shopify. You can build a new localized store with our Wizard in a few clicks. Having dedicated resources on Google Cloud, the stores are blazingly fast. Then there\'s staging, no malware guarantee, fantastic developer tools and so much more.', 'cartfront' ); ?></p>
 
 					<p><a href="#" class="cartfront-button" target="_blank"><?php esc_attr_e( 'Visit Help Center', 'cartfront' ); ?></a></p>
 				</div>
