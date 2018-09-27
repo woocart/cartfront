@@ -29,6 +29,8 @@ class Cartfront_Layouts_Presets {
         add_action( 'get_header', array( &$this, 'presets_header' ) );
 
         add_filter( 'body_class', array( &$this, 'body_class' ) );
+        add_action( 'customize_save_after', array( &$this, 'change_modules' ) );
+        add_action( 'customize_save_after', array( &$this, 'color_scheme' ) );
     }
 
     /**
@@ -72,10 +74,9 @@ class Cartfront_Layouts_Presets {
             'priority'      => 10,
             'choices'       => array(
                 'default'       => esc_html__( 'Default Layout', 'cartfront' ),
-                'toys'          => esc_html__( 'Toys Store', 'cartfront' ),
-                'books'         => esc_html__( 'Books Store', 'cartfront' ),
-                'jewellery'     => esc_html__( 'Jewellery Store', 'cartfront' ),
-                'electronics'   => esc_html__( 'Electronics Store', 'cartfront' )
+                'toys'          => esc_html__( 'Toy Store', 'cartfront' ),
+                'books'         => esc_html__( 'Book Store', 'cartfront' ),
+                'jewellery'     => esc_html__( 'Jewellery Store', 'cartfront' )
             )
         ) ) );
 
@@ -96,7 +97,10 @@ class Cartfront_Layouts_Presets {
             'priority'      => 15,
             'choices'       => array(
                 'default'   => esc_html__( 'Default Color Scheme', 'cartfront' ),
-                'toys'      => esc_html__( 'Toys Store Color Scheme', 'cartfront' )
+                'toys'          => esc_html__( 'Toy Store Color Scheme', 'cartfront' ),
+                'books'         => esc_html__( 'Book Store Color Scheme', 'cartfront' ),
+                'jewellery'     => esc_html__( 'Jewellery Store Color Scheme', 'cartfront' ),
+                'electronics'   => esc_html__( 'Electronics Color Scheme', 'cartfront' )
             )
         ) ) );
 
@@ -284,6 +288,78 @@ class Cartfront_Layouts_Presets {
         $classes[] = $this->store . '-store';
 
         return $classes;
+    }
+
+    /**
+     * Change modules.
+     *
+     * @access public
+     */
+    public function change_modules() {
+        global $cartfront_path;
+
+        // Refresh values.
+        $this->get_values();
+
+        if ( 'default' !== $this->store ) {
+            $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $this->store . '.json' );
+            $data_array = json_decode( $json_data, true );
+
+            // Switch the homepage modules.
+            $components = $data_array['cf_hc_data'];
+
+            // Change theme mod value.
+            set_theme_mod( 'cf_hc_data', $components );
+        }
+    }
+
+    /**
+     * Color scheme.
+     *
+     * @access public
+     */
+    public function color_scheme() {
+        global $cartfront_path;
+
+        // Refresh values.
+        $color_scheme = get_theme_mod( 'cf_lp_color_scheme', 'default' );
+
+        if ( 'default' !== $color_scheme ) {
+            $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $color_scheme . '.json' );
+            $data_array = json_decode( $json_data, true );
+
+            /**
+             * Store-specific color schemes.
+             */
+            $settings = array(
+                'storefront_header_background_color',
+                'storefront_header_text_color',
+                'storefront_header_link_color',
+                'cf_fb_background_color',
+                'storefront_footer_background_color',
+                'storefront_footer_text_color',
+                'storefront_footer_link_color',
+                'storefront_button_background_color',
+                'storefront_button_text_color',
+                'storefront_heading_color',
+                'storefront_accent_color',
+                'storefront_button_alt_background_color',
+                'cf_fb_background_image',
+                'storefront_text_color',
+                'cf_lp_layout',
+                'cf_nav_bg_color',
+                'cf_nav_text_color',
+                'cf_nav_link_color'
+            );
+
+            foreach ( $settings as $setting ) {
+                if ( isset( $data_array[$setting] ) ) {
+                    if ( ! empty( $data_array[$setting] ) ) {
+                        set_theme_mod( $setting, $data_array[$setting] );
+                    }
+                }
+            }
+        }
     }
 
     /**
