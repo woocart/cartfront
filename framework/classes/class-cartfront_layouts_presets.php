@@ -331,21 +331,20 @@ class Cartfront_Layouts_Presets {
      * @access public
      */
     public function footer_nav_menu() {
-        ?>
-        <div class="cartfront-footer-menu">
-            <?php
-                if ( has_nav_menu( 'footer' ) ) {
-                    wp_nav_menu(
-                        array(
-                            'theme_location'    => 'footer',
-                            'menu_class'        => 'footer-navigation',
-                            'depth'             => 1
-                        )
-                    );
-                }
-            ?>
-        </div><!-- .cartfront-footer-menu -->
-        <?php
+        if ( has_nav_menu( 'footer' ) ) {
+            echo '<div class="cartfront-footer-menu">';
+
+            // Navigation menu.
+            wp_nav_menu(
+                array(
+                    'theme_location'    => 'footer',
+                    'menu_class'        => 'footer-navigation',
+                    'depth'             => 1
+                )
+            );
+
+            echo '</div><!-- .cartfront-footer-menu -->';
+        }
     }
 
     /**
