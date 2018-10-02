@@ -45,6 +45,17 @@ class Cartfront_Setup {
 		add_image_size( $theme_name . '-medium', 600, 400, true );
 		add_image_size( $theme_name . '-square', 600, 600, true );
 		add_image_size( $theme_name . '-full', 1200, 9999, false );
+
+		/**
+		 * Register nav menu for footer.
+		 */
+		register_nav_menus(
+			apply_filters(
+				'cartfront_register_nav_menus', array(
+					'footer' => __( 'Footer Menu', 'cartfront' )
+				)
+			)
+		);
 	}
 
 	/**
