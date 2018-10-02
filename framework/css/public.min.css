@@ -58,8 +58,8 @@
 .cartfront-columns-2 .cartfront-boxes-wrapper:nth-child(2n),.cartfront-columns-3 .cartfront-boxes-wrapper:nth-child(3n),.cartfront-columns-4 .cartfront-boxes-wrapper:nth-child(4n){margin-right:0}
 .cartfront-boxes-wrapper img{display:block;margin:0 auto 1.618em}
 .cartfront-boxes-wrapper h2{font-size:1em;font-weight:400;margin-bottom:.5407911001em}
-.cartfront-footer-credits .site-info,.cartfront-footer-credits .cartfront-footer-menu{float:left;width:48%;margin-right:4%}
-.cartfront-footer-credits .cartfront-footer-menu{padding:2.617924em 0;margin:0}
+.cartfront-footer-credits .site-info,.cartfront-footer-credits .cartfront-footer-menu{float:left;width:38%;margin-right:4%}
+.cartfront-footer-credits .cartfront-footer-menu{width:58%;padding:2.617924em 0;margin:0}
 .cartfront-footer-credits .cartfront-footer-menu ul{margin:0;list-style-type:none;text-align:right}
 .cartfront-footer-credits .cartfront-footer-menu ul li{display:inline-block;margin-right:1.25em}
 .cartfront-footer-credits .cartfront-footer-menu ul li:last-child{margin-right:0}
