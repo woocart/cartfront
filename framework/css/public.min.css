@@ -58,6 +58,11 @@
 .cartfront-columns-2 .cartfront-boxes-wrapper:nth-child(2n),.cartfront-columns-3 .cartfront-boxes-wrapper:nth-child(3n),.cartfront-columns-4 .cartfront-boxes-wrapper:nth-child(4n){margin-right:0}
 .cartfront-boxes-wrapper img{display:block;margin:0 auto 1.618em}
 .cartfront-boxes-wrapper h2{font-size:1em;font-weight:400;margin-bottom:.5407911001em}
+.cartfront-footer-credits .site-info,.cartfront-footer-credits .cartfront-footer-menu{float:left;width:48%;margin-right:4%}
+.cartfront-footer-credits .cartfront-footer-menu{padding:2.617924em 0;margin:0}
+.cartfront-footer-credits .cartfront-footer-menu ul{margin:0;list-style-type:none;text-align:right}
+.cartfront-footer-credits .cartfront-footer-menu ul li{display:inline-block;margin-right:1.25em}
+.cartfront-footer-credits .cartfront-footer-menu ul li:last-child{margin-right:0}
 @media screen and (min-width:768px){.cf-bc-meta-right .hentry.type-post .entry-content{float:left;width:75%;text-align:left}
 .cf-bc-meta-right .hentry.type-post .entry-meta{float:right;width:20%;margin-left:5%;margin-right:0}
 .cf-bc-meta-hidden .hentry.type-post .entry-content{float:none;width:100%;max-width:100%;text-align:left;margin:0 auto}
@@ -112,6 +117,9 @@
 .cartfront-columns-1 .cartfront-fw-content h2{font-size:1.6em}
 .cartfront-columns-1 .cartfront-fw-content .excerpt{display:block}
 .cartfront-columns-1 .cartfront-fw-content .button{display:inline-block}
+}@media(max-width:992px){.cartfront-footer-credits{margin:1em 0}
+.cartfront-footer-credits .site-info,.cartfront-footer-credits .cartfront-footer-menu{float:none;width:100%;padding:1em 0;text-align:center}
+.cartfront-footer-credits .cartfront-footer-menu ul{text-align:center}
 }@media screen and (max-width:782px){.cartfront-hamburger-menu-active.admin-bar .main-navigation .handheld-navigation,.cartfront-hamburger-menu-active.admin-bar .main-navigation div.menu{padding-top:46px}
 }@media(max-width:768px){.cartfront-boxes-wrapper{float:none;width:100% !important;margin-right:0}
 .cartfront-boxes-wrapper img{width:100%;max-width:324px}

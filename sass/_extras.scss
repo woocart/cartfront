@@ -1,0 +1,48 @@
+.cartfront-footer-credits {
+	.site-info,
+	.cartfront-footer-menu {
+		float: left;
+		width: 48%;
+		margin-right: 4%;
+	}
+
+	.cartfront-footer-menu {
+    	padding: 2.617924em 0;
+		margin: 0;
+
+		ul {
+			margin: 0;
+			list-style-type: none;
+			text-align: right;
+
+			li {
+				display: inline-block;
+				margin-right: 1.25em;
+
+				&:last-child {
+					margin-right: 0;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 992px) {
+	.cartfront-footer-credits {
+		margin: 1em 0;
+
+		.site-info,
+		.cartfront-footer-menu {
+			float: none;
+			width: 100%;
+	    	padding: 1em 0;
+			text-align: center;
+		}
+
+		.cartfront-footer-menu {
+			ul {
+				text-align: center;
+			}
+		}
+	}
+}

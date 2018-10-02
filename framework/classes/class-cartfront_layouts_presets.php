@@ -27,6 +27,7 @@ class Cartfront_Layouts_Presets {
         add_action( 'wp_enqueue_scripts', array( &$this, 'add_styles' ), PHP_INT_MAX );
         add_action( 'customize_register', array( &$this, 'customize_register' ) );
         add_action( 'get_header', array( &$this, 'presets_header' ) );
+        add_action( 'init', array( &$this, 'add_footer' ) );
 
         add_filter( 'body_class', array( &$this, 'body_class' ) );
     }
@@ -304,6 +305,58 @@ class Cartfront_Layouts_Presets {
     public function header_top_container_close() {
         echo '</div>';
         echo '</div><!-- .cartfront-header-top -->';
+    }
+
+    /**
+     * Footer credit container.
+     *
+     * @access public
+     */
+    public function footer_credit_container() {
+        echo '<div class="cartfront-footer-credits">';
+    }
+
+    /**
+     * Footer credit container close.
+     *
+     * @access public
+     */
+    public function footer_credit_container_close() {
+        echo '</div><!-- .cartfront-footer-credits -->';
+    }
+
+    /**
+     * Footer credit container close.
+     *
+     * @access public
+     */
+    public function footer_nav_menu() {
+        ?>
+        <div class="cartfront-footer-menu">
+            <?php
+                if ( has_nav_menu( 'footer' ) ) {
+                    wp_nav_menu(
+                        array(
+                            'theme_location'    => 'footer',
+                            'menu_class'        => 'footer-navigation',
+                            'depth'             => 1
+                        )
+                    );
+                }
+            ?>
+        </div><!-- .cartfront-footer-menu -->
+        <?php
+    }
+
+    /**
+     * Add to `storefront_footer` hook.
+     *
+     * @access public
+     */
+    public function add_footer() {
+        add_action( 'storefront_footer', array( &$this, 'footer_credit_container' ), 15 );
+        add_action( 'storefront_footer', array( &$this, 'footer_nav_menu' ), 25 );
+        add_action( 'storefront_footer', array( &$this, 'footer_credit_container_close' ), 30 );
     }
 
 }
