@@ -249,28 +249,39 @@ class Cartfront_Layouts_Presets {
 
         switch( $layout ) {
             case 'toys' :
-                remove_action( 'storefront_header', 'storefront_secondary_navigation', 30 );
+                remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
                 remove_action( 'storefront_header', 'storefront_product_search', 40 );
                 remove_action( 'storefront_header', 'storefront_header_cart', 60 );
+
                 add_action( 'storefront_header', 'storefront_product_search', 30 );
                 add_action( 'storefront_header', 'storefront_header_cart', 40 );
+                add_action( 'storefront_header', array( &$this, 'primary_nav_menu' ), 50 );
                 break;
             case 'books' :
-                remove_action( 'storefront_header', 'storefront_secondary_navigation', 30 );
+                remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
                 remove_action( 'storefront_header', 'storefront_product_search', 40 );
                 remove_action( 'storefront_header', 'storefront_header_cart', 60 );
+
                 add_action( 'storefront_header', 'storefront_header_cart', 40 );
+                add_action( 'storefront_header', array( &$this, 'primary_nav_menu' ), 50 );
                 add_action( 'storefront_header', 'storefront_product_search', 60 );
                 break;
             case 'jewellery' :
                 remove_action( 'storefront_header', 'storefront_header_container', 0 );
-                remove_action( 'storefront_header', 'storefront_secondary_navigation', 30 );
+                remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
                 remove_action( 'storefront_header', 'storefront_product_search', 40 );
                 remove_action( 'storefront_header', 'storefront_header_cart', 60 );
+
                 add_action( 'storefront_header', array( &$this, 'header_top_container' ), 0 );
                 add_action( 'storefront_header', 'storefront_header_cart', 2 );
                 add_action( 'storefront_header', array( &$this, 'header_top_container_close' ), 3 );
                 add_action( 'storefront_header', 'storefront_header_container', 4 );
+                add_action( 'storefront_header', array( &$this, 'primary_nav_menu' ), 50 );
+                break;
+            case 'electronics' :
+                remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
+
+                add_action( 'storefront_header', array( &$this, 'primary_nav_menu' ), 50 );
                 break;
         }
     }
@@ -331,20 +342,150 @@ class Cartfront_Layouts_Presets {
      * @access public
      */
     public function footer_nav_menu() {
-        if ( has_nav_menu( 'footer' ) ) {
-            echo '<div class="cartfront-footer-menu">';
+        echo '<div class="cartfront-footer-menu">';
 
-            // Navigation menu.
+        // Navigation menu.
+        wp_nav_menu(
+            array(
+                'theme_location'    => 'footer',
+                'menu_class'        => 'footer-navigation',
+                'depth'             => 1,
+                'fallback_cb'       => array( &$this, 'footer_nav_menu_fallback' )
+            )
+        );
+
+        echo '</div><!-- .cartfront-footer-menu -->';
+    }
+
+    /**
+     * Adding fallback to the primary navigation.
+     *
+     * @access public
+     */
+    public function primary_nav_menu() {
+        ?>
+        <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="<?php esc_html_e( 'Primary Navigation', 'storefront' ); ?>">
+        <button class="menu-toggle" aria-controls="site-navigation" aria-expanded="false"><span><?php echo esc_attr( apply_filters( 'storefront_menu_toggle_text', __( 'Menu', 'storefront' ) ) ); ?></span></button>
+            <?php
             wp_nav_menu(
                 array(
-                    'theme_location'    => 'footer',
-                    'menu_class'        => 'footer-navigation',
-                    'depth'             => 1
+                    'theme_location'    => 'primary',
+                    'container_class'   => 'primary-navigation',
+                    'fallback_cb'       => array( &$this, 'primary_nav_menu_fallback' )
                 )
             );
 
-            echo '</div><!-- .cartfront-footer-menu -->';
+            wp_nav_menu(
+                array(
+                    'theme_location'    => 'handheld',
+                    'container_class'   => 'handheld-navigation',
+                    'fallback_cb'       => array( &$this, 'primary_nav_menu_fallback' )
+                )
+            );
+            ?>
+        </nav><!-- #site-navigation -->
+        <?php
+    }
+
+    /**
+     * Primary nav menu fallback.
+     *
+     * @access public
+     */
+    public function primary_nav_menu_fallback() {
+        $items = array(
+            'home'      => array(
+                'title'     => esc_html__( 'Home', 'cartfront' ),
+                'option'    => 'siteurl'
+            ),
+            'about'     => array(
+                'title'     => esc_html__( 'About', 'cartfront' )
+            ),
+            'contact'   => array(
+                'title'     => esc_html__( 'Contact', 'cartfront' )
+            )
+        );
+
+        echo '<div class="primary-menu-fallback">' . "\n";
+        echo '<ul>' . "\n";
+
+        foreach ( $items as $key => $option ) {
+            if ( 'home' === $key ) {
+                $fetch = get_option( $option['option'] );
+            } else {
+                $fetch = $this->get_id_by_slug( $key );
+            }
+
+            if ( $fetch ) {
+                // Get permalink.
+                if ( 'home' === $key ) {
+                    $link = esc_url( $fetch );
+                } else {
+                    $link = esc_url( get_permalink( $fetch ) );
+                }
+
+                if ( $link ) {
+                    echo '<li>' . "\n";
+                    echo '<a href="' . $link . '">' . $option['title'] . '</a>' . "\n";
+                    echo '</li>' . "\n";
+                }
+            }
         }
+
+        echo '</ul>' . "\n";
+    }
+
+    /**
+     * Footer nav menu fallback.
+     *
+     * @access public
+     */
+    public function footer_nav_menu_fallback() {
+        $items = array(
+            'privacy'   => array(
+                'title'     => esc_html__( 'Privacy Policy', 'cartfront' ),
+                'option'    => 'wp_page_for_privacy_policy'
+            ),
+            'cookies'   => array(
+                'title'     => esc_html__( 'Cookie Policy', 'cartfront' ),
+                'option'    => 'wp_page_for_cookie_policy'
+            ),
+            'returns'   => array(
+                'title'     => esc_html__( 'Returns and Refunds', 'cartfront' ),
+                'option'    => 'woocommerce_returns_page_id'
+            ),
+            'terms'     => array(
+                'title'     => esc_html__( 'Terms and Conditions', 'cartfront' ),
+                'option'    => 'woocommerce_terms_page_id'
+            ),
+            'contact'   => array(
+                'title'     => esc_html__( 'Contact', 'cartfront' )
+            )
+        );
+
+        echo '<div class="footer-menu-fallback">' . "\n";
+        echo '<ul>' . "\n";
+
+        foreach ( $items as $key => $option ) {
+            if ( 'contact' === $key ) {
+                $fetch = $this->get_id_by_slug( $key );
+            } else {
+                $fetch = get_option( $option['option'] );
+            }
+
+            if ( $fetch ) {
+                // Get permalink.
+                $link = esc_url( get_permalink( $fetch ) );
+
+                if ( $link ) {
+                    echo '<li>' . "\n";
+                    echo '<a href="' . $link . '">' . $option['title'] . '</a>' . "\n";
+                    echo '</li>' . "\n";
+                }
+            }
+        }
+
+        echo '</ul>' . "\n";
     }
 
     /**
@@ -356,6 +497,22 @@ class Cartfront_Layouts_Presets {
         add_action( 'storefront_footer', array( &$this, 'footer_credit_container' ), 15 );
         add_action( 'storefront_footer', array( &$this, 'footer_nav_menu' ), 25 );
         add_action( 'storefront_footer', array( &$this, 'footer_credit_container_close' ), 30 );
+    }
+
+    /**
+     * Get page ID by slug.
+     *
+     * @param $page_slug
+     * @return string|null
+     */
+    public function get_id_by_slug( string $page_slug ) {
+        $page = get_page_by_path( $page_slug );
+
+        if ( $page ) {
+            return $page->ID;
+        } else {
+            return false;
+        }
     }
 
 }

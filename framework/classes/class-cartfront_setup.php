@@ -47,6 +47,11 @@ class Cartfront_Setup {
 		add_image_size( $theme_name . '-full', 1200, 9999, false );
 
 		/**
+		 * Un-register the secondary menu from the parent theme.
+		 */
+		unregister_nav_menu( 'secondary' );
+
+		/**
 		 * Register nav menu for footer.
 		 */
 		register_nav_menus(
