@@ -554,7 +554,7 @@ class Cartfront_Layouts_Presets {
                 array(
                     'theme_location'    => 'handheld',
                     'container_class'   => 'handheld-navigation',
-                    'fallback_cb'       => array( &$this, 'primary_nav_menu_fallback' )
+                    'fallback_cb'       => array( &$this, 'handheld_nav_menu_fallback' )
                 )
             );
             ?>
@@ -567,7 +567,7 @@ class Cartfront_Layouts_Presets {
      *
      * @access public
      */
-    public function primary_nav_menu_fallback() {
+    public function primary_nav_menu_fallback( $handheld = 'no' ) {
         $items = array(
             'home'      => array(
                 'title'     => esc_html__( 'Home', 'cartfront' ),
@@ -580,6 +580,12 @@ class Cartfront_Layouts_Presets {
                 'title'     => esc_html__( 'Contact', 'cartfront' )
             )
         );
+
+        if ( 'yes' === $handheld ) {
+            echo '<div class="handheld-navigation">' . "\n";
+        } else {
+            echo '<div class="primary-navigation">' . "\n";
+        }
 
         echo '<div class="primary-menu-fallback">' . "\n";
         echo '<ul>' . "\n";
@@ -608,6 +614,17 @@ class Cartfront_Layouts_Presets {
         }
 
         echo '</ul>' . "\n";
+        echo '</div><!-- .primary-menu-fallback -->' . "\n";
+        echo '</div><!-- .primary/handheld-navigation -->' . "\n";
+    }
+
+    /**
+     * Handheld nav menu fallback.
+     *
+     * @access public
+     */
+    public function handheld_nav_menu_fallback() {
+        $this->primary_nav_menu_fallback( 'yes' );
     }
 
     /**
