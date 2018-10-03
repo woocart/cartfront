@@ -28,7 +28,8 @@ class Cartfront_Layouts_Presets {
         add_action( 'customize_register', array( &$this, 'customize_register' ) );
         add_action( 'get_header', array( &$this, 'presets_header' ) );
         add_action( 'init', array( &$this, 'add_footer' ) );
-        add_action( 'update_option_cartfront_theme', array( &$this, 'check_layout' ) );
+        add_action( 'add_option_cartfront_theme', array( &$this, 'update_theme' ),10, 2);
+        add_action( 'update_option_cartfront_theme', array( &$this, 'update_theme' ), 10, 2);
 
         add_filter( 'body_class', array( &$this, 'body_class' ) );
         add_action( 'wp_ajax_change_layout', array( &$this, 'change_options' ) );
@@ -442,35 +443,27 @@ class Cartfront_Layouts_Presets {
      *
      * @access public
      */
-    public function check_layout() {
+    public function update_theme($old, $option) {
         global $cartfront_path;
 
-        // Option set by the wizard.
-        $option = get_option( 'cartfront_theme' );
+        // Check for layout values.
+        if ( in_array( $option, array( 'toys', 'books', 'jewellery', 'electronics' ) ) ) {
+            $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $option . '.json' );
+            $data_array = json_decode( $json_data, true );
 
-        // Currently set theme_mod
-        $layout = get_theme_mod( 'cf_lp_layout' );
-
-        // Change settings if they don't match.
-        if ( $option !== $layout ) {
-            // Check for layout values.
-            if ( in_array( $option, array( 'toys', 'books', 'jewellery', 'electronics' ) ) ) {
-                $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $option . '.json' );
-                $data_array = json_decode( $json_data, true );
-
-                foreach ( $data_array as $k => $v ) {
-                    if ( ! empty( $v ) ) {
-                        set_theme_mod( $k, $v );
-                    }
+            foreach ( $data_array as $k => $v ) {
+                if ( ! empty( $v ) ) {
+                    set_theme_mod( $k, $v );
                 }
-
-                // Set layout to $option
-                set_theme_mod( 'cf_lp_layout', $option );
-
-                // Set color_scheme to $option
-                set_theme_mod( 'cf_lp_color_scheme', $option );
             }
+
+            // Set layout to $option
+            set_theme_mod( 'cf_lp_layout', $option );
+
+            // Set color_scheme to $option
+            set_theme_mod( 'cf_lp_color_scheme', $option );
         }
+        return $option;
     }
 
     /**
