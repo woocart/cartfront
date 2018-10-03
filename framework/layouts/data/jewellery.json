@@ -1,25 +1,4 @@
 {
-    "0": false,
-    "nav_menu_locations": {
-        "primary": 22,
-        "secondary": 23,
-        "handheld": 22
-    },
-    "custom_css_post_id": 620,
-    "custom_logo": 599,
-    "sidebars_widgets": {
-        "time": 1535535623,
-        "data": {
-            "wp_inactive_widgets": ["archives-2", "meta-2", "search-2", "categories-2", "recent-posts-2", "recent-comments-2"],
-            "sidebar-1": [],
-            "header-1": [],
-            "footer-1": ["text-4"],
-            "footer-2": ["text-5"],
-            "footer-3": [],
-            "footer-4": [],
-            "cartfront-footer-bar": ["woocommerce_widget_cart-3"]
-        }
-    },
     "storefront_heading_color": "#454ade",
     "storefront_text_color": "#1b1f3b",
     "storefront_accent_color": "#9439fa",
