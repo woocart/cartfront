@@ -30,8 +30,8 @@ class Cartfront_Layouts_Presets {
         add_action( 'init', array( &$this, 'add_footer' ) );
 
         add_filter( 'body_class', array( &$this, 'body_class' ) );
-        add_action( 'customize_save_after', array( &$this, 'change_modules' ) );
-        add_action( 'customize_save_after', array( &$this, 'color_scheme' ) );
+        add_action( 'wp_ajax_change_layout', array( &$this, 'change_options' ) );
+        add_action( 'wp_ajax_change_color_scheme', array( &$this, 'change_color_scheme' ) );
     }
 
     /**
@@ -63,7 +63,8 @@ class Cartfront_Layouts_Presets {
          */
         $wp_customize->add_setting( 'cf_lp_layout', array(
             'default'           => 'default',
-            'sanitize_callback' => 'storefront_sanitize_choices'
+            'sanitize_callback' => 'storefront_sanitize_choices',
+            'transport'         => 'postMessage'
         ) );
 
         $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'cf_lp_layout', array(
@@ -78,7 +79,7 @@ class Cartfront_Layouts_Presets {
                 'toys'          => esc_html__( 'Toy Store', 'cartfront' ),
                 'books'         => esc_html__( 'Book Store', 'cartfront' ),
                 'jewellery'     => esc_html__( 'Jewellery Store', 'cartfront' ),
-                'electronics'   => esc_html__( 'Electronics Store', 'cartfront' )
+                'electronics'   => esc_html__( 'Electronics Store', 'cartfront' ),
             )
         ) ) );
 
@@ -87,7 +88,8 @@ class Cartfront_Layouts_Presets {
          */
         $wp_customize->add_setting( 'cf_lp_color_scheme', array(
             'default'           => 'default',
-            'sanitize_callback' => 'storefront_sanitize_choices'
+            'sanitize_callback' => 'storefront_sanitize_choices',
+            'transport'         => 'postMessage'
         ) );
 
         $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'cf_lp_color_scheme', array(
@@ -218,25 +220,25 @@ class Cartfront_Layouts_Presets {
                 background-color: ' . sanitize_hex_color( get_theme_mod( 'cf_nav_bg_color', '#ffffff' ) ) . ';
             }
 
-            .storefront-primary-navigation .main-navigation .primary-navigation > ul > li {
+            .storefront-primary-navigation .main-navigation ul > li {
                 color: ' . sanitize_hex_color( get_theme_mod( 'cf_nav_text_color', '#43454b' ) ) . ';
             }
 
-            .storefront-primary-navigation .main-navigation .primary-navigation > ul > li a,
+            .storefront-primary-navigation .main-navigation ul > li a,
             .storefront-primary-navigation .site-header-cart > li > a,
             .storefront-primary-navigation a.cart-contents:hover {
                 color: ' . sanitize_hex_color( get_theme_mod( 'cf_nav_link_color', '#333333' ) ) . ';
             }
 
-            .storefront-primary-navigation .main-navigation .primary-navigation ul.sub-menu {
+            .storefront-primary-navigation .main-navigation ul.sub-menu {
                 background-color: ' . sanitize_hex_color( get_theme_mod( 'cf_sub_nav_bg_color', '#ffffff' ) ) . ';
             }
 
-            .storefront-primary-navigation .main-navigation .primary-navigation ul.sub-menu li {
+            .storefront-primary-navigation .main-navigation ul.sub-menu li {
                 color: ' . sanitize_hex_color( get_theme_mod( 'cf_sub_nav_text_color', '#43454b' ) ) . ';
             }
 
-            .storefront-primary-navigation .main-navigation .primary-navigation ul.sub-menu li a {
+            .storefront-primary-navigation .main-navigation ul.sub-menu li a {
                 color: ' . sanitize_hex_color( get_theme_mod( 'cf_sub_nav_link_color', '#333333' ) ) . ';
             }
         }';
@@ -308,20 +310,64 @@ class Cartfront_Layouts_Presets {
      *
      * @access public
      */
-    public function change_modules() {
+    public function change_options() {
         global $cartfront_path;
 
-        // Refresh values.
-        $this->get_values();
+        // Get layout value.
+        $store = sanitize_text_field( $_POST['layout'] );
 
-        if ( 'default' !== $this->store ) {
-            $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $this->store . '.json' );
+        // Default response.
+        $data = array(
+            'status'    => 100,
+            'layout'    => $store
+        );
+
+        if ( 'default' !== $store ) {
+            $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $store . '.json' );
             $data_array = json_decode( $json_data, true );
-             // Switch the homepage modules.
-            $components = $data_array['cf_hc_data'];
-             // Change theme mod value.
-            set_theme_mod( 'cf_hc_data', $components );
+
+            // Settings to be modified.
+            $settings = array(
+                'storefront_layout',
+                'storefront_sticky_add_to_cart',
+                'storefront_product_pagination',
+                'cf_hc_data',
+                'cf_lb_section_title',
+                'cf_lb_items_row',
+                'cf_hm_enable',
+                'cf_bc_post_layout_archive',
+                'cf_bc_blog_archive_layout',
+                'cf_bc_magazine_layout',
+                'cf_bc_post_layout_single',
+                'cf_bc_blog_single_layout',
+                'cf_bc_homepage_blog_toggle',
+                'cf_bc_homepage_blog_title',
+                'cf_bc_post_layout_homepage',
+                'cf_bc_homepage_blog_columns',
+                'cf_bc_homepage_blog_limit',
+                'cf_ss_choice',
+                'cf_ss_section_title',
+                'cf_ss_items_row',
+                'cf_ss_count',
+                'cf_ss_posts_order',
+                'cf_ss_products_type'
+            );
+
+            // Loop through the settings and add to filter.
+            foreach ( $settings as $setting ) {
+                if ( isset( $data_array[$setting] ) ) {
+                    if ( ! empty( $data_array[$setting] ) ) {
+                        set_theme_mod( $setting, $data_array[$setting] );
+                    }
+                }
+            }
+
+            // Change status.
+            $data['status'] = 200;
         }
+
+        echo json_encode( $data );
+        exit;
     }
 
     /**
@@ -329,11 +375,17 @@ class Cartfront_Layouts_Presets {
      *
      * @access public
      */
-    public function color_scheme() {
+    public function change_color_scheme() {
         global $cartfront_path;
 
-        // Refresh values.
-        $color_scheme = get_theme_mod( 'cf_lp_color_scheme', 'default' );
+        // Get color scheme.
+        $color_scheme = sanitize_text_field( $_POST['color_scheme'] );
+
+        // Default response.
+        $data = array(
+            'status'            => 100,
+            'color_scheme'      => $color_scheme
+        );
 
          if ( 'default' !== $color_scheme ) {
             $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $color_scheme . '.json' );
@@ -343,24 +395,32 @@ class Cartfront_Layouts_Presets {
              * Store-specific color schemes.
              */
             $settings = array(
+                'storefront_heading_color',
+                'storefront_text_color',
+                'storefront_accent_color',
+                'storefront_hero_heading_color',
+                'storefront_hero_text_color',
                 'storefront_header_background_color',
                 'storefront_header_text_color',
                 'storefront_header_link_color',
-                'cf_fb_background_color',
                 'storefront_footer_background_color',
+                'storefront_footer_heading_color',
                 'storefront_footer_text_color',
                 'storefront_footer_link_color',
                 'storefront_button_background_color',
                 'storefront_button_text_color',
-                'storefront_heading_color',
-                'storefront_accent_color',
                 'storefront_button_alt_background_color',
-                'cf_fb_background_image',
-                'storefront_text_color',
-                'cf_lp_layout',
+                'storefront_button_alt_text_color',
+                'cf_fb_background_color',
+                'cf_fb_heading_color',
+                'cf_fb_text_color',
+                'cf_fb_link_color',
                 'cf_nav_bg_color',
                 'cf_nav_text_color',
-                'cf_nav_link_color'
+                'cf_nav_link_color',
+                'cf_sub_nav_bg_color',
+                'cf_sub_nav_text_color',
+                'cf_sub_nav_link_color'
             );
 
             foreach ( $settings as $setting ) {
@@ -370,6 +430,9 @@ class Cartfront_Layouts_Presets {
                     }
                 }
             }
+
+            // Change status.
+            $data['status'] = 200;
         }
     }
 

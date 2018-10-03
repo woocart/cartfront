@@ -53,4 +53,45 @@
 			}
 		} );
 	} );
+
+	/**
+	 * Layouts and color scheme.
+	 */
+	wp.customize( 'cf_lp_layout', function( value ) {
+		value.bind( function( to ) {
+			// AJAX update
+			$.ajax( {
+				type: 'POST',
+				url: cf_customizer.ajaxurl,
+				data: {
+					action: 'change_layout',
+					layout: to
+				}
+			} ).done( function( data ) {
+				if( data.status != 100 ) {	
+					// Refresh pane
+					wp.customize.preview.send( 'refresh' );
+				}
+			} );
+		} );
+	} );
+
+	wp.customize( 'cf_lp_color_scheme', function( value ) {
+		value.bind( function( to ) {
+			// AJAX update
+			$.ajax( {
+				type: 'POST',
+				url: cf_customizer.ajaxurl,
+				data: {
+					action: 'change_color_scheme',
+					color_scheme: to
+				}
+			} ).done( function( data ) {
+				if( data.status != 100 ) {	
+					// Refresh pane
+					wp.customize.preview.send( 'refresh' );
+				}
+			} );
+		} );
+	} );
 } )( jQuery );
