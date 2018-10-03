@@ -28,8 +28,11 @@ class Cartfront_Layouts_Presets {
         add_action( 'customize_register', array( &$this, 'customize_register' ) );
         add_action( 'get_header', array( &$this, 'presets_header' ) );
         add_action( 'init', array( &$this, 'add_footer' ) );
+        add_action( 'update_option_cartfront_theme', array( &$this, 'check_layout' ) );
 
         add_filter( 'body_class', array( &$this, 'body_class' ) );
+        add_action( 'wp_ajax_change_layout', array( &$this, 'change_options' ) );
+        add_action( 'wp_ajax_change_color_scheme', array( &$this, 'change_color_scheme' ) );
     }
 
     /**
@@ -61,7 +64,8 @@ class Cartfront_Layouts_Presets {
          */
         $wp_customize->add_setting( 'cf_lp_layout', array(
             'default'           => 'default',
-            'sanitize_callback' => 'storefront_sanitize_choices'
+            'sanitize_callback' => 'storefront_sanitize_choices',
+            'transport'         => 'postMessage'
         ) );
 
         $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'cf_lp_layout', array(
@@ -72,11 +76,11 @@ class Cartfront_Layouts_Presets {
             'type'          => 'select',
             'priority'      => 10,
             'choices'       => array(
-                'default'       => esc_html__( 'Default Layout', 'cartfront' ),
-                'toys'          => esc_html__( 'Toys Store', 'cartfront' ),
-                'books'         => esc_html__( 'Books Store', 'cartfront' ),
+                'default'       => esc_html__( 'Default', 'cartfront' ),
+                'toys'          => esc_html__( 'Toy Store', 'cartfront' ),
+                'books'         => esc_html__( 'Book Store', 'cartfront' ),
                 'jewellery'     => esc_html__( 'Jewellery Store', 'cartfront' ),
-                'electronics'   => esc_html__( 'Electronics Store', 'cartfront' )
+                'electronics'   => esc_html__( 'Electronics Store', 'cartfront' ),
             )
         ) ) );
 
@@ -85,7 +89,8 @@ class Cartfront_Layouts_Presets {
          */
         $wp_customize->add_setting( 'cf_lp_color_scheme', array(
             'default'           => 'default',
-            'sanitize_callback' => 'storefront_sanitize_choices'
+            'sanitize_callback' => 'storefront_sanitize_choices',
+            'transport'         => 'postMessage'
         ) );
 
         $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'cf_lp_color_scheme', array(
@@ -96,8 +101,11 @@ class Cartfront_Layouts_Presets {
             'type'          => 'select',
             'priority'      => 15,
             'choices'       => array(
-                'default'   => esc_html__( 'Default Color Scheme', 'cartfront' ),
-                'toys'      => esc_html__( 'Toys Store Color Scheme', 'cartfront' )
+                'default'       => esc_html__( 'Default', 'cartfront' ),
+                'toys'          => esc_html__( 'Toy Store', 'cartfront' ),
+                'books'         => esc_html__( 'Book Store', 'cartfront' ),
+                'jewellery'     => esc_html__( 'Jewellery Store', 'cartfront' ),
+                'electronics'   => esc_html__( 'Electronics Store', 'cartfront' )
             )
         ) ) );
 
@@ -213,25 +221,25 @@ class Cartfront_Layouts_Presets {
                 background-color: ' . sanitize_hex_color( get_theme_mod( 'cf_nav_bg_color', '#ffffff' ) ) . ';
             }
 
-            .storefront-primary-navigation .main-navigation .primary-navigation > ul > li {
+            .storefront-primary-navigation .main-navigation ul > li {
                 color: ' . sanitize_hex_color( get_theme_mod( 'cf_nav_text_color', '#43454b' ) ) . ';
             }
 
-            .storefront-primary-navigation .main-navigation .primary-navigation > ul > li a,
+            .storefront-primary-navigation .main-navigation ul > li a,
             .storefront-primary-navigation .site-header-cart > li > a,
             .storefront-primary-navigation a.cart-contents:hover {
                 color: ' . sanitize_hex_color( get_theme_mod( 'cf_nav_link_color', '#333333' ) ) . ';
             }
 
-            .storefront-primary-navigation .main-navigation .primary-navigation ul.sub-menu {
+            .storefront-primary-navigation .main-navigation ul.sub-menu {
                 background-color: ' . sanitize_hex_color( get_theme_mod( 'cf_sub_nav_bg_color', '#ffffff' ) ) . ';
             }
 
-            .storefront-primary-navigation .main-navigation .primary-navigation ul.sub-menu li {
+            .storefront-primary-navigation .main-navigation ul.sub-menu li {
                 color: ' . sanitize_hex_color( get_theme_mod( 'cf_sub_nav_text_color', '#43454b' ) ) . ';
             }
 
-            .storefront-primary-navigation .main-navigation .primary-navigation ul.sub-menu li a {
+            .storefront-primary-navigation .main-navigation ul.sub-menu li a {
                 color: ' . sanitize_hex_color( get_theme_mod( 'cf_sub_nav_link_color', '#333333' ) ) . ';
             }
         }';
@@ -296,6 +304,173 @@ class Cartfront_Layouts_Presets {
         $classes[] = $this->store . '-store';
 
         return $classes;
+    }
+
+    /**
+     * Change modules.
+     *
+     * @access public
+     */
+    public function change_options() {
+        global $cartfront_path;
+
+        // Get layout value.
+        $store = sanitize_text_field( $_POST['layout'] );
+
+        // Default response.
+        $data = array(
+            'status'    => 100,
+            'layout'    => $store
+        );
+
+        if ( in_array( $store, array( 'toys', 'books', 'jewellery', 'electronics' ) ) ) {
+            $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $store . '.json' );
+            $data_array = json_decode( $json_data, true );
+
+            // Settings to be modified.
+            $settings = array(
+                'storefront_layout',
+                'storefront_sticky_add_to_cart',
+                'storefront_product_pagination',
+                'cf_hc_data',
+                'cf_lb_section_title',
+                'cf_lb_items_row',
+                'cf_hm_enable',
+                'cf_bc_post_layout_archive',
+                'cf_bc_blog_archive_layout',
+                'cf_bc_magazine_layout',
+                'cf_bc_post_layout_single',
+                'cf_bc_blog_single_layout',
+                'cf_bc_homepage_blog_toggle',
+                'cf_bc_homepage_blog_title',
+                'cf_bc_post_layout_homepage',
+                'cf_bc_homepage_blog_columns',
+                'cf_bc_homepage_blog_limit',
+                'cf_ss_choice',
+                'cf_ss_section_title',
+                'cf_ss_items_row',
+                'cf_ss_count',
+                'cf_ss_posts_order',
+                'cf_ss_products_type'
+            );
+
+            // Loop through the settings and add to filter.
+            foreach ( $settings as $setting ) {
+                if ( isset( $data_array[$setting] ) ) {
+                    if ( ! empty( $data_array[$setting] ) ) {
+                        set_theme_mod( $setting, $data_array[$setting] );
+                    }
+                }
+            }
+
+            // Change status.
+            $data['status'] = 200;
+        }
+
+        echo json_encode( $data );
+        exit;
+    }
+
+    /**
+     * Color scheme.
+     *
+     * @access public
+     */
+    public function change_color_scheme() {
+        global $cartfront_path;
+
+        // Get color scheme.
+        $color_scheme = sanitize_text_field( $_POST['color_scheme'] );
+
+        // Default response.
+        $data = array(
+            'status'            => 100,
+            'color_scheme'      => $color_scheme
+        );
+
+         if ( in_array( $color_scheme, array( 'toys', 'books', 'jewellery', 'electronics' ) ) ) {
+            $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $color_scheme . '.json' );
+            $data_array = json_decode( $json_data, true );
+
+             /**
+              * Store-specific color schemes.
+              */
+            $settings = array(
+                'storefront_heading_color',
+                'storefront_text_color',
+                'storefront_accent_color',
+                'storefront_hero_heading_color',
+                'storefront_hero_text_color',
+                'storefront_header_background_color',
+                'storefront_header_text_color',
+                'storefront_header_link_color',
+                'storefront_footer_background_color',
+                'storefront_footer_heading_color',
+                'storefront_footer_text_color',
+                'storefront_footer_link_color',
+                'storefront_button_background_color',
+                'storefront_button_text_color',
+                'storefront_button_alt_background_color',
+                'storefront_button_alt_text_color',
+                'cf_fb_background_color',
+                'cf_fb_heading_color',
+                'cf_fb_text_color',
+                'cf_fb_link_color',
+                'cf_nav_bg_color',
+                'cf_nav_text_color',
+                'cf_nav_link_color',
+                'cf_sub_nav_bg_color',
+                'cf_sub_nav_text_color',
+                'cf_sub_nav_link_color'
+            );
+
+            foreach ( $settings as $setting ) {
+                if ( isset( $data_array[$setting] ) ) {
+                    if ( ! empty( $data_array[$setting] ) ) {
+                        set_theme_mod( $setting, $data_array[$setting] );
+                    }
+                }
+            }
+
+            // Change status.
+            $data['status'] = 200;
+        }
+    }
+
+    /**
+     * Check for the layout and change settings according to the `cartfront_theme_option`.
+     *
+     * @access public
+     */
+    public function check_layout() {
+        global $cartfront_path;
+
+        // Option set by the wizard.
+        $option = get_option( 'cartfront_theme' );
+
+        // Currently set theme_mod
+        $layout = get_theme_mod( 'cf_lp_layout' );
+
+        // Change settings if they don't match.
+        if ( $option !== $layout ) {
+            // Check for layout values.
+            if ( in_array( $option, array( 'toys', 'books', 'jewellery', 'electronics' ) ) ) {
+                $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $option . '.json' );
+                $data_array = json_decode( $json_data, true );
+
+                foreach ( $data_array as $k => $v ) {
+                    if ( ! empty( $v ) ) {
+                        set_theme_mod( $k, $v );
+                    }
+                }
+
+                // Set layout to $option
+                set_theme_mod( 'cf_lp_layout', $option );
+
+                // Set color_scheme to $option
+                set_theme_mod( 'cf_lp_color_scheme', $option );
+            }
+        }
     }
 
     /**
@@ -379,7 +554,7 @@ class Cartfront_Layouts_Presets {
                 array(
                     'theme_location'    => 'handheld',
                     'container_class'   => 'handheld-navigation',
-                    'fallback_cb'       => array( &$this, 'primary_nav_menu_fallback' )
+                    'fallback_cb'       => array( &$this, 'handheld_nav_menu_fallback' )
                 )
             );
             ?>
@@ -392,7 +567,7 @@ class Cartfront_Layouts_Presets {
      *
      * @access public
      */
-    public function primary_nav_menu_fallback() {
+    public function primary_nav_menu_fallback( $handheld = 'no' ) {
         $items = array(
             'home'      => array(
                 'title'     => esc_html__( 'Home', 'cartfront' ),
@@ -405,6 +580,12 @@ class Cartfront_Layouts_Presets {
                 'title'     => esc_html__( 'Contact', 'cartfront' )
             )
         );
+
+        if ( 'yes' === $handheld ) {
+            echo '<div class="handheld-navigation">' . "\n";
+        } else {
+            echo '<div class="primary-navigation">' . "\n";
+        }
 
         echo '<div class="primary-menu-fallback">' . "\n";
         echo '<ul>' . "\n";
@@ -433,6 +614,17 @@ class Cartfront_Layouts_Presets {
         }
 
         echo '</ul>' . "\n";
+        echo '</div><!-- .primary-menu-fallback -->' . "\n";
+        echo '</div><!-- .primary/handheld-navigation -->' . "\n";
+    }
+
+    /**
+     * Handheld nav menu fallback.
+     *
+     * @access public
+     */
+    public function handheld_nav_menu_fallback() {
+        $this->primary_nav_menu_fallback( 'yes' );
     }
 
     /**

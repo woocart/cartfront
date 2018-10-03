@@ -69,12 +69,21 @@ class Cartfront {
     /**
      * Binds JS handlers to make Theme Customizer preview reload changes asynchronously.
      *
-     * @access  public
+     * @access public
      */
     public function customize_preview_js() {
         global $theme_name, $theme_version, $cartfront_url;
 
         wp_enqueue_script( $theme_name . '-customizer', $cartfront_url . '/framework/js/customizer.js', array( 'customize-preview' ), $theme_version, true );
+
+        /**
+         * Localization
+         */
+        $localization = array(
+            'ajaxurl' => admin_url( 'admin-ajax.php' ),
+        );
+
+        wp_localize_script( $theme_name . '-customizer', 'cf_customizer', $localization );
     }
 
 }
