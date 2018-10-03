@@ -28,7 +28,7 @@ class Cartfront_Layouts_Presets {
         add_action( 'customize_register', array( &$this, 'customize_register' ) );
         add_action( 'get_header', array( &$this, 'presets_header' ) );
         add_action( 'init', array( &$this, 'add_footer' ) );
-        add_action( 'init', array( &$this, 'check_layout' ) );
+        add_action( 'update_option_cartfront_theme', array( &$this, 'check_layout' ) );
 
         add_filter( 'body_class', array( &$this, 'body_class' ) );
         add_action( 'wp_ajax_change_layout', array( &$this, 'change_options' ) );
@@ -366,9 +366,6 @@ class Cartfront_Layouts_Presets {
             // Change status.
             $data['status'] = 200;
         }
-
-        // Update the wizard option.
-        update_option( 'cartfront_theme', $store );
 
         echo json_encode( $data );
         exit;
