@@ -12,10 +12,9 @@ namespace Niteo\WooCart\CartFront {
     }
 
     use WP_Customize_Control;
-    use WP_Customize_Repeater_Control;
 
-    if ( ! class_exists( 'Cartfront_Link_Boxes' ) ) :
-    class Cartfront_Link_Boxes {
+    if ( ! class_exists( 'Link_Boxes' ) ) :
+    class Link_Boxes {
 
         /**
          * Constructor function.

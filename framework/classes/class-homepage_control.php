@@ -11,8 +11,8 @@ namespace Niteo\WooCart\CartFront {
         exit;
     }
 
-    if ( ! class_exists( 'Cartfront_Homepage_Control' ) ) :
-    class Cartfront_Homepage_Control {
+    if ( ! class_exists( 'Homepage_Control' ) ) :
+    class Homepage_Control {
 
         /**
          * The name of the hook for all the actions.
@@ -41,7 +41,7 @@ namespace Niteo\WooCart\CartFront {
             /**
              * Initialize customizer.
              */
-            $homepage_control_customizer = new Cartfront_Homepage_Control_Customizer();
+            $homepage_control_customizer = new Homepage_Control_Customizer();
         }
 
         /**

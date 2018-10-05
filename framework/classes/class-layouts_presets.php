@@ -14,8 +14,8 @@ namespace Niteo\WooCart\CartFront {
     use WP_Customize_Control;
     use WP_Customize_Color_Control;
 
-    if ( ! class_exists( 'Cartfront_Layouts_Presets' ) ) :
-    class Cartfront_Layouts_Presets {
+    if ( ! class_exists( 'Layouts_Presets' ) ) :
+    class Layouts_Presets {
 
         /**
          * Store value.
@@ -34,8 +34,8 @@ namespace Niteo\WooCart\CartFront {
             add_action( 'customize_register', array( &$this, 'customize_register' ) );
             add_action( 'get_header', array( &$this, 'presets_header' ) );
             add_action( 'init', array( &$this, 'add_footer' ) );
-            add_action( 'add_option_cartfront_theme', array( &$this, 'update_theme' ),10, 2);
-            add_action( 'update_option_cartfront_theme', array( &$this, 'update_theme' ), 10, 2);
+            add_action( 'add_option_cartfront_theme', array( &$this, 'update_theme' ),10, 2 );
+            add_action( 'update_option_cartfront_theme', array( &$this, 'update_theme' ), 10, 2 );
             add_action( 'wp_ajax_change_layout', array( &$this, 'change_options' ) );
             add_action( 'wp_ajax_change_color_scheme', array( &$this, 'change_color_scheme' ) );
 
@@ -450,7 +450,7 @@ namespace Niteo\WooCart\CartFront {
          *
          * @access public
          */
-        public function update_theme($old, $option) {
+        public function update_theme( $old, $option ) {
             global $cartfront_path;
 
             // Check for layout values.
@@ -470,6 +470,7 @@ namespace Niteo\WooCart\CartFront {
                 // Set color_scheme to $option
                 set_theme_mod( 'cf_lp_color_scheme', $option );
             }
+
             return $option;
         }
 

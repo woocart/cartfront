@@ -11,8 +11,8 @@ namespace Niteo\WooCart\CartFront {
 	    exit;
 	}
 
-	if ( ! class_exists( 'Cartfront_Setup' ) ) :
-	class Cartfront_Setup {
+	if ( ! class_exists( 'Setup' ) ) :
+	class Setup {
 
 		/**
 	     * Constructor function.
@@ -59,7 +59,7 @@ namespace Niteo\WooCart\CartFront {
 			register_nav_menus(
 				apply_filters(
 					'cartfront_register_nav_menus', array(
-						'footer' => __( 'Footer Menu', 'cartfront' )
+						'footer' => esc_html__( 'Footer Menu', 'cartfront' )
 					)
 				)
 			);
@@ -79,6 +79,7 @@ namespace Niteo\WooCart\CartFront {
 		 * Cartfront footer credit.
 		 *
 		 * @access public
+		 * @codeCoverageIgnore
 		 */
 		public function cartfront_credit() {
 			?>
@@ -120,6 +121,7 @@ namespace Niteo\WooCart\CartFront {
 		 * Welcome screen to be shown on theme activation.
 		 *
 		 * @access public
+		 * @codeCoverageIgnore
 		 */
 		public function welcome_screen() {
 			require_once( ABSPATH . 'wp-load.php' );

@@ -13,8 +13,9 @@ namespace Niteo\WooCart\CartFront {
 
 	/**
 	 * Function for auto-loading classes.
+	 * @codeCoverageIgnore
 	 */
-	function cartfront_autoloader( $class_name ) {
+	function autoloader( $class_name ) {
 		global $cartfront_path;
 
 		$class_name = str_replace( 'Niteo\WooCart\CartFront\\', '', $class_name );
@@ -28,6 +29,6 @@ namespace Niteo\WooCart\CartFront {
 	    return false;
 	}
 
-	spl_autoload_register( 'Niteo\WooCart\CartFront\cartfront_autoloader' );
+	spl_autoload_register( 'Niteo\WooCart\CartFront\autoloader' );
 
 }

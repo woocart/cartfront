@@ -14,8 +14,8 @@ namespace Niteo\WooCart\CartFront {
     use WP_Customize_Upload_Control;
     use WP_Customize_Color_Control;
 
-    if ( ! class_exists( 'Cartfront_Footer_Bar' ) ) :
-    class Cartfront_Footer_Bar {
+    if ( ! class_exists( 'Footer_Bar' ) ) :
+    class Footer_Bar {
 
         /**
          * Constructor function.
@@ -43,7 +43,7 @@ namespace Niteo\WooCart\CartFront {
                 'cf_fb_background_color' => '#222222',
                 'cf_fb_heading_color'    => '#ffffff',
                 'cf_fb_text_color'       => '#dddddd',
-                'cf_fb_link_color'       => '#ffffff',
+                'cf_fb_link_color'       => '#ffffff'
             ) );
         }
 
@@ -52,6 +52,7 @@ namespace Niteo\WooCart\CartFront {
          *
          * @uses get_default_settings()
          * @return void
+         * @codeCoverageIgnore
          */
         public function default_settings() {
             foreach ( $this->get_default_settings() as $mod => $val ) {
@@ -67,6 +68,7 @@ namespace Niteo\WooCart\CartFront {
          * @param  array $wp_customize the Customizer object.
          * @uses   get_default_settings()
          * @return void
+         * @codeCoverageIgnore
          */
         public function edit_default_settings( $wp_customize ) {
             foreach ( $this->get_default_settings() as $mod => $val ) {

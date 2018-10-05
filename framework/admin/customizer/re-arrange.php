@@ -103,7 +103,7 @@ namespace Niteo\WooCart\CartFront {
     		$wp_customize->get_section( $cf_cf_key )->priority 	= $cf_cf_value;
     	}
     }
-    add_action( 'customize_register', 'Niteo\WooCart\CartFront\cartfront_rearrange_sections', PHP_INT_MAX );
+    add_action( 'customize_register', 'cartfront_rearrange_sections', PHP_INT_MAX );
     endif;
 
 }

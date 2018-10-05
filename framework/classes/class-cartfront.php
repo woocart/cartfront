@@ -24,7 +24,7 @@ namespace Niteo\WooCart\CartFront {
             /**
              * Setup theme.
              */
-            $setup              = new Cartfront_Setup();
+            $setup              = new Setup();
 
             add_action( 'wp_enqueue_scripts', array( &$this, 'scripts' ), PHP_INT_MAX );
             add_action( 'customize_preview_init', array( &$this, 'customize_preview_js' ) );
@@ -35,13 +35,13 @@ namespace Niteo\WooCart\CartFront {
             /**
              * Initialize classes.
              */
-            $footer_bar         = new Cartfront_Footer_Bar();
-            $hamburger_menu     = new Cartfront_Hamburger_Menu();
-            $blog_customiser    = new Cartfront_Blog_Customiser();
-            $homepage_control   = new Cartfront_Homepage_Control();
-            $simple_slider      = new Cartfront_Simple_Slider();
-            $link_boxes         = new Cartfront_Link_Boxes();
-            $layouts_presets    = new Cartfront_Layouts_Presets();
+            $footer_bar         = new Footer_Bar();
+            $hamburger_menu     = new Hamburger_Menu();
+            $blog_customiser    = new Blog_Customiser();
+            $homepage_control   = new Homepage_Control();
+            $simple_slider      = new Simple_Slider();
+            $link_boxes         = new Link_Boxes();
+            $layouts_presets    = new Layouts_Presets();
         }
 
         /**

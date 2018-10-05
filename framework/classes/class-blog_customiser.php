@@ -13,8 +13,8 @@ namespace Niteo\WooCart\CartFront {
 
     use WP_Customize_Control;
 
-    if ( ! class_exists( 'Cartfront_Blog_Customiser' ) ) :
-    class Cartfront_Blog_Customiser {
+    if ( ! class_exists( 'Blog_Customiser' ) ) :
+    class Blog_Customiser {
 
         /**
          * Constructor function.

@@ -12,11 +12,9 @@ namespace Niteo\WooCart\CartFront {
     }
 
     use WP_Customize_Control;
-    use WP_Customize_Posts_Control;
-    use WP_Customize_Repeater_Control;
 
-    if ( ! class_exists( 'Cartfront_Simple_Slider' ) ) :
-    class Cartfront_Simple_Slider {
+    if ( ! class_exists( 'Simple_Slider' ) ) :
+    class Simple_Slider {
 
         /**
          * Constructor function.
@@ -37,12 +35,6 @@ namespace Niteo\WooCart\CartFront {
          */
         public function customize_register( $wp_customize ) {
             global $cartfront_path;
-
-            /**
-             * Customizer controls.
-             */
-            require_once $cartfront_path . '/framework/admin/customizer/posts.php';
-            require_once $cartfront_path . '/framework/admin/customizer/repeater.php';
 
             /**
              * Add the panel.

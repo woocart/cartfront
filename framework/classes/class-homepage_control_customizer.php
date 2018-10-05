@@ -11,8 +11,8 @@ namespace Niteo\WooCart\CartFront {
         exit;
     }
 
-	if ( ! class_exists( 'Cartfront_Homepage_Control_Customizer' ) ) :
-	class Cartfront_Homepage_Control_Customizer {
+	if ( ! class_exists( 'Homepage_Control_Customizer' ) ) :
+	class Homepage_Control_Customizer {
 
 		/**
 		 * Constructor function.
@@ -46,7 +46,7 @@ namespace Niteo\WooCart\CartFront {
 				'capability' 	=> 'edit_theme_options'
 			) );
 
-			$wp_customize->add_control( new Cartfront_Homepage_Control_Customizer_Control( $wp_customize, 'cf_hc_data', array(
+			$wp_customize->add_control( new Homepage_Control_Customizer_Control( $wp_customize, 'cf_hc_data', array(
 				'description'       => esc_html__( 'Re-order the homepage components.', 'cartfront' ),
 				'section'           => 'cf_hc_section',
 				'settings'          => 'cf_hc_data',
@@ -105,7 +105,7 @@ namespace Niteo\WooCart\CartFront {
 			global $wp_filter;
 
 			$response 	= array();
-			$class 		= new Cartfront_Homepage_Control();
+			$class 		= new Homepage_Control();
 
 			if ( isset( $wp_filter[$class->hook] ) && 0 < iterator_count( $wp_filter[$class->hook] ) ) {
 				foreach ( $wp_filter[$class->hook] as $k => $v ) {
