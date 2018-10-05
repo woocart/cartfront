@@ -19,9 +19,10 @@ namespace Niteo\WooCart\CartFront {
 		global $cartfront_path;
 
 		$class_name = str_replace( 'Niteo\WooCart\CartFront\\', '', $class_name );
+		$class_name = str_replace( '\\', '/', $class_name );
 
-	    if ( file_exists( $cartfront_path . '/framework/classes/class-' . strtolower( $class_name ) . '.php' ) ) {
-	        require_once( $cartfront_path . '/framework/classes/class-' . strtolower( $class_name ) . '.php' );
+	    if ( file_exists( $cartfront_path . '/framework/classes/' . strtolower( $class_name ) . '.php' ) ) {
+	        require_once( $cartfront_path . '/framework/classes/' . strtolower( $class_name ) . '.php' );
 
 	        return true;
 	    }

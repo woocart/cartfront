@@ -11,6 +11,7 @@ namespace Niteo\WooCart\CartFront {
         exit;
     }
 
+    use Niteo\WooCart\CartFront\Customizer\Repeater_Control;
     use WP_Customize_Control;
 
     if ( ! class_exists( 'Link_Boxes' ) ) :
@@ -34,11 +35,6 @@ namespace Niteo\WooCart\CartFront {
          */
         public function customize_register( $wp_customize ) {
             global $cartfront_path;
-
-            /**
-             * Customizer controls.
-             */
-            require_once $cartfront_path . '/framework/admin/customizer/repeater.php';
 
             /**
              * Add a new section.
@@ -96,7 +92,7 @@ namespace Niteo\WooCart\CartFront {
                 'sanitize_callback' => 'Niteo\WooCart\CartFront\sanitize_repeater'
             ) );
 
-            $wp_customize->add_control( new WP_Customize_Repeater_Control( $wp_customize, 'cf_lb_items', array(
+            $wp_customize->add_control( new Repeater_Control( $wp_customize, 'cf_lb_items', array(
                 'label'     => esc_html__( 'Boxes', 'cartfront' ),
                 'description'   => esc_html__( 'Add boxes to showcase important links on the homepage.', 'cartfront' ),
                 'section'       => 'cf_lb_section',

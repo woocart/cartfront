@@ -11,6 +11,8 @@ namespace Niteo\WooCart\CartFront {
     	exit;
     }
 
+    use Niteo\WooCart\CartFront\Customizer\Rearrange;
+
     if ( ! class_exists( 'Cartfront' ) ) :
     class Cartfront {
 
@@ -42,6 +44,7 @@ namespace Niteo\WooCart\CartFront {
             $simple_slider      = new Simple_Slider();
             $link_boxes         = new Link_Boxes();
             $layouts_presets    = new Layouts_Presets();
+            $rearrange          = new Rearrange();
         }
 
         /**

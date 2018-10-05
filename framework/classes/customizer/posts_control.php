@@ -6,7 +6,7 @@
  * @package cartfront
  */
 
-namespace Niteo\WooCart\CartFront {
+namespace Niteo\WooCart\CartFront\Customizer {
 
     if ( ! defined( 'ABSPATH' ) ) {
         exit;
@@ -14,8 +14,8 @@ namespace Niteo\WooCart\CartFront {
 
     use WP_Customize_Control;
 
-    if ( ! class_exists( 'WP_Customize_Posts_Control' ) && class_exists( 'WP_Customize_Control' ) ) :
-		class WP_Customize_Posts_Control extends WP_Customize_Control {
+    if ( ! class_exists( 'Posts_Control' ) && class_exists( 'WP_Customize_Control' ) ) :
+		class Posts_Control extends WP_Customize_Control {
 
 			public $type = '';
 

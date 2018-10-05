@@ -50,7 +50,6 @@ namespace Niteo\WooCart\CartFront {
 	 */
 	require_once $cartfront_path . '/framework/include/autoloader.php';
 	require_once $cartfront_path . '/framework/include/sanitize.php';
-	require_once $cartfront_path . '/framework/admin/customizer/re-arrange.php';
 
 	/**
 	 * Initialize theme.

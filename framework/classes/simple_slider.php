@@ -11,6 +11,8 @@ namespace Niteo\WooCart\CartFront {
         exit;
     }
 
+    use Niteo\WooCart\CartFront\Customizer\Posts_Control;
+    use Niteo\WooCart\CartFront\Customizer\Repeater_Control;
     use WP_Customize_Control;
 
     if ( ! class_exists( 'Simple_Slider' ) ) :
@@ -191,7 +193,7 @@ namespace Niteo\WooCart\CartFront {
                 'sanitize_callback' => 'Niteo\WooCart\CartFront\sanitize_multiselect'
             ) );
 
-            $wp_customize->add_control( new WP_Customize_Posts_Control( $wp_customize, 'cf_ss_posts', array(
+            $wp_customize->add_control( new Posts_Control( $wp_customize, 'cf_ss_posts', array(
                 'label'         => esc_html__( 'Posts', 'cartfront' ),
                 'description'   => esc_html__( 'Select the posts to be shown in the slider.', 'cartfront' ),
                 'section'       => 'cf_ss_posts',
@@ -252,7 +254,7 @@ namespace Niteo\WooCart\CartFront {
                 'sanitize_callback' => 'Niteo\WooCart\CartFront\sanitize_repeater'
             ) );
 
-            $wp_customize->add_control( new WP_Customize_Repeater_Control( $wp_customize, 'cf_ss_custom_items', array(
+            $wp_customize->add_control( new Repeater_Control( $wp_customize, 'cf_ss_custom_items', array(
                 'label'     => esc_html__( 'Slides', 'cartfront' ),
                 'description'   => esc_html__( 'Add slides to the custom slider using this option.', 'cartfront' ),
                 'section'       => 'cf_ss_custom',
