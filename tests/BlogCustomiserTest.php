@@ -25,7 +25,7 @@ class BlogCustomiserTest extends TestCase {
 
 	/**
 	 * @covers \Niteo\WooCart\CartFront\Blog_Customiser::__construct
-	 */	 
+	 */
 	public function testConstructor() {
 		$blog = new Blog_Customiser();
 
@@ -38,6 +38,236 @@ class BlogCustomiserTest extends TestCase {
 
         $blog->__construct();
 		\WP_Mock::assertHooksAdded();
+	}
+
+	/**
+	 * @covers \Niteo\WooCart\CartFront\Blog_Customiser::__construct
+	 * @covers \Niteo\WooCart\CartFront\Blog_Customiser::customize_register
+	 */
+	public function testCustomizeRegister() {
+		$wp_customize 	= \Mockery::mock( 'WP_Customize_Manager' );
+		$blog 			= new Blog_Customiser();
+
+		$wp_customize->shouldReceive( 'add_panel' )
+					 ->once()
+					 ->andReturn( true );
+
+		$wp_customize->shouldReceive( 'add_section' )
+					 ->andReturn( true );
+
+		$wp_customize->shouldReceive( 'add_setting' )
+					 ->andReturn( true );
+
+		\Mockery::mock( 'WP_Customize_Control' );
+		$wp_customize->shouldReceive( 'add_control' )
+					 ->andReturn( true );
+
+		$blog->customize_register( $wp_customize );
+	}
+
+	/**
+	 * @covers \Niteo\WooCart\CartFront\Blog_Customiser::__construct
+	 * @covers \Niteo\WooCart\CartFront\Blog_Customiser::body_class
+	 * @covers Niteo\WooCart\CartFront\Blog_Customiser::is_blog_archive
+	 */
+	public function testBodyClass() {
+		$blog = new Blog_Customiser();
+
+		\WP_Mock::userFunction(
+			'get_theme_mod', [
+				'return' => true
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_singular', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_archive', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_search', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_category', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_tag', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_home', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_page_template', [
+				'return' => false
+			]
+		);
+
+		$response = $blog->body_class( [] );
+		$this->assertEquals( [], $response );
+	}
+
+	/**
+	 * @covers \Niteo\WooCart\CartFront\Blog_Customiser::__construct
+	 * @covers \Niteo\WooCart\CartFront\Blog_Customiser::layout
+	 * @covers \Niteo\WooCart\CartFront\Blog_Customiser::is_blog_archive
+	 */
+	public function testLayout() {
+		$blog = new Blog_Customiser();
+
+		\WP_Mock::userFunction(
+			'get_theme_mod', [
+				'return' => true
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_singular', [
+				'return' => true
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_archive', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_search', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_category', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_tag', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_home', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_page_template', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'remove_action', [
+				'return' => true
+			]
+		);
+
+		$blog->layout();
+	}
+
+	/**
+	 * @covers \Niteo\WooCart\CartFront\Blog_Customiser::__construct
+	 * @covers \Niteo\WooCart\CartFront\Blog_Customiser::post_class
+	 * @covers \Niteo\WooCart\CartFront\Blog_Customiser::is_blog_archive
+	 */
+	public function testPostClass() {
+		$blog = new Blog_Customiser();
+
+		\WP_Mock::userFunction(
+			'get_theme_mod', [
+				'return' => true
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_archive', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_search', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_category', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_tag', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_home', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_page_template', [
+				'return' => false
+			]
+		);
+
+		$response = $blog->post_class( [] );
+		$this->assertEquals( [], $response );
+	}
+
+	/**
+	 * @covers \Niteo\WooCart\CartFront\Blog_Customiser::__construct
+	 * @covers \Niteo\WooCart\CartFront\Blog_Customiser::is_blog_archive
+	 */
+	public function testIsblogArchive() {
+		$blog = new Blog_Customiser();
+
+		\WP_Mock::userFunction(
+			'is_woocommerce', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_archive', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_search', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_category', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_tag', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_home', [
+				'return' => false
+			]
+		);
+		\WP_Mock::userFunction(
+			'is_page_template', [
+				'return' => false
+			]
+		);
+
+		$response = $blog->is_blog_archive();
+		$this->assertFalse( $response );
 	}
 
 }

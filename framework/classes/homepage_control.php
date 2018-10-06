@@ -86,11 +86,11 @@ namespace Niteo\WooCart\CartFront {
         /**
          * Maybe remove disabled items from the main ordered array.
          *
-         * @access  private
+         * @access  public
          * @param   array $components   Array with components order.
          * @return  array               Re-ordered components with disabled components removed.
          */
-        private function remove_disabled_items( $components ) {
+        public function remove_disabled_items( $components ) {
             if ( 0 < count( $components ) ) {
                 foreach ( $components as $k => $v ) {
                     if ( false !== strpos( $v, '[disabled]' ) ) {

@@ -263,6 +263,9 @@ namespace Niteo\WooCart\CartFront {
             ) ) );
         }
 
+        /**
+         * @codeCoverageIgnore
+         */
         public static function cartfront_slider() {
             $slider_type    = esc_html( get_theme_mod( 'cf_ss_choice', 'posts' ) );
             $posts_count    = absint( get_theme_mod( 'cf_ss_count', 5 ) );

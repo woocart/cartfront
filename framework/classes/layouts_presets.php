@@ -322,6 +322,9 @@ namespace Niteo\WooCart\CartFront {
         public function change_options() {
             global $cartfront_path;
 
+            // Check for nonce.
+            check_ajax_referer( 'cartfront_nonce', 'nonce' );
+
             // Get layout value.
             $store = sanitize_text_field( $_POST['layout'] );
 
@@ -332,51 +335,59 @@ namespace Niteo\WooCart\CartFront {
             );
 
             if ( in_array( $store, array( 'toys', 'books', 'jewellery', 'electronics' ) ) ) {
-                $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $store . '.json' );
-                $data_array = json_decode( $json_data, true );
+                if ( file_exists( $cartfront_path . '/framework/layouts/data/' . $option . '.json' ) ) {
+                    $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $store . '.json' );
+                    $data_array = json_decode( $json_data, true );
 
-                // Settings to be modified.
-                $settings = array(
-                    'storefront_layout',
-                    'storefront_sticky_add_to_cart',
-                    'storefront_product_pagination',
-                    'cf_hc_data',
-                    'cf_lb_section_title',
-                    'cf_lb_items_row',
-                    'cf_hm_enable',
-                    'cf_bc_post_layout_archive',
-                    'cf_bc_blog_archive_layout',
-                    'cf_bc_magazine_layout',
-                    'cf_bc_post_layout_single',
-                    'cf_bc_blog_single_layout',
-                    'cf_bc_homepage_blog_toggle',
-                    'cf_bc_homepage_blog_title',
-                    'cf_bc_post_layout_homepage',
-                    'cf_bc_homepage_blog_columns',
-                    'cf_bc_homepage_blog_limit',
-                    'cf_ss_choice',
-                    'cf_ss_section_title',
-                    'cf_ss_items_row',
-                    'cf_ss_count',
-                    'cf_ss_posts_order',
-                    'cf_ss_products_type'
-                );
+                    // Settings to be modified.
+                    $settings = array(
+                        'storefront_layout',
+                        'storefront_sticky_add_to_cart',
+                        'storefront_product_pagination',
+                        'cf_hc_data',
+                        'cf_lb_section_title',
+                        'cf_lb_items_row',
+                        'cf_hm_enable',
+                        'cf_bc_post_layout_archive',
+                        'cf_bc_blog_archive_layout',
+                        'cf_bc_magazine_layout',
+                        'cf_bc_post_layout_single',
+                        'cf_bc_blog_single_layout',
+                        'cf_bc_homepage_blog_toggle',
+                        'cf_bc_homepage_blog_title',
+                        'cf_bc_post_layout_homepage',
+                        'cf_bc_homepage_blog_columns',
+                        'cf_bc_homepage_blog_limit',
+                        'cf_ss_choice',
+                        'cf_ss_section_title',
+                        'cf_ss_items_row',
+                        'cf_ss_count',
+                        'cf_ss_posts_order',
+                        'cf_ss_products_type'
+                    );
 
-                // Loop through the settings and add to filter.
-                foreach ( $settings as $setting ) {
-                    if ( isset( $data_array[$setting] ) ) {
-                        if ( ! empty( $data_array[$setting] ) ) {
-                            set_theme_mod( $setting, $data_array[$setting] );
+                    // Loop through the settings and add to filter.
+                    foreach ( $settings as $setting ) {
+                        if ( isset( $data_array[$setting] ) ) {
+                            if ( ! empty( $data_array[$setting] ) ) {
+                                set_theme_mod( $setting, $data_array[$setting] );
+                            }
                         }
                     }
+
+                    // Change status.
+                    $data['status'] = 200;
+
+                    // Send success response.
+                    wp_send_json_success( $data );
+                } else {
+                    // Send error response.
+                    wp_send_json_error( $data );
                 }
-
-                // Change status.
-                $data['status'] = 200;
+            } else {
+                // Send error response.
+                wp_send_json_error( $data );
             }
-
-            echo json_encode( $data );
-            exit;
         }
 
         /**
@@ -386,6 +397,9 @@ namespace Niteo\WooCart\CartFront {
          */
         public function change_color_scheme() {
             global $cartfront_path;
+
+            // Check for nonce.
+            check_ajax_referer( 'cartfront_nonce', 'nonce' );
 
             // Get color scheme.
             $color_scheme = sanitize_text_field( $_POST['color_scheme'] );
@@ -397,56 +411,67 @@ namespace Niteo\WooCart\CartFront {
             );
 
             if ( in_array( $color_scheme, array( 'toys', 'books', 'jewellery', 'electronics' ) ) ) {
-                $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $color_scheme . '.json' );
-                $data_array = json_decode( $json_data, true );
+                if ( file_exists( $cartfront_path . '/framework/layouts/data/' . $option . '.json' ) ) {
+                    $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $color_scheme . '.json' );
+                    $data_array = json_decode( $json_data, true );
 
-                 /**
-                  * Store-specific color schemes.
-                  */
-                $settings = array(
-                    'storefront_heading_color',
-                    'storefront_text_color',
-                    'storefront_accent_color',
-                    'storefront_hero_heading_color',
-                    'storefront_hero_text_color',
-                    'storefront_header_background_color',
-                    'storefront_header_text_color',
-                    'storefront_header_link_color',
-                    'storefront_footer_background_color',
-                    'storefront_footer_heading_color',
-                    'storefront_footer_text_color',
-                    'storefront_footer_link_color',
-                    'storefront_button_background_color',
-                    'storefront_button_text_color',
-                    'storefront_button_alt_background_color',
-                    'storefront_button_alt_text_color',
-                    'cf_fb_background_color',
-                    'cf_fb_heading_color',
-                    'cf_fb_text_color',
-                    'cf_fb_link_color',
-                    'cf_nav_bg_color',
-                    'cf_nav_text_color',
-                    'cf_nav_link_color',
-                    'cf_sub_nav_bg_color',
-                    'cf_sub_nav_text_color',
-                    'cf_sub_nav_link_color'
-                );
+                     /**
+                      * Store-specific color schemes.
+                      */
+                    $settings = array(
+                        'storefront_heading_color',
+                        'storefront_text_color',
+                        'storefront_accent_color',
+                        'storefront_hero_heading_color',
+                        'storefront_hero_text_color',
+                        'storefront_header_background_color',
+                        'storefront_header_text_color',
+                        'storefront_header_link_color',
+                        'storefront_footer_background_color',
+                        'storefront_footer_heading_color',
+                        'storefront_footer_text_color',
+                        'storefront_footer_link_color',
+                        'storefront_button_background_color',
+                        'storefront_button_text_color',
+                        'storefront_button_alt_background_color',
+                        'storefront_button_alt_text_color',
+                        'cf_fb_background_color',
+                        'cf_fb_heading_color',
+                        'cf_fb_text_color',
+                        'cf_fb_link_color',
+                        'cf_nav_bg_color',
+                        'cf_nav_text_color',
+                        'cf_nav_link_color',
+                        'cf_sub_nav_bg_color',
+                        'cf_sub_nav_text_color',
+                        'cf_sub_nav_link_color'
+                    );
 
-                foreach ( $settings as $setting ) {
-                    if ( isset( $data_array[$setting] ) ) {
-                        if ( ! empty( $data_array[$setting] ) ) {
-                            set_theme_mod( $setting, $data_array[$setting] );
+                    foreach ( $settings as $setting ) {
+                        if ( isset( $data_array[$setting] ) ) {
+                            if ( ! empty( $data_array[$setting] ) ) {
+                                set_theme_mod( $setting, $data_array[$setting] );
+                            }
                         }
                     }
-                }
 
-                // Change status.
-                $data['status'] = 200;
+                    // Change status.
+                    $data['status'] = 200;
+
+                    // Send success response.
+                    wp_send_json_success( $data );
+                } else {
+                    // Send error response.
+                    wp_send_json_error( $data );
+                }
+            } else {
+                // Send error response.
+                wp_send_json_error( $data );
             }
         }
 
         /**
-         * Check for the layout and change settings according to the `cartfront_theme_option`.
+         * Check for the layout and change settings according to the `cartfront_theme` option.
          *
          * @access public
          */
@@ -455,20 +480,22 @@ namespace Niteo\WooCart\CartFront {
 
             // Check for layout values.
             if ( in_array( $option, array( 'toys', 'books', 'jewellery', 'electronics' ) ) ) {
-                $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $option . '.json' );
-                $data_array = json_decode( $json_data, true );
+                if ( file_exists( $cartfront_path . '/framework/layouts/data/' . $option . '.json' ) ) {
+                    $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $option . '.json' );
+                    $data_array = json_decode( $json_data, true );
 
-                foreach ( $data_array as $k => $v ) {
-                    if ( ! empty( $v ) ) {
-                        set_theme_mod( $k, $v );
+                    foreach ( $data_array as $k => $v ) {
+                        if ( ! empty( $v ) ) {
+                            set_theme_mod( $k, $v );
+                        }
                     }
+
+                    // Set layout to $option
+                    set_theme_mod( 'cf_lp_layout', $option );
+
+                    // Set color_scheme to $option
+                    set_theme_mod( 'cf_lp_color_scheme', $option );
                 }
-
-                // Set layout to $option
-                set_theme_mod( 'cf_lp_layout', $option );
-
-                // Set color_scheme to $option
-                set_theme_mod( 'cf_lp_color_scheme', $option );
             }
 
             return $option;
@@ -541,6 +568,7 @@ namespace Niteo\WooCart\CartFront {
          * Adding fallback to the primary navigation.
          *
          * @access public
+         * @codeCoverageIgnore
          */
         public function primary_nav_menu() {
             ?>
@@ -571,6 +599,7 @@ namespace Niteo\WooCart\CartFront {
          * Primary nav menu fallback.
          *
          * @access public
+         * @codeCoverageIgnore
          */
         public function primary_nav_menu_fallback( $handheld = 'no' ) {
             $items = array(
@@ -587,13 +616,13 @@ namespace Niteo\WooCart\CartFront {
             );
 
             if ( 'yes' === $handheld ) {
-                echo '<div class="handheld-navigation">' . "\n";
+                echo '<div class="handheld-navigation">';
             } else {
-                echo '<div class="primary-navigation">' . "\n";
+                echo '<div class="primary-navigation">';
             }
 
-            echo '<div class="primary-menu-fallback">' . "\n";
-            echo '<ul>' . "\n";
+            echo '<div class="primary-menu-fallback">';
+            echo '<ul>';
 
             foreach ( $items as $key => $option ) {
                 if ( 'home' === $key ) {
@@ -611,22 +640,23 @@ namespace Niteo\WooCart\CartFront {
                     }
 
                     if ( $link ) {
-                        echo '<li>' . "\n";
-                        echo '<a href="' . $link . '">' . $option['title'] . '</a>' . "\n";
-                        echo '</li>' . "\n";
+                        echo '<li>';
+                        echo '<a href="' . $link . '">' . $option['title'] . '</a>';
+                        echo '</li>';
                     }
                 }
             }
 
-            echo '</ul>' . "\n";
-            echo '</div><!-- .primary-menu-fallback -->' . "\n";
-            echo '</div><!-- .primary/handheld-navigation -->' . "\n";
+            echo '</ul>';
+            echo '</div><!-- .primary-menu-fallback -->';
+            echo '</div><!-- .primary/handheld-navigation -->';
         }
 
         /**
          * Handheld nav menu fallback.
          *
          * @access public
+         * @codeCoverageIgnore
          */
         public function handheld_nav_menu_fallback() {
             $this->primary_nav_menu_fallback( 'yes' );
@@ -636,6 +666,7 @@ namespace Niteo\WooCart\CartFront {
          * Footer nav menu fallback.
          *
          * @access public
+         * @codeCoverageIgnore
          */
         public function footer_nav_menu_fallback() {
             $items = array(

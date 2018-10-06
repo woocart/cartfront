@@ -50,31 +50,12 @@ class HamburgerMenuTest extends TestCase {
 	 */
 	public function testAddStyles() {
 		\WP_Mock::userFunction(
-			'get_theme_mod', [
-				'args' 	 => [ 'cf_hm_enable' ],
-				'return' => true
-			]
-		);
-		\WP_Mock::userFunction(
 			'sanitize_text_field', [
 				'return' => true
 			]
 		);
 		\WP_Mock::userFunction(
 			'get_theme_mod', [
-				'args' 		=> [
-					'storefront_header_background_color',
-					'#222222'
-				],
-				'return' 	=> true
-			]
-		);
-		\WP_Mock::userFunction(
-			'get_theme_mod', [
-				'args' 		=> [
-					'storefront_header_link_color',
-					'#dddddd'
-				],
 				'return' 	=> true
 			]
 		);
@@ -90,10 +71,7 @@ class HamburgerMenuTest extends TestCase {
 
 		\WP_Mock::userFunction(
 			'wp_add_inline_style', [
-				'args' => [
-					'-public',
-					true
-				]
+				'return' => true
 			]
 		);
 

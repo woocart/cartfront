@@ -85,7 +85,8 @@ namespace Niteo\WooCart\CartFront {
              * Localization
              */
             $localization = array(
-                'ajaxurl' => admin_url( 'admin-ajax.php' ),
+                'ajaxurl'   => admin_url( 'admin-ajax.php' ),
+                'nonce'     => wp_create_nonce( 'cartfront_nonce' )
             );
 
             wp_localize_script( $theme_name . '-customizer', 'cf_customizer', $localization );

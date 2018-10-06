@@ -396,6 +396,7 @@ namespace Niteo\WooCart\CartFront {
          * Display the blog posts on the homepage
          *
          * @return void
+         * @codeCoverageIgnore
          */
         public static function homepage_blog() {
             $display_homepage_blog = get_theme_mod( 'cf_bc_homepage_blog_toggle', false );
@@ -436,7 +437,7 @@ namespace Niteo\WooCart\CartFront {
          *
          * @return bool
          */
-        private function is_blog_archive() {
+        public function is_blog_archive() {
             return ! ( function_exists( 'is_woocommerce' ) && is_woocommerce() ) && ( is_archive() || is_search() || is_category() || is_tag() || ( is_home() && ! is_page_template( 'template-homepage.php' ) ) );
         }
 

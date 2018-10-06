@@ -36,4 +36,31 @@ class SimpleSliderTest extends TestCase {
 		\WP_Mock::assertHooksAdded();
 	}
 
+	/**
+	 * @covers \Niteo\WooCart\CartFront\Simple_Slider::__construct
+	 * @covers \Niteo\WooCart\CartFront\Simple_Slider::customize_register
+	 */	 
+	public function testCustomizeRegister() {
+		$wp_customize 	= \Mockery::mock( 'WP_Customize_Manager' );
+		$slider 		= new Simple_Slider();
+
+		$wp_customize->shouldReceive( 'add_panel' )
+					 ->once()
+					 ->andReturn( true );
+
+		$wp_customize->shouldReceive( 'add_section' )
+					 ->andReturn( true );
+
+		$wp_customize->shouldReceive( 'add_setting' )
+					 ->andReturn( true );
+
+		\Mockery::mock( 'WP_Customize_Control' );
+		\Mockery::mock( 'Niteo\WooCart\CartFront\Customizer\Posts_Control' );
+		\Mockery::mock( 'Niteo\WooCart\CartFront\Customizer\Repeater_Control' );
+		$wp_customize->shouldReceive( 'add_control' )
+					 ->andReturn( true );
+
+		$slider->customize_register( $wp_customize );
+	}
+
 }

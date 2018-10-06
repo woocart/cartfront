@@ -103,6 +103,7 @@ namespace Niteo\WooCart\CartFront {
 
         /**
     	 * Render view for boxes on the homepage.
+         * @codeCoverageIgnore
     	 */
         public static function cartfront_link_boxes() {
         	$cf_lb_items = get_theme_mod( 'cf_lb_items' );
