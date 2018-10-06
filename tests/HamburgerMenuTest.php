@@ -109,44 +109,21 @@ class HamburgerMenuTest extends TestCase {
 	public function testCustomizeRegister() {
 		global $wp_customize;
 
-		$wp_control 	= \Mockery::mock( 'WP_Customize_control' );
 		$wp_customize 	= \Mockery::mock( 'WP_Customize_Manager' );
 		$menu 			= new Hamburger_Menu();
 
-		$wp_customize->allows()
-					 ->add_section(
-					 	'cf_hm_section',
-					 	[
-					 		'title' 	=> 'Hamburger Menu',
-					 		'priority' 	=> 60
-					 	]
-					 )
-					 ->andReturns( true );
+		$wp_customize->shouldReceive( 'add_section' )
+					 ->once()
+					 ->andReturn( true );
 
-		$wp_customize->allows()
-					 ->add_setting(
-					 	'cf_hm_enable',
-					 	[
-					 		'default' 			=> false,
-					 		'sanitize_callback' => 'storefront_sanitize_checkbox',
-					 		'transport' 		=> 'postMessage'
-					 	]
-					 )
-					 ->andReturns( true );
+		$wp_customize->shouldReceive( 'add_setting' )
+					 ->once()
+					 ->andReturn( true );
 
-		$wp_customize->allows()
-					 ->add_control(
-					 	'cf_hm_enable',
-					 	[
-						 	'label'         => 'Enable Hamburger Menu',
-			                'description'   => 'Check this box to enable the Hamburger Menu for smaller size devices.',
-			                'section'       => 'cf_hm_section',
-			                'settings'      => 'cf_hm_enable',
-			                'type'          => 'checkbox',
-			                'priority'      => 10
-			            ]
-					 )
-					 ->andReturns( true );
+		\Mockery::mock( 'WP_Customize_Control' );
+		$wp_customize->shouldReceive( 'add_control' )
+					 ->once()
+					 ->andReturn( true );
 
 		$menu->customize_register( $wp_customize );
 	}

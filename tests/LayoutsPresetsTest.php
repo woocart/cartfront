@@ -44,4 +44,117 @@ class LayoutsPresetsTest extends TestCase {
 		\WP_Mock::assertHooksAdded();
 	}
 
+	/**
+	 * @covers \Niteo\WooCart\CartFront\Layouts_Presets::__construct
+	 * @covers \Niteo\WooCart\CartFront\Layouts_Presets::get_values
+	 */
+	public function testGetValues() {
+		$lp = new Layouts_Presets();
+
+		\WP_Mock::userFunction(
+			'esc_html', [
+				'return' => true
+			]
+		);
+		\WP_Mock::userFunction(
+			'get_theme_mod', [
+				'return' => true
+			]
+		);
+
+		$lp->get_values();
+	}
+
+	/**
+	 * @covers \Niteo\WooCart\CartFront\Layouts_Presets::__construct
+	 * @covers \Niteo\WooCart\CartFront\Layouts_Presets::customize_register
+	 */
+	public function testCustomizeRegister() {
+		global $wp_customize;
+
+		$wp_customize 	= \Mockery::mock( 'WP_Customize_Manager' );
+		$lp = new Layouts_Presets();
+
+		$wp_customize->shouldReceive( 'add_section' )
+					 ->andReturn( true );
+
+		$wp_customize->shouldReceive( 'add_setting' )
+					 ->andReturn( true );
+
+		\Mockery::mock( 'WP_Customize_Control' );
+		\Mockery::mock( 'WP_Customize_Color_Control' );
+
+		$wp_customize->shouldReceive( 'add_control' )
+					 ->andReturn( true );
+
+		$lp->customize_register( $wp_customize );
+	}
+
+	/**
+	 * @covers \Niteo\WooCart\CartFront\Layouts_Presets::__construct
+	 * @covers \Niteo\WooCart\CartFront\Layouts_Presets::add_styles
+	 */
+	public function testAddStyles() {
+		\WP_Mock::userFunction(
+			'sanitize_hex_color', [
+				'return' => true
+			]
+		);
+		\WP_Mock::userFunction(
+			'get_theme_mod', [
+				'return' 	=> true
+			]
+		);
+		\WP_Mock::userFunction(
+			'wp_add_inline_style', [
+				'return' => true
+			]
+		);
+
+		$lp = new Layouts_Presets();
+		$lp->add_styles();
+	}
+
+	/**
+	 * @covers \Niteo\WooCart\CartFront\Layouts_Presets::__construct
+	 * @covers \Niteo\WooCart\CartFront\Layouts_Presets::presets_header
+	 */
+	public function testPresetsHeaderToysStore() {
+		$lp = new Layouts_Presets();
+
+		\WP_Mock::userFunction(
+			'esc_html', [
+				'return' => true
+			]
+		);
+		\WP_Mock::userFunction(
+			'get_theme_mod', [
+				'return' => 'toys'
+			]
+		);
+
+		\WP_Mock::userFunction(
+			'remove_action', [
+				'return' => true
+			]
+		);
+
+		\WP_Mock::expectActionAdded( 'storefront_header', 'storefront_product_search', 30 );
+		\WP_Mock::expectActionAdded( 'storefront_header', 'storefront_header_cart', 40 );
+		\WP_Mock::expectActionAdded( 'storefront_header', [ $lp, 'primary_nav_menu' ], 50 );
+
+		$lp->presets_header();
+	}
+
+	/**
+	 * @covers \Niteo\WooCart\CartFront\Layouts_Presets::__construct
+	 * @covers \Niteo\WooCart\CartFront\Layouts_Presets::get_values
+	 * @covers \Niteo\WooCart\CartFront\Layouts_Presets::body_class
+	 */
+	public function testBodyClass() {
+		$lp = new Layouts_Presets();
+
+		$this->assertEquals( [ '-store' ], $lp->body_class( [] ) );
+	}
+
 }

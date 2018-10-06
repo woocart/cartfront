@@ -15,7 +15,6 @@
 
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">framework/admin</directory>
             <directory suffix=".php">framework/classes</directory>
             <directory suffix=".php">framework/include</directory>
         </whitelist>

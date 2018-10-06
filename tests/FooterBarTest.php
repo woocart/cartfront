@@ -73,45 +73,83 @@ class FooterBarTest extends TestCase {
 		);
 		\WP_Mock::userFunction(
 			'get_theme_mod', [
-				'args' 		=> [ 'cf_fb_background_color' ],
-				'return' 	=> true
-			]
-		);
-		\WP_Mock::userFunction(
-			'get_theme_mod', [
-				'args' 		=> [ 'cf_fb_background_image' ],
-				'return' 	=> true
-			]
-		);
-		\WP_Mock::userFunction(
-			'get_theme_mod', [
-				'args' 		=> [ 'cf_fb_text_color' ],
-				'return' 	=> true
-			]
-		);
-		\WP_Mock::userFunction(
-			'get_theme_mod', [
-				'args' 		=> [ 'cf_fb_heading_color' ],
-				'return' 	=> true
-			]
-		);
-		\WP_Mock::userFunction(
-			'get_theme_mod', [
-				'args' 		=> [ 'cf_fb_link_color' ],
 				'return' 	=> true
 			]
 		);
 		\WP_Mock::userFunction(
 			'wp_add_inline_style', [
-				'args' => [
-					'-public',
-					true
-				]
+				'return' => true
 			]
 		);
 
 		$fb = new Footer_Bar();
 		$fb->add_styles();
+	}
+
+	/**
+	 * @covers \Niteo\WooCart\CartFront\Footer_Bar::__construct
+	 * @covers \Niteo\WooCart\CartFront\Footer_Bar::register_widget_area
+	 */
+	public function testRegisterWidgetArea() {
+		$fb = new Footer_Bar();
+
+		\WP_Mock::userFunction(
+			'register_sidebar', [
+				'return' => true
+			]
+		);
+
+		$fb->register_widget_area();
+	}
+
+	/**
+	 * @covers \Niteo\WooCart\CartFront\Footer_Bar::__construct
+	 * @covers \Niteo\WooCart\CartFront\Footer_Bar::customize_register
+	 */
+	public function testCustomizeRegister() {
+		global $wp_customize;
+
+		$wp_customize 	= \Mockery::mock( 'WP_Customize_Manager' );
+		$fb 			= new Footer_Bar();
+
+		$wp_customize->shouldReceive( 'add_section' )
+					 ->once()
+					 ->andReturn( true );
+
+		$wp_customize->shouldReceive( 'add_setting' )
+					 ->andReturn( true );
+
+		\Mockery::mock( 'WP_Customize_Upload_Control' );
+		\Mockery::mock( 'WP_Customize_Color_Control' );
+
+		$wp_customize->shouldReceive( 'add_control' )
+					 ->andReturn( true );
+
+		$fb->customize_register( $wp_customize );
+	}
+
+	/**
+	 * @covers \Niteo\WooCart\CartFront\Footer_Bar::__construct
+	 * @covers \Niteo\WooCart\CartFront\Footer_Bar::footer_bar
+	 */
+	public function testFooterBar() {
+		$fb = new Footer_Bar();
+
+		\WP_Mock::userFunction(
+			'is_active_sidebar', [
+				'args' 		=> [ 'cartfront-footer-bar' ],
+				'return' 	=> true
+			]
+		);
+		\WP_Mock::userFunction(
+			'dynamic_sidebar', [
+				'args' 		=> [ 'cartfront-footer-bar' ],
+				'return' 	=> ''
+			]
+		);
+
+		$fb->footer_bar();
+		$this->expectOutputString( '<div class="cartfront-footer-bar"><div class="col-full"></div></div>' );
 	}
 
 }

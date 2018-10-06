@@ -46,9 +46,9 @@ namespace Niteo\WooCart\CartFront {
         /**
          * Grab values from the database.
          *
-         * @access private
+         * @access public
          */
-        private function get_values() {
+        public function get_values() {
             $this->store = esc_html( get_theme_mod( 'cf_lp_layout', 'default' ) );
         }
 
@@ -396,7 +396,7 @@ namespace Niteo\WooCart\CartFront {
                 'color_scheme'      => $color_scheme
             );
 
-             if ( in_array( $color_scheme, array( 'toys', 'books', 'jewellery', 'electronics' ) ) ) {
+            if ( in_array( $color_scheme, array( 'toys', 'books', 'jewellery', 'electronics' ) ) ) {
                 $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $color_scheme . '.json' );
                 $data_array = json_decode( $json_data, true );
 
@@ -478,6 +478,7 @@ namespace Niteo\WooCart\CartFront {
          * Top bar container.
          *
          * @access public
+         * @codeCoverageIgnore
          */
         public function header_top_container() {
             echo '<div class="cartfront-header-top">';
@@ -488,6 +489,7 @@ namespace Niteo\WooCart\CartFront {
          * Top bar container close.
          *
          * @access public
+         * @codeCoverageIgnore
          */
         public function header_top_container_close() {
             echo '</div>';
@@ -498,6 +500,7 @@ namespace Niteo\WooCart\CartFront {
          * Footer credit container.
          *
          * @access public
+         * @codeCoverageIgnore
          */
         public function footer_credit_container() {
             echo '<div class="cartfront-footer-credits">';
@@ -507,6 +510,7 @@ namespace Niteo\WooCart\CartFront {
          * Footer credit container close.
          *
          * @access public
+         * @codeCoverageIgnore
          */
         public function footer_credit_container_close() {
             echo '</div><!-- .cartfront-footer-credits -->';

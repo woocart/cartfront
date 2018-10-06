@@ -11,6 +11,8 @@ namespace Niteo\WooCart\CartFront {
         exit;
     }
 
+    use WP_Customize_Control;
+
     if ( ! class_exists( 'Hamburger_Menu' ) ) :
     class Hamburger_Menu {
 
@@ -87,14 +89,14 @@ namespace Niteo\WooCart\CartFront {
                 'transport'         => 'postMessage'
             ) );
 
-            $wp_customize->add_control( 'cf_hm_enable', array(
+            $wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'cf_hm_enable', array(
                 'label'         => esc_attr__( 'Enable Hamburger Menu', 'cartfront' ),
                 'description'   => esc_html__( 'Check this box to enable the Hamburger Menu for smaller size devices.', 'cartfront' ),
                 'section'       => 'cf_hm_section',
                 'settings'      => 'cf_hm_enable',
                 'type'          => 'checkbox',
                 'priority'      => 10
-            ) );
+            ) ) );
         }
 
         /**
