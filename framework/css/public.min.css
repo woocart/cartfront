@@ -46,18 +46,22 @@
 .cartfront-featured-container{text-align:center;margin:0 -1.1739130435%}
 .cartfront-columns-1 .cartfront-featured-container{margin:0}
 .cartfront-featured-wrapper{float:left;text-align:center;margin:0 1.1739130435% 4.235801032em 1.1739130435%}
-.cartfront-columns-1 .cartfront-featured-wrapper{margin:0 0 4.235801032em 0}
 .cartfront-featured-wrapper img{display:block;margin:0 auto 1.618em}
 .cartfront-featured-wrapper h2{font-size:1em;font-weight:400;margin-bottom:.5407911001em}
+.cartfront-columns-1 .cartfront-featured-wrapper{margin:0 0 4.235801032em 0}
 .cartfront-columns-1 .cartfront-fw-content .excerpt,.cartfront-columns-1 .cartfront-fw-content .button{display:none}
 .cartfront-boxes-container{text-align:center}
 .cartfront-boxes-wrapper{float:left;text-align:center;margin-right:4.347826087%;margin-bottom:4.235801032em}
-.cartfront-columns-2 .cartfront-boxes-wrapper{width:47.8260869565%}
-.cartfront-columns-3 .cartfront-boxes-wrapper{width:30.4347826086%}
-.cartfront-columns-4 .cartfront-boxes-wrapper{width:21.7391304347%}
-.cartfront-columns-2 .cartfront-boxes-wrapper:nth-child(2n),.cartfront-columns-3 .cartfront-boxes-wrapper:nth-child(3n),.cartfront-columns-4 .cartfront-boxes-wrapper:nth-child(4n){margin-right:0}
 .cartfront-boxes-wrapper img{display:block;margin:0 auto 1.618em}
 .cartfront-boxes-wrapper h2{font-size:1em;font-weight:400;margin-bottom:.5407911001em}
+.cartfront-columns-2 .cartfront-boxes-wrapper{width:47.8260869565%}
+.cartfront-columns-2 .cartfront-boxes-wrapper:nth-child(2n){margin-right:0}
+.cartfront-columns-3 .cartfront-boxes-wrapper{width:30.4347826086%}
+.cartfront-columns-3 .cartfront-boxes-wrapper:nth-child(3n){margin-right:0}
+.cartfront-columns-4 .cartfront-boxes-wrapper{width:21.7391304347%}
+.cartfront-columns-4 .cartfront-boxes-wrapper:nth-child(4n){margin-right:0}
+.cartfront-footer-credits::before,.cartfront-footer-credits::after{content:' ';display:table}
+.cartfront-footer-credits::after{clear:both}
 .cartfront-footer-credits .site-info,.cartfront-footer-credits .cartfront-footer-menu{float:left;width:38%;margin-right:4%}
 .cartfront-footer-credits .cartfront-footer-menu{width:58%;padding:2.617924em 0;margin:0}
 .cartfront-footer-credits .cartfront-footer-menu ul{margin:0;list-style-type:none;text-align:right}
@@ -108,8 +112,8 @@
 .books-store .site-header-cart .cart-contents{padding:.938em 0}
 .jewellery-store .site-header{padding-top:0}
 .jewellery-store .site-header .site-branding{width:100%;float:none;margin:1em auto}
-.jewellery-store .site-header .main-navigation{float:none;width:100%;text-align:center;margin:0}
 .jewellery-store .site-header .site-branding img{max-width:320px;margin:0 auto}
+.jewellery-store .site-header .main-navigation{float:none;width:100%;text-align:center;margin:0}
 }@media(min-width:769px){.cartfront-columns-1 .cartfront-featured-wrapper{margin:0 0 4.235801032em 0}
 .cartfront-columns-1 .cartfront-fw-thumbnail,.cartfront-columns-1 .cartfront-fw-content{float:left}
 .cartfront-columns-1 .cartfront-fw-thumbnail{width:60%;margin-right:5%}
@@ -129,11 +133,11 @@
 }@media screen and (max-width:767px){.cartfront-hamburger-menu-active .main-navigation ul li a{padding:1rem 1.250rem}
 .cartfront-hamburger-menu-active .main-navigation .handheld-navigation,.cartfront-hamburger-menu-active .main-navigation div.menu{position:fixed;top:0;left:-75%;width:75%;height:100%;overflow-y:scroll;-webkit-overflow-scrolling:touch;-webkit-transition:all,ease,0.2s;transition:all,ease,0.2s;z-index:9999;display:block !important}
 .cartfront-hamburger-menu-active .main-navigation .handheld-navigation>ul,.cartfront-hamburger-menu-active .main-navigation div.menu>ul{margin-top:.53em}
-.cartfront-hamburger-menu-active .main-navigation.toggled button.menu-toggle:before{-webkit-transform:translateY(-4px);-ms-transform:translateY(-4px);transform:translateY(-4px)}
-.cartfront-hamburger-menu-active .main-navigation.toggled button.menu-toggle:after{-webkit-transform:translateY(4px);-ms-transform:translateY(4px);transform:translateY(4px)}
-.cartfront-hamburger-menu-active .main-navigation.toggled button.menu-toggle span:before{opacity:1}
+.cartfront-hamburger-menu-active .main-navigation.toggled button.menu-toggle::before{-webkit-transform:translateY(-4px);-ms-transform:translateY(-4px);transform:translateY(-4px)}
+.cartfront-hamburger-menu-active .main-navigation.toggled button.menu-toggle::after{-webkit-transform:translateY(4px);-ms-transform:translateY(4px);transform:translateY(4px)}
+.cartfront-hamburger-menu-active .main-navigation.toggled button.menu-toggle span::before{opacity:1}
 .cartfront-hamburger-menu-active .main-navigation.toggled .handheld-navigation,.cartfront-hamburger-menu-active .main-navigation.toggled div.menu{left:0;box-shadow:0 0 2rem rgba(0,0,0,0.4)}
 .cartfront-hamburger-menu-active .cfhm-close{display:block;background-color:rgba(0,0,0,0.5);cursor:pointer;overflow:hidden;font-weight:700;padding:1rem 1.250rem}
-.cartfront-hamburger-menu-active .cfhm-close:before{font-family:"Font Awesome 5 Free";content:'\f00d';margin-right:.50rem;display:inline-block}
+.cartfront-hamburger-menu-active .cfhm-close::before{font-family:"Font Awesome 5 Free";content:'\f00d';margin-right:.50rem;display:inline-block}
 .cartfront-hamburger-menu-active.admin-bar .main-navigation .handheld-navigation,.cartfront-hamburger-menu-active.admin-bar .main-navigation div.menu{padding-top:32px}
 }

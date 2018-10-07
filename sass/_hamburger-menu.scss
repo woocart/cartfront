@@ -12,7 +12,6 @@
 					}
 				}
 			}
-
 			.handheld-navigation,
 			div.menu {
 				position: fixed;
@@ -34,22 +33,20 @@
 					margin-top: .53em;
 				}
 			}
-
 			&.toggled {
 				button.menu-toggle {
-					&:before {
+					&::before {
 						transform: translateY(-4px);
 					}
 
-					&:after {
+					&::after {
 						transform: translateY(4px);
 					}
 
-					span:before {
+					span::before {
 						opacity: 1;
 					}
 				}
-
 				.handheld-navigation,
 				div.menu {
 					left: 0;
@@ -57,7 +54,6 @@
 				}
 			}
 		}
-
 		.cfhm-close {
 			display: block;
 			background-color: rgba(0,0,0,.50);
@@ -66,14 +62,13 @@
 			font-weight: 700;
 			padding: 1rem 1.250rem;
 
-			&:before {
+			&::before {
 				font-family: "Font Awesome 5 Free";
 				content: '\f00d';
 				margin-right: 0.50rem;
 				display: inline-block;
 			}
 		}
-
 		&.admin-bar {
 			.main-navigation {
 				.handheld-navigation,
