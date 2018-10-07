@@ -695,8 +695,8 @@ namespace Niteo\WooCart\CartFront {
                 )
             );
 
-            echo '<div class="footer-menu-fallback">' . "\n";
-            echo '<ul>' . "\n";
+            echo '<div class="footer-menu-fallback">';
+            echo '<ul>';
 
             foreach ( $items as $key => $option ) {
                 if ( 'contact' === $key ) {
@@ -710,14 +710,15 @@ namespace Niteo\WooCart\CartFront {
                     $link = esc_url( get_permalink( $fetch ) );
 
                     if ( $link ) {
-                        echo '<li>' . "\n";
-                        echo '<a href="' . $link . '">' . $option['title'] . '</a>' . "\n";
-                        echo '</li>' . "\n";
+                        echo '<li>';
+                        echo '<a href="' . $link . '">' . $option['title'] . '</a>';
+                        echo '</li>';
                     }
                 }
             }
 
-            echo '</ul>' . "\n";
+            echo '</ul>';
+            echo '</div><!-- .footer-menu-fallback -->';
         }
 
         /**
