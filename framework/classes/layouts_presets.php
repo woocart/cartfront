@@ -265,8 +265,9 @@ namespace Niteo\WooCart\CartFront {
 
             switch( $layout ) {
                 case 'toys' :
-                    remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
+                    remove_action( 'storefront_header', 'storefront_secondary_navigation', 30 );
                     remove_action( 'storefront_header', 'storefront_product_search', 40 );
+                    remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
                     remove_action( 'storefront_header', 'storefront_header_cart', 60 );
 
                     add_action( 'storefront_header', 'storefront_product_search', 30 );
@@ -274,8 +275,9 @@ namespace Niteo\WooCart\CartFront {
                     add_action( 'storefront_header', array( &$this, 'primary_nav_menu' ), 50 );
                     break;
                 case 'books' :
-                    remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
+                    remove_action( 'storefront_header', 'storefront_secondary_navigation', 30 );
                     remove_action( 'storefront_header', 'storefront_product_search', 40 );
+                    remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
                     remove_action( 'storefront_header', 'storefront_header_cart', 60 );
 
                     add_action( 'storefront_header', 'storefront_header_cart', 40 );
@@ -284,8 +286,9 @@ namespace Niteo\WooCart\CartFront {
                     break;
                 case 'jewellery' :
                     remove_action( 'storefront_header', 'storefront_header_container', 0 );
-                    remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
+                    remove_action( 'storefront_header', 'storefront_secondary_navigation', 30 );
                     remove_action( 'storefront_header', 'storefront_product_search', 40 );
+                    remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
                     remove_action( 'storefront_header', 'storefront_header_cart', 60 );
 
                     add_action( 'storefront_header', array( &$this, 'header_top_container' ), 0 );
@@ -295,6 +298,7 @@ namespace Niteo\WooCart\CartFront {
                     add_action( 'storefront_header', array( &$this, 'primary_nav_menu' ), 50 );
                     break;
                 case 'electronics' :
+                    remove_action( 'storefront_header', 'storefront_secondary_navigation', 30 );
                     remove_action( 'storefront_header', 'storefront_primary_navigation', 50 );
 
                     add_action( 'storefront_header', array( &$this, 'primary_nav_menu' ), 50 );
