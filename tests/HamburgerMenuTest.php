@@ -85,8 +85,6 @@ class HamburgerMenuTest extends TestCase {
 	 * @covers Niteo\WooCart\CartFront\autoloader
 	 */
 	public function testCustomizeRegister() {
-		global $wp_customize;
-
 		$wp_customize 	= \Mockery::mock( 'WP_Customize_Manager' );
 		$menu 			= new Hamburger_Menu();
 

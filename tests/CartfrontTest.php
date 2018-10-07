@@ -28,6 +28,7 @@ class CartfrontTest extends TestCase {
 	 * @covers \Niteo\WooCart\CartFront\Blog_Customiser::__construct
 	 * @covers \Niteo\WooCart\CartFront\Footer_Bar::__construct
  	 * @covers \Niteo\WooCart\CartFront\Homepage_Control::__construct
+ 	 * @covers Niteo\WooCart\CartFront\Homepage_Control_Customizer::__construct
 	 * @covers \Niteo\WooCart\CartFront\Hamburger_Menu::__construct
 	 * @covers \Niteo\WooCart\CartFront\Layouts_Presets::__construct
 	 * @covers \Niteo\WooCart\CartFront\Link_Boxes::__construct
@@ -69,6 +70,7 @@ class CartfrontTest extends TestCase {
 	 * @covers \Niteo\WooCart\CartFront\Blog_Customiser::__construct
 	 * @covers \Niteo\WooCart\CartFront\Footer_Bar::__construct
  	 * @covers \Niteo\WooCart\CartFront\Homepage_Control::__construct
+ 	 * @covers Niteo\WooCart\CartFront\Homepage_Control_Customizer::__construct
 	 * @covers \Niteo\WooCart\CartFront\Hamburger_Menu::__construct
 	 * @covers \Niteo\WooCart\CartFront\Layouts_Presets::__construct
 	 * @covers \Niteo\WooCart\CartFront\Link_Boxes::__construct
@@ -109,6 +111,7 @@ class CartfrontTest extends TestCase {
 	 * @covers \Niteo\WooCart\CartFront\Blog_Customiser::__construct
 	 * @covers \Niteo\WooCart\CartFront\Footer_Bar::__construct
  	 * @covers \Niteo\WooCart\CartFront\Homepage_Control::__construct
+ 	 * @covers Niteo\WooCart\CartFront\Homepage_Control_Customizer::__construct
 	 * @covers \Niteo\WooCart\CartFront\Hamburger_Menu::__construct
 	 * @covers \Niteo\WooCart\CartFront\Layouts_Presets::__construct
 	 * @covers \Niteo\WooCart\CartFront\Link_Boxes::__construct

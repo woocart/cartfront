@@ -264,7 +264,6 @@ namespace Niteo\WooCart\CartFront\Customizer {
 			 * Input control function.
 			 *
 			 * @access  private
-			 * @codeCoverageIgnore
 			 */
 			private function input_control( $options, $value = '' ) {
 				if ( ! empty( $options['type'] ) ) {
@@ -296,7 +295,6 @@ namespace Niteo\WooCart\CartFront\Customizer {
 			 * Image control function.
 			 *
 			 * @access  private
-			 * @codeCoverageIgnore
 			 */
 			private function image_control( $value = '' ) {
 			?>

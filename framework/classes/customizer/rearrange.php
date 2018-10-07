@@ -68,11 +68,10 @@ namespace Niteo\WooCart\CartFront\Customizer {
              */
             $cf_wordpress_sections = array(
             	'title_tagline' 		=> 5,
-            	'colors' 				=> 10,
-            	'header_image' 			=> 15,
-            	'background_image' 		=> 20,
-            	'static_front_page' 	=> 25,
-            	'custom_css' 			=> 30
+            	'header_image' 			=> 10,
+            	'background_image' 		=> 15,
+            	'static_front_page' 	=> 20,
+            	'custom_css' 			=> 25
             );
 
             /**

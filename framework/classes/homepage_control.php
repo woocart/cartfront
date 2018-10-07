@@ -34,9 +34,7 @@ namespace Niteo\WooCart\CartFront {
             /**
              * Re-structure components.
              */
-            if ( ! is_admin() ) {
-                add_action( 'get_header', array( &$this, 'restructure_components' ) );
-            }
+            add_action( 'get_header', array( &$this, 'restructure_components' ) );
 
             /**
              * Initialize customizer.
@@ -50,34 +48,36 @@ namespace Niteo\WooCart\CartFront {
          * @access  public
          */
         public function restructure_components () {
-            $data       = get_theme_mod( 'cf_hc_data' );
-            $components = array();
+            if ( ! is_admin() ) {
+                $data       = get_theme_mod( 'cf_hc_data' );
+                $components = array();
 
-            if ( isset( $data ) && '' != $data ) {
-                $components = explode( ',', $data );
+                if ( isset( $data ) && '' != $data ) {
+                    $components = explode( ',', $data );
 
-                // Remove all existing actions on `homepage` hook.
-                remove_all_actions( $this->hook );
+                    // Remove all existing actions on `homepage` hook.
+                    remove_all_actions( $this->hook );
 
-                // Remove disabled components.
-                $components = $this->remove_disabled_items( $components );
+                    // Remove disabled components.
+                    $components = $this->remove_disabled_items( $components );
 
-                // Re-order the components.
-                if ( 0 < count( $components ) ) {
-                    $count = 5;
-                    foreach ( $components as $k => $v ) {
-                        if ( false !== strpos( $v, '@' ) ) {
-                            $obj_v = explode( '@' , $v );
-                            if ( class_exists( $obj_v[0] ) && method_exists( $obj_v[0], $obj_v[1] ) ) {
-                                add_action( $this->hook, array( $obj_v[0], $obj_v[1] ), $count );
+                    // Re-order the components.
+                    if ( 0 < count( $components ) ) {
+                        $count = 5;
+                        foreach ( $components as $k => $v ) {
+                            if ( false !== strpos( $v, '@' ) ) {
+                                $obj_v = explode( '@' , $v );
+                                if ( class_exists( $obj_v[0] ) && method_exists( $obj_v[0], $obj_v[1] ) ) {
+                                    add_action( $this->hook, array( $obj_v[0], $obj_v[1] ), $count );
+                                }
+                            } else {
+                                if ( function_exists( $v ) ) {
+                                    add_action( $this->hook, esc_attr( $v ), $count );
+                                }
                             }
-                        } else {
-                            if ( function_exists( $v ) ) {
-                                add_action( $this->hook, esc_attr( $v ), $count );
-                            }
+
+                            $count + 5;
                         }
-
-                        $count + 5;
                     }
                 }
             }
