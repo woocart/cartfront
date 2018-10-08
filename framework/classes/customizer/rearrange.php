@@ -7,11 +7,6 @@
 
 namespace Niteo\WooCart\CartFront\Customizer {
 
-    if ( ! defined( 'ABSPATH' ) ) {
-        exit;
-    }
-
-    if ( ! class_exists( 'Rearrange' ) ) :
     class Rearrange {
 
         /**
@@ -64,35 +59,52 @@ namespace Niteo\WooCart\CartFront\Customizer {
             ) );
 
             /**
-             * Sections added by WordPress.
+             * Default WordPress sections.
+             *
+             * 1. Site Title & Tagline
+             * 2. Header Image
+             * 3. Background Image
+             * 4. Static Front Page
+             * 5. Additional CSS
              */
             $cf_wordpress_sections = array(
-            	'title_tagline' 		=> 5,
-            	'header_image' 			=> 10,
-            	'background_image' 		=> 15,
-            	'static_front_page' 	=> 20,
-            	'custom_css' 			=> 25
+            	'title_tagline' 		=> 5,   // 1
+            	'header_image' 			=> 10,  // 2
+            	'background_image' 		=> 15,  // 3
+            	'static_front_page' 	=> 20,  // 4
+            	'custom_css' 			=> 25   // 5
             );
 
             /**
              * Sections added by storefront.
+             *
+             * 1. Storefront Layout Section
+             * 2. Storefront Typography Section
+             * 3. Storefront Buttons Styling Section
+             * 4. Storefront Single Product Page Section
+             * 5. Storefront Footer Section
              */
             $cf_storefront_sections = array(
-            	'storefront_layout' 				=> 5,
-            	'storefront_typography' 			=> 10,
-            	'storefront_buttons' 				=> 15,
-            	'storefront_single_product_page' 	=> 20,
-            	'storefront_footer' 				=> 25
+            	'storefront_layout' 				=> 5,   // 1
+            	'storefront_typography' 			=> 10,  // 2
+            	'storefront_buttons' 				=> 15,  // 3
+            	'storefront_single_product_page' 	=> 20,  // 4
+            	'storefront_footer' 				=> 25   // 5
             );
 
             /**
              * Sections added by cartfront.
+             *
+             * 1. Cartfront Homapge Control Section
+             * 2. Cartfront Link Boxes Section
+             * 3. Cartfront Hamburger Menu Section
+             * 4. Cartfront Footer Bar Section
              */
             $cf_cartfront_sections 	= array(
-            	'cf_hc_section' => 5,
-        		'cf_lb_section' => 10,
-            	'cf_hm_section' => 15,
-            	'cf_fb_section' => 20
+            	'cf_hc_section' => 5,   // 1
+        		'cf_lb_section' => 10,  // 2
+            	'cf_hm_section' => 15,  // 3
+            	'cf_fb_section' => 20   // 4
             );
 
             /**
@@ -121,6 +133,5 @@ namespace Niteo\WooCart\CartFront\Customizer {
         }
 
     }
-    endif;
 
 }

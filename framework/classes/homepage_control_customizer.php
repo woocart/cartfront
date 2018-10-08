@@ -7,11 +7,6 @@
 
 namespace Niteo\WooCart\CartFront {
 
-	if ( ! defined( 'ABSPATH' ) ) {
-        exit;
-    }
-
-	if ( ! class_exists( 'Homepage_Control_Customizer' ) ) :
 	class Homepage_Control_Customizer {
 
 		/**
@@ -164,6 +159,5 @@ namespace Niteo\WooCart\CartFront {
 		}
 
 	}
-	endif;
 
 }

@@ -7,13 +7,9 @@
 
 namespace Niteo\WooCart\CartFront {
 
-    if ( ! defined( 'ABSPATH' ) ) {
-        exit;
-    }
-
     use WP_Customize_Control;
+    use WP_Query;
 
-    if ( ! class_exists( 'Blog_Customiser' ) ) :
     class Blog_Customiser {
 
         /**
@@ -442,6 +438,5 @@ namespace Niteo\WooCart\CartFront {
         }
 
     }
-    endif;
 
 }

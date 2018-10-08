@@ -7,20 +7,25 @@
 
 namespace Niteo\WooCart\CartFront {
 
-    if ( ! defined( 'ABSPATH' ) ) {
-        exit;
-    }
-
     use WP_Customize_Control;
     use WP_Customize_Color_Control;
 
-    if ( ! class_exists( 'Layouts_Presets' ) ) :
     class Layouts_Presets {
 
         /**
-         * Store value.
+         * @var string
          */
-        private $store = 'default';
+        private $store  = 'default';
+
+        /**
+         * @var array
+         */
+        private $stores = array(
+            'toys',
+            'books',
+            'jewellery',
+            'electronics'
+        );
 
         /**
          * Constructor function.
@@ -330,17 +335,17 @@ namespace Niteo\WooCart\CartFront {
             check_ajax_referer( 'cartfront_nonce', 'nonce' );
 
             // Get layout value.
-            $store = sanitize_text_field( $_POST['layout'] );
+            $layout = sanitize_text_field( $_POST['layout'] );
 
             // Default response.
-            $data = array(
-                'status'    => 100,
-                'layout'    => $store
+            $data   = array(
+                'layout'    => $layout,
+                'count'     => 0
             );
 
-            if ( in_array( $store, array( 'toys', 'books', 'jewellery', 'electronics' ) ) ) {
-                if ( file_exists( $cartfront_path . '/framework/layouts/data/' . $option . '.json' ) ) {
-                    $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $store . '.json' );
+            if ( in_array( $layout, $this->stores ) ) {
+                if ( file_exists( $cartfront_path . '/framework/layouts/data/' . $layout . '.json' ) ) {
+                    $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $layout . '.json' );
                     $data_array = json_decode( $json_data, true );
 
                     // Settings to be modified.
@@ -370,17 +375,20 @@ namespace Niteo\WooCart\CartFront {
                         'cf_ss_products_type'
                     );
 
+                    $count = 0;
+
                     // Loop through the settings and add to filter.
                     foreach ( $settings as $setting ) {
                         if ( isset( $data_array[$setting] ) ) {
                             if ( ! empty( $data_array[$setting] ) ) {
                                 set_theme_mod( $setting, $data_array[$setting] );
+
+                                ++$count;
                             }
                         }
                     }
 
-                    // Change status.
-                    $data['status'] = 200;
+                    $data['count'] = $count;
 
                     // Send success response.
                     wp_send_json_success( $data );
@@ -410,12 +418,12 @@ namespace Niteo\WooCart\CartFront {
 
             // Default response.
             $data = array(
-                'status'            => 100,
-                'color_scheme'      => $color_scheme
+                'color_scheme'  => $color_scheme,
+                'count'         => 0
             );
 
-            if ( in_array( $color_scheme, array( 'toys', 'books', 'jewellery', 'electronics' ) ) ) {
-                if ( file_exists( $cartfront_path . '/framework/layouts/data/' . $option . '.json' ) ) {
+            if ( in_array( $color_scheme, $this->stores ) ) {
+                if ( file_exists( $cartfront_path . '/framework/layouts/data/' . $color_scheme . '.json' ) ) {
                     $json_data  = file_get_contents( $cartfront_path . '/framework/layouts/data/' . $color_scheme . '.json' );
                     $data_array = json_decode( $json_data, true );
 
@@ -451,16 +459,19 @@ namespace Niteo\WooCart\CartFront {
                         'cf_sub_nav_link_color'
                     );
 
+                    $count = 0;
+
                     foreach ( $settings as $setting ) {
                         if ( isset( $data_array[$setting] ) ) {
                             if ( ! empty( $data_array[$setting] ) ) {
                                 set_theme_mod( $setting, $data_array[$setting] );
+
+                                ++$count;
                             }
                         }
                     }
 
-                    // Change status.
-                    $data['status'] = 200;
+                    $data['count'] = $count;
 
                     // Send success response.
                     wp_send_json_success( $data );
@@ -749,6 +760,5 @@ namespace Niteo\WooCart\CartFront {
         }
 
     }
-    endif;
 
 }

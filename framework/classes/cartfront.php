@@ -7,13 +7,8 @@
 
 namespace Niteo\WooCart\CartFront {
 
-    if ( ! defined( 'ABSPATH' ) ) {
-    	exit;
-    }
-
     use Niteo\WooCart\CartFront\Customizer\Rearrange;
 
-    if ( ! class_exists( 'Cartfront' ) ) :
     class Cartfront {
 
         /**
@@ -93,6 +88,5 @@ namespace Niteo\WooCart\CartFront {
         }
 
     }
-    endif;
 
 }

@@ -51,6 +51,8 @@
 .cartfront-columns-1 .cartfront-featured-wrapper{margin:0 0 4.235801032em 0}
 .cartfront-columns-1 .cartfront-fw-content .excerpt,.cartfront-columns-1 .cartfront-fw-content .button{display:none}
 .cartfront-boxes-container{text-align:center}
+.cartfront-boxes-container::before,.cartfront-boxes-container::after{content:' ';display:table}
+.cartfront-boxes-container::after{clear:both}
 .cartfront-boxes-wrapper{float:left;text-align:center;margin-right:4.347826087%;margin-bottom:4.235801032em}
 .cartfront-boxes-wrapper img{display:block;margin:0 auto 1.618em}
 .cartfront-boxes-wrapper h2{font-size:1em;font-weight:400;margin-bottom:.5407911001em}
@@ -111,7 +113,7 @@
 .books-store .site-search input[type=search]{background:#fff;border:1px solid #333;padding-top:.5em;padding-bottom:.5em}
 .books-store .site-header-cart .cart-contents{padding:.938em 0}
 .jewellery-store .site-header{padding-top:0}
-.jewellery-store .site-header .site-branding{width:100%;float:none;margin:1em auto}
+.jewellery-store .site-header .site-branding{width:100% !important;float:none !important;margin:1em auto}
 .jewellery-store .site-header .site-branding img{max-width:320px;margin:0 auto}
 .jewellery-store .site-header .main-navigation{float:none;width:100%;text-align:center;margin:0}
 }@media(min-width:769px){.cartfront-columns-1 .cartfront-featured-wrapper{margin:0 0 4.235801032em 0}

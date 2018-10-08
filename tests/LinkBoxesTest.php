@@ -39,6 +39,7 @@ class LinkBoxesTest extends TestCase {
 	/**
 	 * @covers \Niteo\WooCart\CartFront\Link_Boxes::__construct
 	 * @covers \Niteo\WooCart\CartFront\Link_Boxes::customize_register
+	 * @covers \Niteo\WooCart\CartFront\Customizer\Repeater_Control::__construct
 	 */
 	public function testCustomizeRegister() {
 		global $wp_customize;
@@ -53,7 +54,7 @@ class LinkBoxesTest extends TestCase {
 		$wp_customize->shouldReceive( 'add_setting' )
 					 ->andReturn( true );
 
-		\Mockery::mock( 'WP_Customize_Control' );
+		\Mockery::mock( '\WP_Customize_Control' );
 		\Mockery::mock( '\Niteo\WooCart\CartFront\Customizer\Repeater_Control' );
 		$wp_customize->shouldReceive( 'add_control' )
 					 ->andReturn( true );

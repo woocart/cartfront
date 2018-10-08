@@ -69,7 +69,7 @@
 					nonce: cf_customizer.nonce
 				}
 			} ).done( function( data ) {
-				if( data.status != 100 ) {	
+				if( data.success ) {	
 					// Refresh pane
 					wp.customize.preview.send( 'refresh' );
 				}
@@ -89,7 +89,7 @@
 					nonce: cf_customizer.nonce
 				}
 			} ).done( function( data ) {
-				if( data.status != 100 ) {	
+				if( data.success ) {
 					// Refresh pane
 					wp.customize.preview.send( 'refresh' );
 				}

@@ -8,13 +8,9 @@
 
 namespace Niteo\WooCart\CartFront\Customizer {
 
-    if ( ! defined( 'ABSPATH' ) ) {
-        exit;
-    }
-
     use WP_Customize_Control;
 
-    if ( ! class_exists( 'Posts_Control' ) && class_exists( 'WP_Customize_Control' ) ) :
+    if ( class_exists( 'WP_Customize_Control' ) ) :
 		class Posts_Control extends WP_Customize_Control {
 
 			public $type = '';

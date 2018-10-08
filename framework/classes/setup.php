@@ -7,11 +7,6 @@
 
 namespace Niteo\WooCart\CartFront {
 
-	if ( ! defined( 'ABSPATH' ) ) {
-	    exit;
-	}
-
-	if ( ! class_exists( 'Setup' ) ) :
 	class Setup {
 
 		/**
@@ -186,6 +181,5 @@ namespace Niteo\WooCart\CartFront {
 		}
 
 	}
-	endif;
 
 }

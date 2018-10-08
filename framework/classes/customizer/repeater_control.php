@@ -8,13 +8,9 @@
 
 namespace Niteo\WooCart\CartFront\Customizer {
 
-	if ( ! defined( 'ABSPATH' ) ) {
-	    exit;
-	}
-
 	use WP_Customize_Control;
 
-	if ( ! class_exists( 'Repeater_Control' ) && class_exists( 'WP_Customize_Control' ) ) :
+	if ( class_exists( 'WP_Customize_Control' ) ) :
 		class Repeater_Control extends WP_Customize_Control {
 
 			public $id;

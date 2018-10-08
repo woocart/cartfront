@@ -7,14 +7,9 @@
 
 namespace Niteo\WooCart\CartFront {
 
-    if ( ! defined( 'ABSPATH' ) ) {
-        exit;
-    }
-
     use Niteo\WooCart\CartFront\Customizer\Repeater_Control;
     use WP_Customize_Control;
 
-    if ( ! class_exists( 'Link_Boxes' ) ) :
     class Link_Boxes {
 
         /**
@@ -89,7 +84,7 @@ namespace Niteo\WooCart\CartFront {
              */
             $wp_customize->add_setting( 'cf_lb_items', array(
                 'default'           => '',
-                'sanitize_callback' => 'Niteo\WooCart\CartFront\sanitize_repeater'
+                'sanitize_callback' => array( '\Niteo\WooCart\CartFront\Sanitize', 'sanitize_repeater' )
             ) );
 
             $wp_customize->add_control( new Repeater_Control( $wp_customize, 'cf_lb_items', array(
@@ -148,6 +143,5 @@ namespace Niteo\WooCart\CartFront {
         }
 
     }
-    endif;
 
 }

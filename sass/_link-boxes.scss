@@ -1,5 +1,14 @@
 .cartfront-boxes-container {
 	text-align: center;
+
+	&::before,
+	&::after {
+		content: ' ';
+		display: table;
+	}
+	&::after {
+		clear: both;
+	}
 }
 .cartfront-boxes-wrapper {
 	float: left;

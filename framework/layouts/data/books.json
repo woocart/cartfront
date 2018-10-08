@@ -18,7 +18,7 @@
     "storefront_layout": "right",
     "storefront_sticky_add_to_cart": false,
     "storefront_product_pagination": true,
-    "cf_hc_data": "[disabled]Cartfront_Link_Boxes@cartfront_link_boxes,storefront_homepage_content,storefront_recent_products,Cartfront_Simple_Slider@cartfront_slider,[disabled]storefront_product_categories,[disabled]storefront_featured_products,storefront_popular_products,[disabled]storefront_on_sale_products,storefront_best_selling_products,[disabled]Cartfront_Blog_Customiser@homepage_blog",
+    "cf_hc_data": "[disabled]Niteo\\WooCart\\CartFront\\Link_Boxes@cartfront_link_boxes,storefront_homepage_content,storefront_recent_products,Niteo\\WooCart\\CartFront\\Simple_Slider@cartfront_slider,[disabled]storefront_product_categories,[disabled]storefront_featured_products,storefront_popular_products,[disabled]storefront_on_sale_products,storefront_best_selling_products,[disabled]Niteo\\WooCart\\CartFront\\Blog_Customiser@homepage_blog",
     "cf_lb_section_title": "",
     "cf_lb_items_row": "4",
     "cf_hm_enable": true,

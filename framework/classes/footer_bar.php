@@ -7,14 +7,9 @@
 
 namespace Niteo\WooCart\CartFront {
 
-    if ( ! defined( 'ABSPATH' ) ) {
-        exit;
-    }
-
     use WP_Customize_Upload_Control;
     use WP_Customize_Color_Control;
 
-    if ( ! class_exists( 'Footer_Bar' ) ) :
     class Footer_Bar {
 
         /**
@@ -229,6 +224,5 @@ namespace Niteo\WooCart\CartFront {
         }
 
     }
-    endif;
 
 }

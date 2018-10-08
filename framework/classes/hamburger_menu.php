@@ -7,13 +7,8 @@
 
 namespace Niteo\WooCart\CartFront {
 
-    if ( ! defined( 'ABSPATH' ) ) {
-        exit;
-    }
-
     use WP_Customize_Control;
 
-    if ( ! class_exists( 'Hamburger_Menu' ) ) :
     class Hamburger_Menu {
 
         /**
@@ -109,6 +104,5 @@ namespace Niteo\WooCart\CartFront {
         }
 
     }
-    endif;
 
 }

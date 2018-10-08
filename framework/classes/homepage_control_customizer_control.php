@@ -7,13 +7,9 @@
 
 namespace Niteo\WooCart\CartFront {
 
-	if ( ! defined( 'ABSPATH' ) ) {
-        exit;
-    }
-
     use WP_Customize_Control;
 
-	if ( ! class_exists( 'Homepage_Control_Customizer_Control' ) && class_exists( 'WP_Customize_Control' ) ) :
+	if ( class_exists( 'WP_Customize_Control' ) ) :
 		class Homepage_Control_Customizer_Control extends WP_Customize_Control {
 
 			/**

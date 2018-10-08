@@ -28,7 +28,7 @@ namespace Niteo\WooCart\CartFront {
 	/**
 	 * The version number.
 	 */
-	$theme_version   = '1.0.0';
+	$theme_version   = '1.1.0';
 
 	/**
 	 * URL of the template directory.
@@ -46,10 +46,9 @@ namespace Niteo\WooCart\CartFront {
 	$cartfront_url   = get_stylesheet_directory_uri();
 
 	/**
-	 * Other required files.
+	 * Composer Autoloader.
 	 */
-	require_once $cartfront_path . '/framework/include/autoloader.php';
-	require_once $cartfront_path . '/framework/include/sanitize.php';
+	require_once __DIR__ . '/vendor/autoload.php';
 
 	/**
 	 * Initialize theme.

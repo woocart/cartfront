@@ -7,15 +7,11 @@
 
 namespace Niteo\WooCart\CartFront {
 
-    if ( ! defined( 'ABSPATH' ) ) {
-        exit;
-    }
-
     use Niteo\WooCart\CartFront\Customizer\Posts_Control;
     use Niteo\WooCart\CartFront\Customizer\Repeater_Control;
     use WP_Customize_Control;
+    use WP_Query;
 
-    if ( ! class_exists( 'Simple_Slider' ) ) :
     class Simple_Slider {
 
         /**
@@ -190,7 +186,7 @@ namespace Niteo\WooCart\CartFront {
              */
             $wp_customize->add_setting( 'cf_ss_posts', array(
                 'default'           => '',
-                'sanitize_callback' => 'Niteo\WooCart\CartFront\sanitize_multiselect'
+                'sanitize_callback' => array( '\Niteo\WooCart\CartFront\Sanitize', 'sanitize_multiselect' )
             ) );
 
             $wp_customize->add_control( new Posts_Control( $wp_customize, 'cf_ss_posts', array(
@@ -251,7 +247,7 @@ namespace Niteo\WooCart\CartFront {
              */
             $wp_customize->add_setting( 'cf_ss_custom_items', array(
                 'default'           => '',
-                'sanitize_callback' => 'Niteo\WooCart\CartFront\sanitize_repeater'
+                'sanitize_callback' => array( '\Niteo\WooCart\CartFront\Sanitize', 'sanitize_repeater' )
             ) );
 
             $wp_customize->add_control( new Repeater_Control( $wp_customize, 'cf_ss_custom_items', array(
@@ -568,6 +564,5 @@ namespace Niteo\WooCart\CartFront {
         }
 
     }
-    endif;
 
 }
