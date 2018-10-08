@@ -39,7 +39,6 @@ class LinkBoxesTest extends TestCase {
 	/**
 	 * @covers \Niteo\WooCart\CartFront\Link_Boxes::__construct
 	 * @covers \Niteo\WooCart\CartFront\Link_Boxes::customize_register
-	 * @covers \Niteo\WooCart\CartFront\Customizer\Repeater_Control::__construct
 	 */
 	public function testCustomizeRegister() {
 		global $wp_customize;

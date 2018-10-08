@@ -61,7 +61,6 @@ class HomepageControlCustomizerTest extends TestCase {
 	 * @covers \Niteo\WooCart\CartFront\Homepage_Control_Customizer::customize_register
 	 * @covers \Niteo\WooCart\CartFront\Homepage_Control_Customizer::format_defaults
 	 * @covers \Niteo\WooCart\CartFront\Homepage_Control_Customizer::get_hooked_functions
-	 * @covers \Niteo\WooCart\CartFront\Homepage_Control_Customizer_Control::__construct
 	 */
 	public function testCustomizeRegister() {
 		global $wp_customize;

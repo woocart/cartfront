@@ -5,6 +5,7 @@
  * @package cartfront
  */
 
+use Niteo\WooCart\CartFront\Sanitize;
 use PHPUnit\Framework\TestCase;
 
 class SanitizeTest extends TestCase {
@@ -23,29 +24,35 @@ class SanitizeTest extends TestCase {
 	}
 
 	/**
-	 * @covers \Niteo\WooCart\CartFront\sanitize_multiselect
+	 * @covers \Niteo\WooCart\CartFront\Sanitize::sanitize_multiselect
 	 */
 	public function testSanitizeMultiselectString() {
-        $this->assertSame( '', \Niteo\WooCart\CartFront\sanitize_multiselect( '' ) );
+		$sanitize = new Sanitize();
+
+        $this->assertSame( '', $sanitize->sanitize_multiselect( '' ) );
 	}
 
 	/**
-	 * @covers \Niteo\WooCart\CartFront\sanitize_multiselect
+	 * @covers \Niteo\WooCart\CartFront\Sanitize::sanitize_multiselect
 	 */
 	public function testSanitizeMultiselectArray() {
+		$sanitize = new Sanitize();
+
 		\WP_Mock::userFunction(
 			'sanitize_text_field', [
 				'return' => 'something'
 			]
 		);
 
-        $this->assertSame( [ 'return' => 'something' ], \Niteo\WooCart\CartFront\sanitize_multiselect( [ 'return' => 'something' ] ) );
+        $this->assertSame( [ 'return' => 'something' ], $sanitize->sanitize_multiselect( [ 'return' => 'something' ] ) );
 	}
 
 	/**
-	 * @covers \Niteo\WooCart\CartFront\sanitize_repeater
+	 * @covers \Niteo\WooCart\CartFront\Sanitize::sanitize_repeater
 	 */
 	public function testSanitizeRepeater() {
+		$sanitize = new Sanitize();
+
 		\WP_Mock::userFunction(
 			'force_balance_tags', [
 				'return' => 'something'
@@ -57,7 +64,7 @@ class SanitizeTest extends TestCase {
 			]
 		);
 
-		$this->assertSame( '{"homepage":{"return":"something"}}', \Niteo\WooCart\CartFront\sanitize_repeater( '{"homepage":{"return":"something"}}' ) );
+		$this->assertSame( '{"homepage":{"return":"something"}}', $sanitize->sanitize_repeater( '{"homepage":{"return":"something"}}' ) );
 	}
 
 }
