@@ -19,11 +19,10 @@ $font-size 	: 16px;
  * ..02 Hamburger Menu
  * ..03 Blog Customiser
  * ..04 Simple Slider
- * ..05 Mega Menus
- * ..06 Homepage Control
- * ..07 Link Boxes
- * ..08 Presets
- * ..09 Extras
+ * ..05 Homepage Control
+ * ..06 Link Boxes
+ * ..07 Presets
+ * ..08 Extras
  * -------------------------------------------------
  */
 
@@ -48,26 +47,21 @@ $font-size 	: 16px;
 @import 'simple-slider';
 
 /**
- * 05 Mega Menus
- */
-@import 'mega-menus';
-
-/**
- * 06 Homepage Control
+ * 05 Homepage Control
  */
 @import 'homepage-control';
 
 /**
- * 07 Link Boxes
+ * 06 Link Boxes
  */
 @import 'link-boxes';
 
 /**
- * 08 Presets
+ * 07 Presets
  */
 @import 'presets';
 
 /**
- * 09 Extras
+ * 08 Extras
  */
 @import 'extras';

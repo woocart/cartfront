@@ -3,54 +3,67 @@
 	text-align: center;
 	margin: 0 -1.1739130435%;
 }
-.cartfront-columns-1 .cartfront-featured-container {
-	margin: 0;
+.cartfront-columns-1 {
+	.cartfront-featured-container {
+		margin: 0;
+	}
 }
 .cartfront-featured-wrapper {
 	float: left;
     text-align: center;
     margin: 0 1.1739130435% 4.235801032em 1.1739130435%;
+
+    img {
+		display: block;
+	    margin: 0 auto 1.618em;
+	}
+	h2 {
+		font-size: 1em;
+		font-weight: 400;
+		margin-bottom: .5407911001em;
+	}
 }
-.cartfront-columns-1 .cartfront-featured-wrapper {
-	margin: 0 0 4.235801032em 0;
-}
-.cartfront-featured-wrapper img {
-	display: block;
-    margin: 0 auto 1.618em;
-}
-.cartfront-featured-wrapper h2 {
-	font-size: 1em;
-	font-weight: 400;
-	margin-bottom: .5407911001em;
-}
-.cartfront-columns-1 .cartfront-fw-content .excerpt,
-.cartfront-columns-1 .cartfront-fw-content .button {
-	display: none;
-}
-@media (min-width: 769px) {
-	.cartfront-columns-1 .cartfront-featured-wrapper {
+.cartfront-columns-1 {
+	.cartfront-featured-wrapper {
 		margin: 0 0 4.235801032em 0;
 	}
-	.cartfront-columns-1 .cartfront-fw-thumbnail,
-	.cartfront-columns-1 .cartfront-fw-content {
-		float: left;
+}
+.cartfront-columns-1 {
+	.cartfront-fw-content {
+		.excerpt,
+		.button {
+			display: none;
+		}
 	}
-	.cartfront-columns-1 .cartfront-fw-thumbnail {
-		width: 60%;
-		margin-right: 5%;
-	}
-	.cartfront-columns-1 .cartfront-fw-content {
-		width: 30%;
-		margin-right: 5%;
-		text-align: left;
-	}
-	.cartfront-columns-1 .cartfront-fw-content h2 {
-		font-size: 1.6em;
-	}
-	.cartfront-columns-1 .cartfront-fw-content .excerpt {
-		display: block;
-	}
-	.cartfront-columns-1 .cartfront-fw-content .button {
-		display: inline-block;
+}
+
+@media (min-width: 769px) {
+	.cartfront-columns-1 {
+		.cartfront-featured-wrapper {
+			margin: 0 0 4.235801032em 0;
+		}
+		.cartfront-fw-thumbnail,
+		.cartfront-fw-content {
+			float: left;
+		}
+		.cartfront-fw-thumbnail {
+			width: 60%;
+			margin-right: 5%;
+		}
+		.cartfront-fw-content {
+			width: 30%;
+			margin-right: 5%;
+			text-align: left;
+
+			h2 {
+				font-size: 1.6em;
+			}
+			.excerpt {
+				display: block;
+			}
+			.button {
+				display: inline-block;
+			}
+		}
 	}
 }

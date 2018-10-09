@@ -65,10 +65,11 @@
 				url: cf_customizer.ajaxurl,
 				data: {
 					action: 'change_layout',
-					layout: to
+					layout: to,
+					nonce: cf_customizer.nonce
 				}
 			} ).done( function( data ) {
-				if( data.status != 100 ) {	
+				if( data.success ) {	
 					// Refresh pane
 					wp.customize.preview.send( 'refresh' );
 				}
@@ -84,10 +85,11 @@
 				url: cf_customizer.ajaxurl,
 				data: {
 					action: 'change_color_scheme',
-					color_scheme: to
+					color_scheme: to,
+					nonce: cf_customizer.nonce
 				}
 			} ).done( function( data ) {
-				if( data.status != 100 ) {	
+				if( data.success ) {
 					// Refresh pane
 					wp.customize.preview.send( 'refresh' );
 				}
