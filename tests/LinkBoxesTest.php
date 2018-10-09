@@ -43,7 +43,7 @@ class LinkBoxesTest extends TestCase {
 	public function testCustomizeRegister() {
 		global $wp_customize;
 
-		$wp_customize 	= \Mockery::mock( '\WP_Customize_Manager' );
+		$wp_customize 	= \Mockery::mock( 'WP_Customize_Manager' );
 		$lb 			= new Link_Boxes();
 
 		$wp_customize->shouldReceive( 'add_section' )
@@ -53,8 +53,12 @@ class LinkBoxesTest extends TestCase {
 		$wp_customize->shouldReceive( 'add_setting' )
 					 ->andReturn( true );
 
-		\Mockery::mock( '\WP_Customize_Control' );
+		\Mockery::mock( 'WP_Customize_Control' )
+			->shouldReceive( '__construct' )
+			->with( 'manager', 'ID', [] )
+			->andReturns( true );
 		\Mockery::mock( '\Niteo\WooCart\CartFront\Customizer\Repeater_Control' );
+
 		$wp_customize->shouldReceive( 'add_control' )
 					 ->andReturn( true );
 

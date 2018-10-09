@@ -39,7 +39,7 @@ class SimpleSliderTest extends TestCase {
 	/**
 	 * @covers \Niteo\WooCart\CartFront\Simple_Slider::__construct
 	 * @covers \Niteo\WooCart\CartFront\Simple_Slider::customize_register
-	 */	 
+	 */
 	public function testCustomizeRegister() {
 		$wp_customize 	= \Mockery::mock( 'WP_Customize_Manager' );
 		$slider 		= new Simple_Slider();

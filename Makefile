@@ -10,7 +10,7 @@ bin/linux/amd64/github-release:
 
 transfer:
 	mkdir -p src
-	cp -Rf docs framework sass README.md style.css screenshot.png functions.php LICENSE src/ 
+	cp -Rf framework style.css screenshot.png functions.php LICENSE src/
 
 ensure: vendor
 vendor: src/vendor
