@@ -3,6 +3,47 @@
  */
 ( function( $ ) {
 	/**
+	 * Loader for the preview panel.
+	 */
+	$( 'body' ).prepend( '<div class="cf-loader"><div class="cf-loader-inner"><img src="' + cf_customizer.theme_url + '/framework/img/woocart.svg"></div></div>' );
+
+	/**
+	 * AJAX function.
+	 */
+	function cf_ajax( req_type, value ) {
+		var req_data = {
+			action: 'change_' + req_type,
+			nonce: cf_customizer.nonce
+		};
+
+		if( req_type == 'layout' ) {
+			req_data.layout = value;
+		} else {
+			req_data.color_scheme = value;
+		}
+
+		$.ajax( {
+			type: 'POST',
+			url: cf_customizer.ajaxurl,
+			data: req_data
+		} ).done( function( data ) {
+			if( data.success ) {
+				// Block the preview screen and show a loader
+				$( '.cf-loader' ).fadeIn();
+
+				// Save data
+				parent.wp.customize.previewer.save();
+
+				// Run after waiting for 3.5 seconds
+				window.setTimeout( function() {
+					// Refresh the controls panel
+					window.parent.location.reload();
+				}, 3500 );
+			}
+		} );
+	}
+
+	/**
 	 * Footer bar.
 	 */
 	wp.customize( 'cf_fb_background_color', function( value ) {
@@ -60,40 +101,14 @@
 	wp.customize( 'cf_lp_layout', function( value ) {
 		value.bind( function( to ) {
 			// AJAX update
-			$.ajax( {
-				type: 'POST',
-				url: cf_customizer.ajaxurl,
-				data: {
-					action: 'change_layout',
-					layout: to,
-					nonce: cf_customizer.nonce
-				}
-			} ).done( function( data ) {
-				if( data.success ) {	
-					// Refresh pane
-					wp.customize.preview.send( 'refresh' );
-				}
-			} );
+			cf_ajax( 'layout', to );
 		} );
 	} );
 
 	wp.customize( 'cf_lp_color_scheme', function( value ) {
 		value.bind( function( to ) {
 			// AJAX update
-			$.ajax( {
-				type: 'POST',
-				url: cf_customizer.ajaxurl,
-				data: {
-					action: 'change_color_scheme',
-					color_scheme: to,
-					nonce: cf_customizer.nonce
-				}
-			} ).done( function( data ) {
-				if( data.success ) {
-					// Refresh pane
-					wp.customize.preview.send( 'refresh' );
-				}
-			} );
+			cf_ajax( 'color_scheme', to );
 		} );
 	} );
 } )( jQuery );

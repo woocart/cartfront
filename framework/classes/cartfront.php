@@ -74,6 +74,8 @@ namespace Niteo\WooCart\CartFront {
         public function customize_preview_js() {
             global $theme_name, $theme_version, $cartfront_url;
 
+            wp_enqueue_style( $theme_name . '-customizer-preview', $cartfront_url . '/framework/css/preview.css', '', $theme_version );
+
             wp_enqueue_script( $theme_name . '-customizer', $cartfront_url . '/framework/js/customizer.js', array( 'customize-preview' ), $theme_version, true );
 
             /**
@@ -81,7 +83,8 @@ namespace Niteo\WooCart\CartFront {
              */
             $localization = array(
                 'ajaxurl'   => admin_url( 'admin-ajax.php' ),
-                'nonce'     => wp_create_nonce( 'cartfront_nonce' )
+                'nonce'     => wp_create_nonce( 'cartfront_nonce' ),
+                'theme_url' => $cartfront_url
             );
 
             wp_localize_script( $theme_name . '-customizer', 'cf_customizer', $localization );
