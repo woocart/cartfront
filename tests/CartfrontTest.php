@@ -138,13 +138,18 @@ class CartfrontTest extends TestCase {
 			]
 		);
 		\WP_Mock::userFunction(
+			'wp_enqueue_style', [
+				'return' => true,
+			]
+		);
+		\WP_Mock::userFunction(
 			'wp_enqueue_script', [
-				'return' => false,
+				'return' => true,
 			]
 		);
 		\WP_Mock::userFunction(
 			'wp_localize_script', [
-				'return' => false,
+				'return' => true,
 			]
 		);
 
