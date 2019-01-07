@@ -2,6 +2,9 @@ VERSION := 1.1.0
 THEMESLUG := cartfront
 SRCPATH := $(shell pwd)/src
 
+validate:
+	@pipenv run python .travis/validate.py
+
 bin/linux/amd64/github-release:
 	wget https://github.com/aktau/github-release/releases/download/v0.7.2/linux-amd64-github-release.tar.bz2
 	tar -xvf linux-amd64-github-release.tar.bz2
